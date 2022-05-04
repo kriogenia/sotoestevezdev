@@ -1,47 +1,37 @@
-import React, { useState } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
-import "./App.css";
-import { Intro, Portfolio } from "./sections";
+import React from "react";
+import styled from "styled-components";
+import theme from "styled-theming";
+import Scroll from "./Scroll";
+import ContextProvider from "./ContextProvider";
+
+export const backgroundColor = theme("theme", {
+  light: "#fff",
+  dark: "#2d2d2d",
+});
+
+export const textColor = theme("theme", {
+  light: "#000",
+  dark: "#fff",
+});
+
+const Container = styled.div`
+  margin: 0;
+  border: 0;
+  font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  background-color: ${backgroundColor};
+  color: ${textColor};
+`;
 
 const App = () => {
-	const [state, setState] = useState({ items: [<Intro />] });
-	const [extraComponents, setRemaining] = useState([<Portfolio />]);
-	const [hasMore, setHasMore] = useState(true);
-
-	const fetchMoreData = () => {
-		console.log("fect");
-		if (extraComponents.length === 0) {
-			setHasMore(false);
-			return;
-		}
-
-		setTimeout(() => {
-			const [next, ...remaining] = extraComponents;
-			setState({
-				items: state.items.concat(next),
-			});
-			setRemaining(remaining);
-		}, 500);
-	};
-
-	return (
-		<div>
-			<h1>SotoEstevez.dev</h1>
-			<InfiniteScroll
-				dataLength={state.items.length}
-				next={fetchMoreData}
-				hasMore={hasMore}
-				loader={<h4>Loading...</h4>}			/// TODO replace with spinner
-				endMessage={
-					<p style={{ textAlign: "center" }}>
-						<b>Yay! You have seen it all</b>
-					</p>
-				}
-			>
-				{state.items.map((i) => i)}
-			</InfiniteScroll>
-		</div>
-	);
+  return (
+    <ContextProvider>
+      <Container>
+        <Scroll />
+      </Container>
+    </ContextProvider>
+  );
 };
 
 export default App;

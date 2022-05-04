@@ -1,20 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "styled-theming";
-import Scroll from "./Scroll";
+import Scroll from "./components/Scroll";
 import ContextProvider from "./ContextProvider";
-
-export const backgroundColor = theme("theme", {
-  light: "#fff",
-  dark: "#2d2d2d",
-});
-
-export const textColor = theme("theme", {
-  light: "#000",
-  dark: "#fff",
-});
+import { backgroundColor, textColor } from "./theme/colors";
 
 const Container = styled.div`
+  height: 100%;
   margin: 0;
   border: 0;
   font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",

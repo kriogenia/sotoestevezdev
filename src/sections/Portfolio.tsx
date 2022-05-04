@@ -1,7 +1,10 @@
 import React from "react";
+import SectionContainer from "../components/SectionContainer";
 
 const Portfolio = () => {
-	return <div className="section">Portfolio</div>;
+  return (
+    <SectionContainer style={{ background: "#0f0" }}>Portfolio</SectionContainer>
+  );
 };
 
 export default Portfolio;

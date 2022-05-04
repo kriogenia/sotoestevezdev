@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import ThemeSwitch from "./components/ThemeSwitch";
-import { Intro, Portfolio } from "./sections";
-import TechStack from "./sections/TechStack";
+import ThemeSwitch from "./ThemeSwitch";
+import { Intro, Portfolio } from "../sections";
+import TechStack from "../sections/TechStack";
 
 const Scroll = () => {
   const [state, setState] = useState({ items: [<Intro />] });

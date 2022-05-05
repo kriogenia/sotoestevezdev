@@ -1,9 +1,11 @@
 import React from "react";
 import SectionContainer from "../components/SectionContainer";
 
+const ns = "portfolio";
+
 const Portfolio = () => {
   return (
-    <SectionContainer style={{ background: "#0f0" }}>Portfolio</SectionContainer>
+    <SectionContainer ns={ns}>Portfolio</SectionContainer>
   );
 };
 

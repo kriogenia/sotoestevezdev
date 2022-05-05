@@ -9,11 +9,13 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "en",
-	ns: ["intro"],
     debug: true,
     interpolation: {
       escapeValue: false,
     },
+	react: {
+		useSuspense: true
+	}
   });
 
 export default i18n;

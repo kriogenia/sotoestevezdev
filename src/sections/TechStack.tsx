@@ -1,9 +1,11 @@
 import React from "react";
 import SectionContainer from "../components/SectionContainer";
 
+const ns = "techstack";
+
 const TechStack = () => {
   return (
-    <SectionContainer style={{ background: "#00f" }}>Tech Stack</SectionContainer>
+    <SectionContainer ns={ns}>Tech Stack</SectionContainer>
   );
 };
 

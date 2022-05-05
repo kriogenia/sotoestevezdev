@@ -9,7 +9,7 @@ const changeLanguage = () => {
 const LanguageSelector = () => {
   return (
     <p>
-      <input type="checkbox" onClick={changeLanguage}></input> Language
+      <button onClick={changeLanguage}>Language</button>
     </p>
   );
 };

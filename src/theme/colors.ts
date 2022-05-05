@@ -5,7 +5,7 @@ const darkPrimary = "#d05a0b";
 const secondary = "#2a3542";
 //const secondary = "#4e5d6c";
 
-const light = "#abb6c2";
+//const light = "#abb6c2";
 
 const white = "#eee";
 

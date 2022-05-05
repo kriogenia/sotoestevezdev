@@ -1,5 +1,5 @@
 import React from "react";
-import { Trans, useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 import styled from "styled-components";
 import SectionContainer from "../components/SectionContainer";
 import { primaryColor } from "../theme/colors";
@@ -19,7 +19,7 @@ const Emphasis = styled.em`
 `
 
 const Intro = () => {
-  const { t } = useTranslation();
+  //c onst { t } = useTranslation();
   return (
     <SectionContainer>
       <Name>

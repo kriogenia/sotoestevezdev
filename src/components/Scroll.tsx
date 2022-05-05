@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import ThemeSwitch from "./ThemeSwitch";
 import { Intro, Portfolio } from "../sections";
 import TechStack from "../sections/TechStack";
 
@@ -18,6 +17,7 @@ const Scroll = () => {
       return;
     }
 
+
     setTimeout(() => {
       const [next, ...remaining] = extraComponents;
       setState({
@@ -28,24 +28,20 @@ const Scroll = () => {
   };
 
   return (
-    <div>
-      <h1>SotoEstevez.dev</h1>
-	  <ThemeSwitch/>
-      <InfiniteScroll
-        dataLength={state.items.length}
-        next={fetchMoreData}
-        hasMore={hasMore}
-        loader={<h4>Loading...</h4>} /// TODO replace with spinner
-        endMessage={
-          /// TODO replace end
-          <p style={{ textAlign: "center" }}>
-            <b>This is the end</b>
-          </p>
-        }
-      >
-        {state.items.map((i) => i)}
-      </InfiniteScroll>
-    </div>
+    <InfiniteScroll
+      dataLength={state.items.length}
+      next={fetchMoreData}
+      hasMore={hasMore}
+      loader={<h4>Loading...</h4>} /// TODO replace with spinner
+      endMessage={
+        /// TODO replace end
+        <p style={{ textAlign: "center" }}>
+          <b>This is the end</b>
+        </p>
+      }
+    >
+      {state.items.map((i) => i)}
+    </InfiniteScroll>
   );
 };
 

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import LanguageSelector from "./components/LanguageSelector";
 import Scroll from "./components/Scroll";
+import ThemeSwitch from "./components/ThemeSwitch";
 import ContextProvider from "./ContextProvider";
 import { backgroundColor, textColor } from "./theme/colors";
 
@@ -19,6 +21,8 @@ const App = () => {
   return (
     <ContextProvider>
       <Container>
+        <LanguageSelector />
+        <ThemeSwitch />
         <Scroll />
       </Container>
     </ContextProvider>

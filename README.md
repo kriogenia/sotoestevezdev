@@ -11,6 +11,7 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
   * Style for language dropdown menu
   * Links to sections
 * Footer
-* Loading spinner
+* Loading spinner on scroll
+* Decorate the back
 * Fix scroll loading too many components
 * Fix key issue

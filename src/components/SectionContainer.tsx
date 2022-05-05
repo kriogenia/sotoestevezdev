@@ -21,9 +21,12 @@ const SectionContainer: FC<Props> = ({ ns, children }) => {
   useEffect(() => {
     i18n.on("languageChanged", () => setTLoaded(false));
     if (!tLoaded) {
-      i18n.loadNamespaces(ns).then(() => {
-        setTLoaded(true);
-      });
+      i18n
+        .loadNamespaces(ns)
+        .then(() => {
+          setTLoaded(true);
+        })
+        .catch(console.error);
     }
   }, [ns, tLoaded]);
   return <Container>{tLoaded && children}</Container>;

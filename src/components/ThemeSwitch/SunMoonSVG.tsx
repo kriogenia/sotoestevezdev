@@ -73,7 +73,7 @@ const Moon = styled.mask`
 `;
 
 const SunMoonSVG = () => (
-  <SunMoon width="24px" height="24px" viewBox="0 0 24 24">
+  <SunMoon viewBox="0 0 24 24">
     <Sun cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
     <Beams stroke="currentColor">
       <line x1="12" y1="1" x2="12" y2="3" />

@@ -5,7 +5,6 @@ import SectionContainer from "../../components/SectionContainer";
 import { primaryColor } from "../../theme/colors";
 import { Title } from "../../theme/styles";
 import SigningSVG from "./SigningSVG";
-//import { ReactComponent as Signing } from "./img/signing.svg";
 
 const ns = "intro";
 
@@ -21,25 +20,29 @@ const Emphasis = styled.em`
   font-weight: bold;
   font-family: "Roboto";
 `;
+
+const photo_dim = "250px";
+
 const Photo = styled.img`
-  height: 25vh;
+  height: ${photo_dim};
+  width: ${photo_dim};
 `;
 
 const Me = () => {
   const { t } = useTranslation(ns);
   return (
-    <SectionContainer ns="intro">
+    <SectionContainer title="" ns="intro">
       <Photo src={process.env.PUBLIC_URL + "/img/me.png"} alt={t("alt.me")} />
       <Name>
         Ricardo <Surname>Soto Estévez</Surname>
       </Name>
       <p>
         <Trans i18nKey="subtitle" ns={ns}>
-          Good is not the word I would use to describe myself as developer, it is '
-          <Emphasis>Caralludo</Emphasis>'
+          Good is not the word I would use to describe myself as developer, it
+          is '<Emphasis>Caralludo</Emphasis>'
         </Trans>
       </p>
-		<SigningSVG />
+      <SigningSVG />
     </SectionContainer>
   );
 };

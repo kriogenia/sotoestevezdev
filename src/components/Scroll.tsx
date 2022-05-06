@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Me, Portfolio } from "../sections";
-import TechStack from "../sections/TechStack";
+import { Me, Portfolio, TechStack } from "../sections";
 
 const Scroll = () => {
   const [state, setState] = useState({ items: [<Me />] });
@@ -16,7 +15,6 @@ const Scroll = () => {
       setHasMore(false);
       return;
     }
-
 
     setTimeout(() => {
       const [next, ...remaining] = extraComponents;

@@ -1,9 +1,8 @@
 import React, { Suspense } from "react";
 import styled from "styled-components";
-import LanguageSelector from "./components/LanguageSelector";
 import Scroll from "./components/Scroll";
-import ThemeSwitch from "./components/ThemeSwitch";
 import ContextProvider from "./ContextProvider";
+import { Top } from "./sections";
 import { backgroundColor, textColor } from "./theme/colors";
 
 const Container = styled.div`
@@ -18,13 +17,11 @@ const Container = styled.div`
 `;
 
 const App = () => {
-
   return (
     <Suspense fallback="loading">
       <ContextProvider>
         <Container>
-          <LanguageSelector />
-          <ThemeSwitch />
+          <Top />
           <Scroll />
         </Container>
       </ContextProvider>

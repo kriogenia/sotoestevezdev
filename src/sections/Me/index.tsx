@@ -1,10 +1,11 @@
 import React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
-import SectionContainer from "../components/SectionContainer";
-import { primaryColor } from "../theme/colors";
-import { Title } from "../theme/styles";
-import { ReactComponent as Signing } from "./img/signing.svg";
+import SectionContainer from "../../components/SectionContainer";
+import { primaryColor } from "../../theme/colors";
+import { Title } from "../../theme/styles";
+import SigningSVG from "./SigningSVG";
+//import { ReactComponent as Signing } from "./img/signing.svg";
 
 const ns = "intro";
 
@@ -28,17 +29,17 @@ const Me = () => {
   const { t } = useTranslation(ns);
   return (
     <SectionContainer ns="intro">
-      <Photo src={process.env.PUBLIC_URL + "/img/me.png"} alt={t("me_alt")} />
+      <Photo src={process.env.PUBLIC_URL + "/img/me.png"} alt={t("alt.me")} />
       <Name>
         Ricardo <Surname>Soto Estévez</Surname>
       </Name>
       <p>
         <Trans i18nKey="subtitle" ns={ns}>
-          Good is not the word I would to describe myself as developer, it is '
+          Good is not the word I would use to describe myself as developer, it is '
           <Emphasis>Caralludo</Emphasis>'
         </Trans>
       </p>
-		<Signing/>
+		<SigningSVG />
     </SectionContainer>
   );
 };

@@ -7,9 +7,6 @@ const SunMoon = styled(SVG)`
   inline-size: 100%;
   block-size: 100%;
   stroke-linecap: round;
-
-  & > .sun-beams {
-  }
 `;
 
 const sunTransform = theme("theme", {
@@ -60,12 +57,12 @@ const Moon = styled.mask`
 
   & > circle {
     transform: ${moonTransform};
-	transition: transform .25s ease;
+    transition: transform 0.25s ease;
 
     @supports (cx: 1) {
       transform: translateX(0);
       cx: 17;
-	  transition: cx .25s ease;
+      transition: cx 0.25s ease;
     }
   }
 

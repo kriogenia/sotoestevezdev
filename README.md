@@ -7,9 +7,6 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
 ## TODOS
 * Introduction
   * Currículum vitae - Contact email
-  * Three-dots separating description from icons
-  * Network icons
-    * Hover -> circle? animated?
   * Network text
 * Topbar
   * Style for language dropdown menu

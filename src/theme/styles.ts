@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { primaryColor } from "./colors";
+import { primaryColor, hoverPrimaryColor } from "./colors";
 
 export const FlexRow = styled.div`
   display: flex;
@@ -12,6 +12,9 @@ export const Link = styled.a`
 	color: ${primaryColor};
 	font-weight: bolder;
 	text-decoration-style: dotted;
+	:hover {
+		color: ${hoverPrimaryColor}
+	}
 `;
 
 export const Title = styled.h1`

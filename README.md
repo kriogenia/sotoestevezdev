@@ -6,12 +6,21 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
 
 ## TODOS
 * Introduction
-  * Title?
-  * Contact links
-* Left side titles
+  * Currículum vitae - Contact email
+  * Three-dots separating description from icons
+  * Network icons
+    * Hover -> circle? animated?
+  * Network text
 * Topbar
   * Style for language dropdown menu
   * Links to sections
+* DEPLOYMENT
+* Portfolio
+* TechStack
+* Blog
+  * My last medium posts
+  * Twoots on Mastodon?
+* Left side titles
 * Arrow to the next section
 * Footer
 * Loading spinner on scroll

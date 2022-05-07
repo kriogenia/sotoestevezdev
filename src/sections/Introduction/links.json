@@ -1,0 +1,32 @@
+{
+	"github": {
+		"user": "kriogenia",
+		"url": "https://github.com/kriogenia/",
+		"img": "/img/me.png"
+	},
+	"linkedin": {
+		"user": "sotoestevez",
+		"url": "https://www.linkedin.com/in/sotoestevez/",
+		"img": "/img/me.png"
+	},
+	"medium": {
+		"user": "@sotoestevez",
+		"url": "https://medium.com/@sotoestevez/",
+		"img": "/img/me.png"
+	},
+	"cratesio": {
+		"user": "kriogenia",
+		"url": "https://crates.io/users/kriogenia",
+		"img": "/img/me.png"
+	},
+	"itchio": {
+		"user": "kriogenia",
+		"url": "https://kriogenia.itch.io/",
+		"img": "/img/me.png"
+	},
+	"mastodon": {
+		"user": "@kriogenia",
+		"url": "https://mastodon.social/@kriogenia",
+		"img": "/img/me.png"
+	}
+}

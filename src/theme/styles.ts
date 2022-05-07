@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-iterms: center;
+`;
+
 export const Title = styled.h1`
   margin-bottom: 0.5rem;
   font-size: 2.5rem;

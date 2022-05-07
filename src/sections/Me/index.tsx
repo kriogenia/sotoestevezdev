@@ -21,11 +21,11 @@ const Emphasis = styled.em`
   font-family: "Roboto";
 `;
 
-const photo_dim = "250px";
-
 const Photo = styled.img`
-  height: ${photo_dim};
-  width: ${photo_dim};
+  --size: 250px;
+
+  height: var(--size);
+  width: var(--size);
 `;
 
 const Me = () => {

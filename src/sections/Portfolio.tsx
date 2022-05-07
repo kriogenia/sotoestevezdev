@@ -5,7 +5,7 @@ const ns = "portfolio";
 
 const Portfolio = () => {
   return (
-    <SectionContainer ns={ns}>Portfolio</SectionContainer>
+    <SectionContainer title="A" ns={ns}>Portfolio</SectionContainer>
   );
 };
 

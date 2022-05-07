@@ -8,6 +8,13 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
 * Topbar
   * Style for language dropdown menu
   * Links to sections
+* Portfolio
+* DEPLOYMENT
+* TechStack
+* Blog
+  * My last medium posts
+  * Twoots on Mastodon?
+* Left side titles
 * Arrow to the next section
 * Footer
 * Loading spinner on scroll

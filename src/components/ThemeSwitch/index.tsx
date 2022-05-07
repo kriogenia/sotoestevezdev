@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { toggleTheme } from "../../reducers";
-import SunMoonSVG from "./SunMoon";
+import SunMoonSVG from "./SunMoonSVG";
 
 const Button = styled.button`
   --size: 2rem;

@@ -5,7 +5,7 @@ const ns = "techstack";
 
 const TechStack = () => {
   return (
-    <SectionContainer ns={ns}>Tech Stack</SectionContainer>
+    <SectionContainer title="b" ns={ns}>Tech Stack</SectionContainer>
   );
 };
 

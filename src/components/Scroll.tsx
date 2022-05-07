@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Me, Portfolio, TechStack } from "../sections";
+import { Introduction, Me, Portfolio, TechStack } from "../sections";
 
 const Scroll = () => {
   const [state, setState] = useState({ items: [<Me />] });
   const [extraComponents, setRemaining] = useState([
+    <Introduction />,
     <Portfolio />,
     <TechStack />,
   ]);

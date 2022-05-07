@@ -2,16 +2,17 @@ import theme from "styled-theming";
 
 const primary = "#df691a";
 const darkPrimary = "#d05a0b";
-const secondary = "#2a3542";
 
-//const secondary = "#4e5d6c";
-//const light = "#abb6c2";
+const background = "#2a3542";
+
+const gray = "#abb6c2";
+const darkGray = "#4e5d6c";
 
 const white = "#eee";
 
 export const backgroundColor = theme("theme", {
   light: white,
-  dark: secondary,
+  dark: background,
 });
 
 export const primaryColor = theme("theme", {
@@ -19,8 +20,13 @@ export const primaryColor = theme("theme", {
   dark: primary,
 });
 
+export const frontColor = theme("theme", {
+  light: darkGray,
+  dark: gray,
+});
+
 export const textColor = theme("theme", {
-  light: secondary,
+  light: background,
   dark: white,
 });
 

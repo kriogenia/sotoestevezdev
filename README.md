@@ -6,7 +6,6 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
 
 ## TODOS
 * Introduction
-  * Contact email
   * Network text
 * Topbar
   * Style for language dropdown menu

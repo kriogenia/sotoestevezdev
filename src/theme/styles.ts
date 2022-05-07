@@ -1,10 +1,17 @@
 import styled from "styled-components";
+import { primaryColor } from "./colors";
 
 export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-iterms: center;
+`;
+
+export const Link = styled.a`
+	color: ${primaryColor};
+	font-weight: bolder;
+	text-decoration-style: dotted;
 `;
 
 export const Title = styled.h1`

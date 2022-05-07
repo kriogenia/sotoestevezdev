@@ -1,9 +1,10 @@
 import React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
-import Divider from "../../components/Divider";
+import { FrontDivider } from "../../components/Divider";
 import SectionContainer from "../../components/SectionContainer";
-import { frontColor, primaryColor } from "../../theme/colors";
+import { backgroundColor, primaryColor } from "../../theme/colors";
+import CvIcon from "./CvIcon";
 import NetworkLinks from "./NetworkLinks";
 
 const ns = "intro";
@@ -24,9 +25,37 @@ const Description = styled.div`
   }
 `;
 
-const LinkDivider = styled(Divider)`
+const IntroDivider = styled(FrontDivider)`
   height: 10px;
-  fill: ${frontColor};
+  margin: 20px;
+`;
+
+const CVLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 5px;
+  gap: 5px;
+
+  color: ${primaryColor};
+  font-weight: bolder;
+  text-decoration: none;
+
+  border: solid 2px ${primaryColor};
+  border-radius: 5px;
+
+  & > svg {
+    fill: ${primaryColor};
+	height: 25px;
+  }
+
+  :hover {
+    color: ${backgroundColor};
+    background-color: ${primaryColor};
+    & > svg {
+      fill: ${backgroundColor};
+    }
+  }
 `;
 
 const Introduction = () => {
@@ -39,9 +68,17 @@ const Introduction = () => {
           Who I am
         </Trans>
       </Description>
-	  {/* TODO add CV and email */}
-	  <LinkDivider/>
-	  <NetworkLinks t={t}/>
+      <IntroDivider />
+      <CVLink
+        download
+        href={process.env.PUBLIC_URL + "/docs/RicardoSotoEstevez.pdf"}
+      >
+        <CvIcon />
+        Curriculum Vitae
+      </CVLink>
+      {/* TODO add CV and email */}
+      <IntroDivider />
+      <NetworkLinks t={t} />
     </SectionContainer>
   );
 };

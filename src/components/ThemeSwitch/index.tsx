@@ -1,17 +1,16 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { toggleTheme } from "../../reducers";
+import { topSize } from "../../theme/styles";
 import SunMoonSVG from "./SunMoonSVG";
 
 const Button = styled.button`
-  --size: 2rem;
-
   background: none;
   border: none;
   padding: 0;
 
-  inline-size: var(--size);
-  block-size: var(--size);
+  inline-size: ${topSize};
+  block-size: ${topSize};
   aspect-ratio: 1;
   border-radius: 50%;
 

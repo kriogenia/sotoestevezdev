@@ -20,7 +20,7 @@ const beamsOpacity = theme("theme", {
 });
 
 const moonTransform = theme("theme", {
-  light: "scale(1)",
+  light: "translateX(0px)",
   dark: "translateX(-7px)",
 });
 

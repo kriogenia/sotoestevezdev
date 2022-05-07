@@ -1,7 +1,7 @@
 import React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { FrontDivider } from "../../components/Divider";
+import { FrontHorizontalDivider } from "../../components/Divider";
 import SectionContainer from "../../components/SectionContainer";
 import { backgroundColor, primaryColor } from "../../theme/colors";
 import CvIcon from "./CvIcon";
@@ -10,10 +10,10 @@ import NetworkLinks from "./NetworkLinks";
 const ns = "intro";
 
 const Description = styled.div`
-  width: 40%;
+  width: 50%;
   text-align: left;
 
-  @media (max-width: 30em) {
+  @media only screen and (max-width: 1000px) {
     width: 100%;
   }
 
@@ -25,7 +25,7 @@ const Description = styled.div`
   }
 `;
 
-const IntroDivider = styled(FrontDivider)`
+const IntroDivider = styled(FrontHorizontalDivider)`
   height: 10px;
   margin: 20px;
 `;

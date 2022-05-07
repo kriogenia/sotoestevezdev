@@ -34,3 +34,5 @@ export const hideMobile = `
   @media only screen and (max-width: 1000px) {
 	display:none;
   }`;
+
+export const topSize = "2rem";

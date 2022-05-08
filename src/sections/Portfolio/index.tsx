@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import SectionContainer from "../../components/SectionContainer";
+import { frontColor } from "../../theme/colors";
+import { BackIcon, ForwardIcon } from "../../theme/icons";
 import { FlexRow } from "../../theme/styles";
 import Project from "./Project";
 import data from "./projects.json";
@@ -20,6 +23,45 @@ const index = (i: number) => {
   return i;
 };
 
+const Container = styled(FlexRow)`
+  width: 100%;
+`;
+
+const Button = styled.button`
+  --size: 8rem;
+
+  background: none;
+  border: none;
+  padding: 0;
+
+  inline-size: var(--size);
+  aspect-ratio: 1;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  outline-offset: 5px;
+
+  transition: all 0.3s linear;
+  :hover {
+    transform: scale(1.5);
+  }
+
+  @media (hover: none) {
+    --size: 36px;
+  }
+`;
+
+const Back = styled(BackIcon)`
+  fill: ${frontColor};
+  height: 60px;
+`;
+
+const Next = styled(ForwardIcon)`
+  fill: ${frontColor};
+  height: 60px;
+`;
+
 const Portfolio = () => {
   const [current, setCurrent] = useState(0);
   const { t } = useTranslation(ns);
@@ -34,11 +76,15 @@ const Portfolio = () => {
 
   return (
     <SectionContainer title={t("title")} ns={ns}>
-      <FlexRow>
-        <button onClick={prev}>{t(`${projects[index(current - 1)].key}.name`)}</button>
+      <Container>
+        <Button onClick={prev}>
+          <Back />
+        </Button>
         <Project project={projects[current]} t={t} />
-        <button onClick={next}>{t(`${projects[index(current + 1)].key}.name`)}</button>
-      </FlexRow>
+        <Button onClick={next}>
+          <Next />
+        </Button>
+      </Container>
     </SectionContainer>
   );
 };

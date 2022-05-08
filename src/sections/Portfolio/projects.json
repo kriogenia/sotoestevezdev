@@ -51,5 +51,28 @@
 			"rust",
 			"wasm"
 		]
+	},
+	"bresenhamzip": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "repo",
+				"icon": "github",
+				"url": ""
+			},
+			{
+				"key": "cratesio",
+				"icon": "crate",
+				"url": ""
+			},
+			{
+				"key": "doc",
+				"icon": "doc",
+				"url": ""
+			}
+		],
+		"tags": [
+			"rust"
+		]
 	}
 }

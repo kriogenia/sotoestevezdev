@@ -5,7 +5,7 @@ export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-iterms: center;
+  align-items: center;
 `;
 
 export const Link = styled.a`

@@ -1,6 +1,15 @@
 import { TFunction } from "react-i18next";
 import React, { FC } from "react";
 import { IProject } from "./IProject";
+import styled from "styled-components";
+
+const Container = styled.div`
+	width: 60%;
+
+	@media (hover: none) {
+	  width: 100%;
+	}
+`;
 
 interface Props {
   project: IProject;
@@ -10,7 +19,7 @@ interface Props {
 const Project: FC<Props> = ({ project, t }) => {
   const key = project.key;
   return (
-    <div>
+    <Container>
       <h2>{t(`${key}.name`)}</h2>
       <p>{t(`${key}.description`)}</p>
       {project.links.map((link) => (
@@ -21,7 +30,7 @@ const Project: FC<Props> = ({ project, t }) => {
       {project.tags.map((tag) => (
         <p>{tag}</p>
       ))}
-    </div>
+    </Container>
   );
 };
 

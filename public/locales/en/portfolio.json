@@ -7,5 +7,9 @@
 	"oito": {
 		"name": "Oito",
 		"description": "Chip8 emulator"
+	},
+	"bresenhamzip": {
+		"name": "Bresenham Zip",
+		"description": "Tool to use Bresenham"
 	}
 }

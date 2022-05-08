@@ -11,14 +11,3 @@ export interface ILink {
 	url: string,
 	download?: boolean,
 }
-
-export enum Tag {
-	Android = "android",
-	Kotlin = "kotlin",
-	MongoDB = "mongo",
-	NodeJS = "nodejs",
-	REST = "rest",
-	Rust = "rust",
-	Socketio = "socketio",
-	WebAssembly = "wasm",
-}

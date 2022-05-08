@@ -13,19 +13,21 @@
 				"url": ""
 			},
 			{
-				"key": "doc",
+				"key": "paper",
 				"icon": "pdf",
 				"url": "",
 				"download": true
 			}
 		],
 		"tags": [
-			"kotlin",
-			"nodejs",
-			"socketio",
-			"rest",
 			"android",
-			"mongo"
+			"nodejs",
+			"mongo",
+			"azure",
+			"kotlin",
+			"typescript",
+			"express",
+			"socketio"
 		]
 	},
 	"oito": {
@@ -61,7 +63,7 @@
 				"url": ""
 			},
 			{
-				"key": "cratesio",
+				"key": "crate",
 				"icon": "crate",
 				"url": ""
 			},

@@ -2,13 +2,34 @@ import { TFunction } from "react-i18next";
 import React, { FC } from "react";
 import { IProject } from "./IProject";
 import styled from "styled-components";
+import Link from "./ProjectLink";
+import Tag from "./ProjectTag";
+import { frontColor } from "../../theme/colors";
 
 const Container = styled.div`
-	width: 60%;
+  width: 60%;
+  text-align: left;
 
-	@media (hover: none) {
-	  width: 100%;
-	}
+  @media (hover: none) {
+    width: 100%;
+  }
+`;
+
+const Title = styled.h2`
+  font-size: xxx-large;
+`;
+
+const Subtitle = styled.h3`
+  color: ${frontColor};
+  margin-bottom: 20px;
+`;
+
+const Description = styled.p`
+  margin: 10px 0px;
+`;
+
+const Links = styled.div`
+  margin: 25px;
 `;
 
 interface Props {
@@ -20,16 +41,17 @@ const Project: FC<Props> = ({ project, t }) => {
   const key = project.key;
   return (
     <Container>
-      <h2>{t(`${key}.name`)}</h2>
-      <p>{t(`${key}.description`)}</p>
-      {project.links.map((link) => (
-        <p>
-          {`${link.icon} - ${link.key} - ${link.url}`}
-        </p>
-      ))}
+      <Title>{t(`${key}.name`)}</Title>
+      <Subtitle>{t(`${key}.subtitle`)}</Subtitle>
+      <Description>{t(`${key}.description`)}</Description>
       {project.tags.map((tag) => (
-        <p>{tag}</p>
+        <Tag key={tag} tag={tag} />
       ))}
+      <Links>
+        {project.links.map((link) => (
+          <Link key={link.key} link={link} t={t} />
+        ))}
+      </Links>
     </Container>
   );
 };

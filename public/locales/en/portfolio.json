@@ -2,14 +2,27 @@
 	"title": "Port folio",
 	"allforone": {
 		"name": "AllForOne",
-		"description": "My end-of-degree project"
+		"subtitle": "Tool to help families with Alzheimer",
+		"description": "AllForOne is my end-of-degree project. It's an Android application to assist families with members diagnosed of the Alzheimer's disease providing tools like shared task management, geolocalization or real-time chat, all of this over a bonding system. It consisted in two big modules, the frontend was the Android app made in Kotlin and the backend was a Node.js API deployed in Azure. The communication between the points was made through HTTP with a REST API and via Websocket."
 	},
 	"oito": {
 		"name": "Oito",
+		"subtitle": "Chip-8 Emulator",
 		"description": "Chip8 emulator"
 	},
 	"bresenhamzip": {
 		"name": "Bresenham Zip",
+		"subtitle": "Library to use the Bresenham algorithm to rasterize triangles",
 		"description": "Tool to use Bresenham"
+	},
+	"links": {
+		"api": "API",
+		"app": "App",
+		"article": "Article",
+		"crate": "Crate",
+		"doc": "Documentation",
+		"paper": "Paper",
+		"repo": "Repository",
+		"webemu": "Web emulator"
 	}
 }

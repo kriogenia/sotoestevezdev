@@ -1,6 +1,11 @@
 {
+	"title": "Port folio",
 	"allforone": {
 		"name": "AllForOne",
 		"description": "My end-of-degree project"
+	},
+	"oito": {
+		"name": "Oito",
+		"description": "Chip8 emulator"
 	}
 }

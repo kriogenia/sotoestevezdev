@@ -27,5 +27,29 @@
 			"android",
 			"mongo"
 		]
+	},
+	"oito": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "repo",
+				"icon": "github",
+				"url": ""
+			},
+			{
+				"key": "web",
+				"icon": "web",
+				"url": ""
+			},
+			{
+				"key": "post",
+				"icon": "medium",
+				"url": ""
+			}
+		],
+		"tags": [
+			"rust",
+			"wasm"
+		]
 	}
 }

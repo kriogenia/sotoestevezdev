@@ -1,0 +1,31 @@
+{
+	"allforone": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "app",
+				"icon": "github",
+				"url": ""
+			},
+			{
+				"key": "api",
+				"icon": "github",
+				"url": ""
+			},
+			{
+				"key": "doc",
+				"icon": "pdf",
+				"url": "",
+				"download": true
+			}
+		],
+		"tags": [
+			"kotlin",
+			"nodejs",
+			"socketio",
+			"rest",
+			"android",
+			"mongo"
+		]
+	}
+}

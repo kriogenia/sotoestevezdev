@@ -3,7 +3,7 @@
 	"allforone": {
 		"name": "AllForOne",
 		"subtitle": "Tool to help families with Alzheimer",
-		"description": "AllForOne is my end-of-degree project. It's an Android application to assist families with members diagnosed of the Alzheimer's disease providing tools like shared task management, geolocalization or real-time chat, all of this over a bonding system. It consisted in two big modules, the frontend was the Android app made in Kotlin and the backend was a Node.js API deployed in Azure. The communication between the points was made through HTTP with a REST API and via Websocket."
+		"description": "AllForOne is my <strong>end-of-degree project</strong>. It's an Android application to assist families with members diagnosed of the <strong>Alzheimer's disease</strong> providing tools like shared task management, geolocalization or real-time chat, all of this over a bonding system. It consists in two big modules: the frontend, an <strong>Android app</strong> made in Kotlin; and the backend service, a <strong>Node.js API</strong> deployed in Azure. The communication between the points is made through HTTP with a REST API and via Websocket, depending on each use case."
 	},
 	"oito": {
 		"name": "Oito",

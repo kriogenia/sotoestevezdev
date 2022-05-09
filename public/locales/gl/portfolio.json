@@ -2,8 +2,8 @@
 	"title": "Port folio",
 	"allforone": {
 		"name": "AllForOne",
-		"subtitle": "Tool to help families with Alzheimer",
-		"description": "AllForOne is my end-of-degree project. It's an Android application to assist families with members diagnosed of the Alzheimer's disease providing tools like shared task management, geolocalization or real-time chat, all of this over a bonding system. It consisted in two big modules, the frontend was the Android app made in Kotlin and the backend was a Node.js API deployed in Azure. The communication between the points was made through HTTP with a REST API and via Websocket."
+		"subtitle": "Ferramenta de asistencia a familias afectadas polo Alzheimer",
+		"description": "AllForOne é o meu <strong>Traballo de Fin de Grao</strong>. É unha aplicación Android de axuda para familias con algún membro afectado pola <strong>enfermidade de Alzheimer</strong> proporcionando ferramentas como un xestor de tarefas compartido, xeolocalización ou un chat en tempo real, todo isto construido enriba dun sistema de vinculación. Consiste en dous grandes módulos: o cliente, unha <strong>aplicación Android</strong> feita en Kotlin; e o servizo do back, unha <strong>API en Node.js</strong> desplegada en Azure. A comunicación entre estos dous extremos realízase tanto a través de HTTP cunha API REST como por vía de WebSockets segundo o caso."
 	},
 	"oito": {
 		"name": "Oito",

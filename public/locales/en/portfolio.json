@@ -17,7 +17,7 @@
 	},
 	"links": {
 		"api": "API",
-		"app": "App",
+		"app": "Application",
 		"article": "Article",
 		"crate": "Crate",
 		"doc": "Documentation",

@@ -15,7 +15,7 @@
 			{
 				"key": "paper",
 				"icon": "pdf",
-				"url": "",
+				"url": "https://github.com/kriogenia/AllForOne-Paper/releases/download/release/Aplicacion.asimetrica.movil.de.asistencia.para.familias.con.personas.afectadas.de.Alzheimer.-.Ricardo.Soto.Estevez.pdf",
 				"download": true
 			}
 		],
@@ -39,12 +39,12 @@
 				"url": ""
 			},
 			{
-				"key": "web",
+				"key": "webemu",
 				"icon": "web",
 				"url": ""
 			},
 			{
-				"key": "post",
+				"key": "article",
 				"icon": "medium",
 				"url": ""
 			}

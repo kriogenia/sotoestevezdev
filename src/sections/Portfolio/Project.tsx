@@ -1,10 +1,10 @@
-import { TFunction } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import React, { FC } from "react";
 import { IProject } from "./IProject";
 import styled from "styled-components";
 import Link from "./ProjectLink";
 import Tag from "./ProjectTag";
-import { frontColor } from "../../theme/colors";
+import { frontColor, primaryColor } from "../../theme/colors";
 
 const Container = styled.div`
   width: 60%;
@@ -27,8 +27,12 @@ const Subtitle = styled.h3`
 const Description = styled.p`
   margin: 40px 0px;
 
-  @media (hover: none)  {
-	  margin: 10px;
+  & > strong {
+	  color: ${primaryColor};
+  }
+
+  @media (hover: none) {
+    margin: 10px;
   }
 `;
 
@@ -38,10 +42,12 @@ const Links = styled.div`
 
 interface Props {
   project: IProject;
-  t: TFunction;
+  ns: string;
 }
 
-const Project: FC<Props> = ({ project, t }) => {
+const Project: FC<Props> = ({ project, ns }) => {
+  const { t } = useTranslation(ns);
+
   const key = project.key;
   return (
     <Container>
@@ -51,9 +57,8 @@ const Project: FC<Props> = ({ project, t }) => {
         <Tag key={tag} tag={tag} />
       ))}
       <Description>
-		  {/*<Trans key={`${key}.description`} ns=""></Trans>*/}
-		  {t(`${key}.description`)}
-	  </Description>
+        <Trans i18nKey={`${key}.description`} ns={ns}></Trans>
+      </Description>
       <Links>
         {project.links.map((link) => (
           <Link key={link.key} link={link} t={t} />

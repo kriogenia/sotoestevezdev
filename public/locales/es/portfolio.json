@@ -8,7 +8,7 @@
 	"oito": {
 		"name": "Oito",
 		"subtitle": "Emulador de Chip-8",
-		"description": "Oito es un emulador de la máquina virtual de Chip-8 completamente escrito en Rust con un fuerte esfuerzo en el desarrollo del código más léxico y autoexplicativo posible. Este proyecto se compone de tres paquetes principales: el core, que implementa toda la lógica back; el front de escritorio, que emplea la librería SDL2; y la librería web para compilar el emulador a WebAssembly y ejecutar en una página web. La versión web del emulador se puede usar en el enlace dispuesto a continuación."
+		"description": "Oito es un emulador de la <strong>máquina virtual de Chip-8</strong> completamente escrito en Rust con un fuerte esfuerzo en el desarrollo del código más léxico y autoexplicativo posible. Este proyecto se compone de tres paquetes principales: el <strong>core</strong>, que implementa toda la lógica back; el <strong>front de escritorio</strong>, que emplea la librería SDL2; y la <strong>librería web</strong> para compilar el emulador a WebAssembly y ejecutar en una página web. La versión web del emulador se puede usar en el enlace dispuesto a continuación."
 	},
 	"bresenhamzip": {
 		"name": "Bresenham Zip",

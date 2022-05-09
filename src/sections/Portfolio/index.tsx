@@ -88,7 +88,7 @@ const Portfolio = () => {
         <Button onClick={prev}>
           <Back />
         </Button>
-        <Project project={projects[current]} t={t} />
+        <Project project={projects[current]} ns={ns} />
         <Button onClick={next}>
           <Next />
         </Button>

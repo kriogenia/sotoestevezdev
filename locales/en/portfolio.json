@@ -1,0 +1,28 @@
+{
+	"title": "Port folio",
+	"allforone": {
+		"name": "AllForOne",
+		"subtitle": "Tool to help families with Alzheimer",
+		"description": "AllForOne is my <strong>end-of-degree project</strong>. It's an Android application to assist families with members diagnosed of the <strong>Alzheimer's disease</strong> providing tools like shared task management, geolocalization or real-time chat, all of this over a bonding system. It consists in two big modules: the frontend, an <strong>Android app</strong> made in Kotlin; and the backend service, a <strong>Node.js API</strong> deployed in Azure. The communication between the points is made through HTTP with a REST API and via Websocket, depending on each use case."
+	},
+	"oito": {
+		"name": "Oito",
+		"subtitle": "Chip-8 Emulator",
+		"description": "Oito is an emulator of the <strong>Chip-8 virtual machine</strong> completely coded in Rust with a hard effort in the creation of the most meaningful code that was possible. The project is divided in three main crates: the <strong>core</strong> managing all the backend logic, the <strong>desktop frontend</strong> using SDL2 and the <strong>web crate</strong> to compile the emulator to WebAssembly an be able to execute it on a webpage. The web version of the emulator can be used in one of the following links."
+	},
+	"bresenhamzip": {
+		"name": "Bresenham Zip",
+		"subtitle": "Library to ease the use of the Bresenham algorithm with two lines",
+		"description": "The <strong>Bresenham algorithm</strong> is an algorithm to generate the points between two vectors, usually used in graphics to draw lines. Based on this it's also used to generate the points inside of a polygon (typically a triangle) performing the algorithm between two lines at the same time to generate the horizontal and vertical lines covering the area. BresenhamZip generates <strong>an iterator</strong> returning the vectors of those lines. It supports <strong>generic</strong> vectors, works in <strong>2D</strong> and <strong>3D</strong> and offers helpful macros."
+	},
+	"links": {
+		"api": "API",
+		"app": "Application",
+		"article": "Article",
+		"crate": "Crate",
+		"doc": "Documentation",
+		"paper": "Paper",
+		"repo": "Repository",
+		"webemu": "Web emulator"
+	}
+}

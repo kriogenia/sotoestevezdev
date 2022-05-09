@@ -22,7 +22,7 @@
 		"tags": [
 			"android",
 			"nodejs",
-			"mongo",
+			"mongodb",
 			"azure",
 			"kotlin",
 			"typescript",
@@ -64,12 +64,12 @@
 			},
 			{
 				"key": "crate",
-				"icon": "crate",
+				"icon": "rust",
 				"url": ""
 			},
 			{
 				"key": "doc",
-				"icon": "doc",
+				"icon": "rust",
 				"url": ""
 			}
 		],

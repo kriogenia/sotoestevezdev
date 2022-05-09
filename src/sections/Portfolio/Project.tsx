@@ -25,7 +25,11 @@ const Subtitle = styled.h3`
 `;
 
 const Description = styled.p`
-  margin: 10px 0px;
+  margin: 40px 0px;
+
+  @media (hover: none)  {
+	  margin: 10px;
+  }
 `;
 
 const Links = styled.div`
@@ -43,10 +47,10 @@ const Project: FC<Props> = ({ project, t }) => {
     <Container>
       <Title>{t(`${key}.name`)}</Title>
       <Subtitle>{t(`${key}.subtitle`)}</Subtitle>
-      <Description>{t(`${key}.description`)}</Description>
       {project.tags.map((tag) => (
         <Tag key={tag} tag={tag} />
       ))}
+      <Description>{t(`${key}.description`)}</Description>
       <Links>
         {project.links.map((link) => (
           <Link key={link.key} link={link} t={t} />

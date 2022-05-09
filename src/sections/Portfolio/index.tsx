@@ -55,11 +55,19 @@ const Button = styled.button`
 const Back = styled(BackIcon)`
   fill: ${frontColor};
   height: 60px;
+
+  @media (hover: none) {
+    height: 36px;
+  }
 `;
 
 const Next = styled(ForwardIcon)`
   fill: ${frontColor};
   height: 60px;
+
+  @media (hover: none) {
+    height: 36px;
+  }
 `;
 
 const Portfolio = () => {

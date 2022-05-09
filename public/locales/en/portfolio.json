@@ -12,8 +12,8 @@
 	},
 	"bresenhamzip": {
 		"name": "Bresenham Zip",
-		"subtitle": "Library to use the Bresenham algorithm to rasterize triangles",
-		"description": "Tool to use Bresenham"
+		"subtitle": "Library to ease the use of the Bresenham algorithm with two lines",
+		"description": "The <strong>Bresenham algorithm</strong> is an algorithm to generate the points between two vectors, usually used in graphics to draw lines. Based on this it's also used to generate the points inside of a polygon (typically a triangle) performing the algorithm between two lines at the same time to generate the horizontal and vertical lines covering the area. BresenhamZip generates <strong>an iterator</strong> returning the vectors of those lines. It supports <strong>generic</strong> vectors, works in <strong>2D</strong> and <strong>3D</strong> and offers helpful macros."
 	},
 	"links": {
 		"api": "API",

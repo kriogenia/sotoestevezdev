@@ -62,17 +62,17 @@
 			{
 				"key": "repo",
 				"icon": "github",
-				"url": ""
+				"url": "https://github.com/kriogenia/bresenham_zip"
 			},
 			{
 				"key": "crate",
 				"icon": "rust",
-				"url": ""
+				"url": "https://crates.io/crates/bresenham_zip/0.1.0"
 			},
 			{
 				"key": "doc",
 				"icon": "rust",
-				"url": ""
+				"url": "https://docs.rs/bresenham_zip/latest/bresenham_zip/"
 			}
 		],
 		"tags": [

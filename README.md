@@ -6,9 +6,6 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
 
 ## TODOS
 * Portfolio
-  * AllForOne
-  * Oito
-  * BresenhamZip
   * Cows
   * HTTP-Server
   * Ferrux
@@ -18,11 +15,6 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
   * MatchAndRank
 * Portfolio cards
   * Image
-  * Title
-  * Description
-  * Tech tags
-  * Link to repo
-  * Link to web
 * DEPLOYMENT
 * TechStack
 * Blog

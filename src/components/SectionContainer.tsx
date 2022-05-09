@@ -5,7 +5,7 @@ import { primaryColor } from "../theme/colors";
 import { hideMobile, SVG, Title } from "../theme/styles";
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -22,6 +22,7 @@ const Column = styled.div`
 const Index = styled(Column)`
   margin: 10px;
   flex-direction: row;
+  width: 10vw;
 
   ${hideMobile}
 `;

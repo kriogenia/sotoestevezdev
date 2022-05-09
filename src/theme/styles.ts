@@ -5,7 +5,7 @@ export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-iterms: center;
+  align-items: center;
 `;
 
 export const Link = styled.a`
@@ -28,9 +28,12 @@ export const SVG = styled.svg.attrs({
   version: "1.1",
   xmlns: "http://www.w3.org/2000/svg",
   xmlnsXlink: "http://www.w3.org/1999/xlink",
+  role: "img"
 })``;
 
 export const hideMobile = `
   @media only screen and (max-width: 1000px) {
 	display:none;
   }`;
+
+export const topSize = "2rem";

@@ -1,0 +1,28 @@
+{
+	"title": "Port folio",
+	"allforone": {
+		"name": "AllForOne",
+		"subtitle": "Herramienta de asistencia a familias afectadas por el Alzheimer",
+		"description": "AllForOne es mi <strong>Trabajo de Fin de Grado</strong>. Es una aplicación Android de asistencia para familias con algún miembro afectado por la <strong>enfermedad de Alzheimer</strong> proporcionando herramientas como un gestor de tareas compartido, geolocalización o un chat en tiempo real, todo esto construido sobre un sistema de vinculación. Consiste en dos grandes módulos: el cliente, una <strong>aplicación Android</strong> hecha en Kotlin; y el servicio de back, una <strong>API en Node.js</strong> desplegada en Azure. La comunicación entre estos dos extremos se realiza tanto a través de HTTP con una API REST como por vía de WebSockets, según el caso de uso."
+	},
+	"oito": {
+		"name": "Oito",
+		"subtitle": "Emulador de Chip-8",
+		"description": "Oito es un emulador de la <strong>máquina virtual de Chip-8</strong> completamente escrito en Rust con un fuerte esfuerzo en el desarrollo del código más léxico y autoexplicativo posible. Este proyecto se compone de tres paquetes principales: el <strong>core</strong>, que implementa toda la lógica back; el <strong>front de escritorio</strong>, que emplea la librería SDL2; y la <strong>librería web</strong> para compilar el emulador a WebAssembly y ejecutar en una página web. La versión web del emulador se puede usar en el enlace dispuesto a continuación."
+	},
+	"bresenhamzip": {
+		"name": "Bresenham Zip",
+		"subtitle": "Librería para facilitar el uso del algoritmo de Bresenham con dos líneas",
+		"description": "El <strong>algoritmo de Bresenham</strong> es un algoritmo de generación de puntos entre dos vectores, es usado habitualmente para dibujar rectas. Es por esto que también se emplea para obtener los puntos dentro de un polígono (por lo general, un triángulo) ejecutando el algoritmo entre dos líneas para calcular las rectas horizontales y verticales cubriendo la susodicha área. BresenhamZip proporciona <strong>un iterador</strong> que retorna los vectores de esas líneas. Soporta vectores <strong>genéricos</strong>, funciona en <strong>2D</strong> y <strong>3D</strong> y ofrece macros de utilidad."
+	},
+	"links": {
+		"api": "API",
+		"app": "Application",
+		"article": "Article",
+		"crate": "Crate",
+		"doc": "Documentation",
+		"paper": "Paper",
+		"repo": "Repository",
+		"webemu": "Web emulator"
+	}
+}

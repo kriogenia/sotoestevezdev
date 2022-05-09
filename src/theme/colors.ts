@@ -34,3 +34,8 @@ export const hoverPrimaryColor = theme("theme", {
   light: "#c04a00",
   dark: "#f57e2f",
 });
+
+export const tagColor = theme("theme", {
+	light: primary,
+	dark: darkPrimary,
+});

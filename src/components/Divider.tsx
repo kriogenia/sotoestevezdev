@@ -9,7 +9,7 @@ interface Props {
   className?: string;
 }
 
-const Divider: FC<Props> = ({ className }) => {
+export const HorizontalDivider: FC<Props> = ({ className }) => {
   return (
     <DividerSVG viewBox="0 0 64 10" className={className}>
       <circle r="2.5" cx="25%" cy="50%" />
@@ -19,8 +19,14 @@ const Divider: FC<Props> = ({ className }) => {
   );
 };
 
-export const FrontDivider = styled(Divider)`
-	fill: ${frontColor};
-`;
+export const LinearDivider: FC<Props> = ({ className }) => {
+  return (
+    <DividerSVG viewBox="0 0 10 10" className={className}>
+      <circle r="5" cx="50%" cy="50%" />
+    </DividerSVG>
+  );
+};
 
-export default Divider;
+export const FrontHorizontalDivider = styled(HorizontalDivider)`
+  fill: ${frontColor};
+`;

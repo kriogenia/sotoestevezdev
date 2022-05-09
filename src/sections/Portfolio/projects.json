@@ -1,0 +1,82 @@
+{
+	"allforone": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "app",
+				"icon": "github",
+				"url": "https://github.com/kriogenia/AllForOne-App"
+			},
+			{
+				"key": "api",
+				"icon": "github",
+				"url": "https://github.com/kriogenia/AllForOne-Service"
+			},
+			{
+				"key": "paper",
+				"icon": "pdf",
+				"url": "https://github.com/kriogenia/AllForOne-Paper/releases/download/release/Aplicacion.asimetrica.movil.de.asistencia.para.familias.con.personas.afectadas.de.Alzheimer.-.Ricardo.Soto.Estevez.pdf",
+				"download": true
+			}
+		],
+		"tags": [
+			"android",
+			"nodejs",
+			"mongodb",
+			"azure",
+			"kotlin",
+			"typescript",
+			"express",
+			"socketio"
+		]
+	},
+	"oito": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "repo",
+				"icon": "github",
+				"url": "https://github.com/kriogenia/oito"
+			},
+			{
+				"key": "webemu",
+				"icon": "web",
+				"url": "https://oito.sotoestevez.dev/"
+			},
+			{
+				"key": "article",
+				"icon": "medium",
+				"url": "https://medium.com/@sotoestevez/the-first-step-into-emulation-ae00d632aecc"
+			}
+		],
+		"tags": [
+			"rust",
+			"wasm",
+			"ghpages",
+			"ghactions"
+		]
+	},
+	"bresenhamzip": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "repo",
+				"icon": "github",
+				"url": "https://github.com/kriogenia/bresenham_zip"
+			},
+			{
+				"key": "crate",
+				"icon": "rust",
+				"url": "https://crates.io/crates/bresenham_zip/0.1.0"
+			},
+			{
+				"key": "doc",
+				"icon": "rust",
+				"url": "https://docs.rs/bresenham_zip/latest/bresenham_zip/"
+			}
+		],
+		"tags": [
+			"rust"
+		]
+	}
+}

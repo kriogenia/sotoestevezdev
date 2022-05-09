@@ -5,20 +5,29 @@ This project holds the code of my portfolio web: [[https:://www.sotoestevez.dev]
 Right now, the deployed page is unrelated to this repository as this is a new version to be deployed with all my new data and improved visuals.
 
 ## TODOS
-* Topbar
-  * Style for language dropdown menu
-  * Links to sections
 * Portfolio
+  * Cows
+  * HTTP-Server
+  * Ferrux
+    * FerruxEngine
+    * FerruxCanvas
+    * FerruxViewport
+  * MatchAndRank
+* Portfolio cards
+  * Image
 * DEPLOYMENT
 * TechStack
 * Blog
   * My last medium posts
   * Twoots on Mastodon?
-* Left side titles
-* Arrow to the next section
-* Footer
+* User language
 * Loading spinner on scroll
-* Decorate the back
+* Footer
+* Add tooltips to images
 * Fix key issue
+* Arrow to the next section
+* Topbar
+  * Links to sections
+* Decorate the back
 * Address accesibility issues
 * Load system theme

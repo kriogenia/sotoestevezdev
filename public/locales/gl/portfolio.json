@@ -1,0 +1,28 @@
+{
+	"title": "Port folio",
+	"allforone": {
+		"name": "AllForOne",
+		"subtitle": "Ferramenta de asistencia a familias afectadas polo Alzheimer",
+		"description": "AllForOne é o meu <strong>Traballo de Fin de Grao</strong>. É unha aplicación Android de axuda para familias con algún membro afectado pola <strong>enfermidade de Alzheimer</strong> proporcionando ferramentas como un xestor de tarefas compartido, xeolocalización ou un chat en tempo real, todo isto construido enriba dun sistema de vinculación. Consiste en dous grandes módulos: o cliente, unha <strong>aplicación Android</strong> feita en Kotlin; e o servizo do back, unha <strong>API en Node.js</strong> desplegada en Azure. A comunicación entre estos dous extremos realízase tanto a través de HTTP cunha API REST como por vía de WebSockets segundo o caso."
+	},
+	"oito": {
+		"name": "Oito",
+		"subtitle": "Emulador de Chip-8",
+		"description": "Oito é un emulador da <strong>máquina virtual de Chip-8</strong> completamente escrito en Rust con forte esforzo no desarrollo do código más léxico e autoexplicativo posíble. O proxecto está composto de tres paquetes principais: o <strong>core</strong>, que implementa toda a lóxica do back; o <strong>front de escritorio</strong>, que emplea a librería SDL2; e a <strong>librería web</strong> para compilar o emulador a WebAssembly e executalo nunha páxina web. A versión web do emulador pódese usar no enlace disposto a continuación."
+	},
+	"bresenhamzip": {
+		"name": "Bresenham Zip",
+		"subtitle": "Libraría para facilitar o uso do algoritmo de Bresenham con dúas liñas",
+		"description": "O <strong>algoritmo de Bresenham</strong> é un algoritmo de xeración de puntos entre dous vectores, é usado habitualmente para debuxar liñas. É por isto que tamén se emprega para obter os puntos dentro dun polígono (xeralmente, un triángulo) executando o algoritmo entre dúas liñas para calcular as rectas horizontais e verticais cubriendo a devandita área. BresenhamZip proporciona <strong>un iterador</strong> que retorna os vectores desas liñas. Soporta vectores <strong>xenéricos</strong>, funciona en <strong>2D</strong> e <strong>3D</strong> e ofrece macros de utilidade."
+	},
+	"links": {
+		"api": "API",
+		"app": "Application",
+		"article": "Article",
+		"crate": "Crate",
+		"doc": "Documentation",
+		"paper": "Paper",
+		"repo": "Repository",
+		"webemu": "Web emulator"
+	}
+}

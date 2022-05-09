@@ -5,12 +5,12 @@
 			{
 				"key": "app",
 				"icon": "github",
-				"url": ""
+				"url": "https://github.com/kriogenia/AllForOne-App"
 			},
 			{
 				"key": "api",
 				"icon": "github",
-				"url": ""
+				"url": "https://github.com/kriogenia/AllForOne-Service"
 			},
 			{
 				"key": "paper",
@@ -36,22 +36,24 @@
 			{
 				"key": "repo",
 				"icon": "github",
-				"url": ""
+				"url": "https://github.com/kriogenia/oito"
 			},
 			{
 				"key": "webemu",
 				"icon": "web",
-				"url": ""
+				"url": "https://oito.sotoestevez.dev/"
 			},
 			{
 				"key": "article",
 				"icon": "medium",
-				"url": ""
+				"url": "https://medium.com/@sotoestevez/the-first-step-into-emulation-ae00d632aecc"
 			}
 		],
 		"tags": [
 			"rust",
-			"wasm"
+			"wasm",
+			"ghpages",
+			"ghactions"
 		]
 	},
 	"bresenhamzip": {

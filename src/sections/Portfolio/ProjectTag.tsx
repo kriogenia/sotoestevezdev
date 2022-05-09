@@ -17,6 +17,10 @@ const Tag = styled.span`
 
   color: ${backgroundColor};
   font-weight: bold;
+
+  @media (hover: none) {
+    font-size: 0;
+  }
 `;
 
 const Icon = styled.img`

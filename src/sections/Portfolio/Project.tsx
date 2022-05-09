@@ -50,7 +50,10 @@ const Project: FC<Props> = ({ project, t }) => {
       {project.tags.map((tag) => (
         <Tag key={tag} tag={tag} />
       ))}
-      <Description>{t(`${key}.description`)}</Description>
+      <Description>
+		  {/*<Trans key={`${key}.description`} ns=""></Trans>*/}
+		  {t(`${key}.description`)}
+	  </Description>
       <Links>
         {project.links.map((link) => (
           <Link key={link.key} link={link} t={t} />

@@ -1,0 +1,124 @@
+{
+	"back": [
+		{
+			"key": "rust",
+			"name": "Rust",
+			"level": 3,
+			"badge": "smile"
+		},
+		{
+			"key": "kotlin",
+			"name": "Kotlin",
+			"level": 3
+		},
+		{
+			"key": "java",
+			"name": "Java",
+			"level": 3,
+			"badge": "star"
+		},
+		{
+			"key": "typescript",
+			"name": "Typescript",
+			"level": 2
+		},
+		{
+			"key": "javascript",
+			"name": "Javascript",
+			"level": 2
+		},
+		{
+			"key": "spring",
+			"name": "Spring",
+			"level": 2
+		},
+		{
+			"key": "node",
+			"name": "NodeJS",
+			"level": 2
+		},
+		{
+			"key": "csharp",
+			"name": "C#",
+			"level": 2
+		},
+		{
+			"key": "python",
+			"name": "Python",
+			"level": 1
+		},
+		{
+			"key": "cpp",
+			"name": "C++",
+			"level": 1
+		},
+		{
+			"key": "scala",
+			"name": "Scala",
+			"level": 0
+		}
+	],
+	"data": [
+		{
+			"key": "elastic",
+			"name": "Elasticsearch",
+			"level": 3,
+			"badge": "learning"
+		},
+		{
+			"key": "mongo",
+			"name": "MongoDB",
+			"level": 2
+		},
+		{
+			"key": "solr",
+			"name": "Apache Solr",
+			"level": 2
+		},
+		{
+			"key": "firebase",
+			"name": "Firebase",
+			"level": 1
+		}
+	],
+	"front": [
+		{
+			"key": "html",
+			"name": "HTML5",
+			"level": 3
+		},
+		{
+			"key": "css",
+			"name": "CSS3",
+			"level": 2
+		},
+		{
+			"key": "react",
+			"name": "React",
+			"level": 2
+		}
+	],
+	"other": [
+		{
+			"key": "socketio",
+			"name": "Socket.io",
+			"level": 2
+		},
+		{
+			"key": "docker",
+			"name": "Docker",
+			"level": 1,
+			"badge": "learning"
+		},
+		{
+			"key": "unreal",
+			"name": "Unreal Engine 4",
+			"level": 1
+		},
+		{
+			"key": "phaser",
+			"name": "Phaser",
+			"level": 1
+		}
+	]
+}

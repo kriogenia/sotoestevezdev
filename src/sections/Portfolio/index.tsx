@@ -14,7 +14,7 @@ const projects = Object.entries(data).map(([key, project]) => {
 const Portfolio = () => {
 	const [current, setCurrent] = useState(0);
 
-	const { t } = useTranslation();
+	const { t } = useTranslation(ns);
 
   return (
     <SectionContainer title={t("title")} ns={ns}>

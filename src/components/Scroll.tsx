@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Introduction, Me, Portfolio, TechStack } from "../sections";
+import Bottom from "../sections/Bottom";
+
+const LOAD_TIME = 500;
 
 const Scroll = () => {
   const [state, setState] = useState({ items: [<Me />] });
@@ -19,11 +22,12 @@ const Scroll = () => {
 
     setTimeout(() => {
       const [next, ...remaining] = extraComponents;
+	  console.log(`Adding next component: ${state.items.length}`);
       setState({
         items: state.items.concat(next),
       });
       setRemaining(remaining);
-    }, 500);
+    }, LOAD_TIME);
   };
 
   return (
@@ -32,12 +36,7 @@ const Scroll = () => {
       next={fetchMoreData}
       hasMore={hasMore}
       loader={<h4>Loading...</h4>} /// TODO replace with spinner
-      endMessage={
-        /// TODO replace end
-        <p style={{ textAlign: "center" }}>
-          <b>This is the end</b>
-        </p>
-      }
+      endMessage={<Bottom />}
     >
       {state.items.map((i) => i)}
     </InfiniteScroll>

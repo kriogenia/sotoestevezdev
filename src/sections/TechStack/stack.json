@@ -1,0 +1,164 @@
+{
+	"back": [
+		{
+			"key": "rust",
+			"name": "Rust",
+			"level": 3,
+			"badge": "smile"
+		},
+		{
+			"key": "kotlin",
+			"name": "Kotlin",
+			"level": 3
+		},
+		{
+			"key": "java",
+			"name": "Java",
+			"level": 3,
+			"badge": "star"
+		},
+		{
+			"key": "typescript",
+			"name": "Typescript",
+			"level": 2
+		},
+		{
+			"key": "javascript",
+			"name": "Javascript",
+			"level": 2
+		},
+		{
+			"key": "spring",
+			"name": "Spring",
+			"level": 2
+		},
+		{
+			"key": "nodejs",
+			"name": "Node.JS",
+			"level": 2
+		},
+		{
+			"key": "express",
+			"name": "Express",
+			"level": 2
+		},
+		{
+			"key": "android",
+			"name": "Android",
+			"level": 2
+		},
+		{
+			"key": "csharp",
+			"name": "C#",
+			"level": 2
+		},
+		{
+			"key": "python",
+			"name": "Python3",
+			"level": 1
+		},
+		{
+			"key": "cpp",
+			"name": "C++",
+			"level": 1
+		},
+		{
+			"key": "scala",
+			"name": "Scala",
+			"level": 0
+		}
+	],
+	"data": [
+		{
+			"key": "elasticsearch",
+			"name": "Elasticsearch",
+			"level": 3,
+			"badge": "learning"
+		},
+		{
+			"key": "mongodb",
+			"name": "MongoDB",
+			"level": 2
+		},
+		{
+			"key": "solr",
+			"name": "Apache Solr",
+			"level": 2
+		},
+		{
+			"key": "firebase",
+			"name": "Firebase",
+			"level": 1
+		}
+	],
+	"front": [
+		{
+			"key": "html5",
+			"name": "HTML5",
+			"level": 3
+		},
+		{
+			"key": "css3",
+			"name": "CSS3",
+			"level": 2
+		},
+		{
+			"key": "react",
+			"name": "React",
+			"level": 2
+		},
+		{
+			"key": "styledcomponents",
+			"name": "styled-components",
+			"level": 2
+		},
+		{
+			"key": "redux",
+			"name": "Redux",
+			"level": 1
+		}
+	],
+	"other": [
+		{
+			"key": "git",
+			"name": "Git",
+			"level": 2
+		},
+		{
+			"key": "socketio",
+			"name": "Socket.io",
+			"level": 2
+		},
+		{
+			"key": "photoshop",
+			"name": "Adobe Photoshop",
+			"level": 2
+		},
+		{
+			"key": "postgresql",
+			"name": "PostgreSQL",
+			"level": 2
+		},
+		{
+			"key": "docker",
+			"name": "Docker",
+			"level": 1,
+			"badge": "learning"
+		},
+		{
+			"key": "unrealengine",
+			"name": "Unreal Engine",
+			"level": 1
+		},
+		{
+			"key": "azure",
+			"name": "Microsoft Azure",
+			"level": 1
+		},
+		{
+			"key": "githubactions",
+			"name": "GitHub Actions",
+			"level": 1
+		}
+	]
+}

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Link from "./ProjectLink";
 import Tag from "./ProjectTag";
 import { frontColor, primaryColor } from "../../theme/colors";
+import { Title2 } from "../../theme/styles";
 
 const Container = styled.div`
   width: 60%;
@@ -13,10 +14,6 @@ const Container = styled.div`
   @media (hover: none) {
     width: 100%;
   }
-`;
-
-const Title = styled.h2`
-  font-size: xxx-large;
 `;
 
 const Subtitle = styled.h3`
@@ -51,7 +48,7 @@ const Project: FC<Props> = ({ project, ns }) => {
   const key = project.key;
   return (
     <Container>
-      <Title>{t(`${key}.name`)}</Title>
+      <Title2>{t(`${key}.name`)}</Title2>
       <Subtitle>{t(`${key}.subtitle`)}</Subtitle>
       {project.tags.map((tag) => (
         <Tag key={tag} tag={tag} />

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React/*, { Suspense }*/ from "react";
 import styled from "styled-components";
 import Scroll from "./components/Scroll";
 import ContextProvider from "./ContextProvider";
@@ -18,14 +18,14 @@ const Container = styled.div`
 
 const App = () => {
   return (
-    <Suspense fallback="loading">
+    //<Suspense fallback="loading">
       <ContextProvider>
         <Container>
           <Top />
           <Scroll />
         </Container>
       </ContextProvider>
-    </Suspense>
+    //</Suspense>
   );
 };
 

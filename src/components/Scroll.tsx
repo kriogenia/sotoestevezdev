@@ -3,42 +3,50 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Introduction, Me, Portfolio, TechStack } from "../sections";
 import Bottom from "../sections/Bottom";
 
-const LOAD_TIME = 500;
+const LOAD_TIME = 750;
 
 const Scroll = () => {
-  const [state, setState] = useState({ items: [<Me />] });
-  const [extraComponents, setRemaining] = useState([
+  const [items, setItems] = useState([<Me />]);
+  const [remaining, setRemaining] = useState([
     <Introduction />,
     <Portfolio />,
     <TechStack />,
   ]);
   const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const fetchMoreData = () => {
-    if (extraComponents.length === 0) {
+    console.log("fetch");
+    if (remaining.length === 0) {
       setHasMore(false);
       return;
     }
 
+	if (loading) {
+		return;
+	}
+
+	setLoading(true);
     setTimeout(() => {
-      const [next, ...remaining] = extraComponents;
-	  console.log(`Adding next component: ${state.items.length}`);
-      setState({
-        items: state.items.concat(next),
-      });
-      setRemaining(remaining);
+      const [next, ...rest] = remaining;
+      console.log(`Adding next component: ${items.length}`);
+      setItems((state) => state.concat(next));
+      setRemaining(rest);
+	  setLoading(false);
     }, LOAD_TIME);
   };
 
   return (
     <InfiniteScroll
-      dataLength={state.items.length}
+      dataLength={items.length}
       next={fetchMoreData}
       hasMore={hasMore}
       loader={<h4>Loading...</h4>} /// TODO replace with spinner
       endMessage={<Bottom />}
     >
-      {state.items.map((i) => i)}
+      {items.map((i, index) => (
+        <div key={index}>{i}</div>
+      ))}
     </InfiniteScroll>
   );
 };

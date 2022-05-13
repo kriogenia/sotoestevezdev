@@ -120,8 +120,23 @@
 	],
 	"other": [
 		{
+			"key": "git",
+			"name": "Git",
+			"level": 2
+		},
+		{
 			"key": "socketio",
 			"name": "Socket.io",
+			"level": 2
+		},
+		{
+			"key": "photoshop",
+			"name": "Adobe Photoshop",
+			"level": 2
+		},
+		{
+			"key": "postgresql",
+			"name": "PostgreSQL",
 			"level": 2
 		},
 		{

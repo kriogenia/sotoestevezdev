@@ -1,8 +1,8 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { primaryFilter } from "../../theme/filters";
 import { Title2 } from "../../theme/styles";
 import { IStack } from "./IStack";
+import Tech from "./TechLogo";
 
 const Container = styled.div`
   width: 60%;
@@ -32,26 +32,6 @@ const TechsContainer = styled.div`
   justify-content: center;
 `;
 
-const Icon = styled.img`
-  height: 75px;
-  width: 75px;
-  margin: 10px 0px;
-
-  filter: ${primaryFilter};
-`;
-
-const Tech = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  margin: 25px;
-
-  font-weight: bold;
-`;
-
 interface Props {
   stack: IStack;
 }
@@ -61,14 +41,8 @@ const Stack: FC<Props> = ({ stack }) => {
     <Container>
       <Title>{stack.key}</Title>
       <TechsContainer>
-        {stack.techs.map(({ key, name }) => (
-          <Tech key={key}>
-            <Icon
-              src={`${process.env.PUBLIC_URL}/img/logos/${key}.svg`}
-              alt={name}
-            />
-            <span>{name}</span>
-          </Tech>
+        {stack.techs.map((tech) => (
+          <Tech key={tech.key} tech={tech}/>
         ))}
       </TechsContainer>
     </Container>

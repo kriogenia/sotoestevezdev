@@ -17,6 +17,7 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
 * Portfolio cards
   * Image
 * TechStack
+  * Legend of badges and experience
 * Blog
   * My last medium posts
   * Twoots on Mastodon?

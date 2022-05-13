@@ -33,8 +33,18 @@
 			"level": 2
 		},
 		{
-			"key": "node",
-			"name": "NodeJS",
+			"key": "nodejs",
+			"name": "Node.JS",
+			"level": 2
+		},
+		{
+			"key": "express",
+			"name": "Express",
+			"level": 2
+		},
+		{
+			"key": "android",
+			"name": "Android",
 			"level": 2
 		},
 		{
@@ -44,7 +54,7 @@
 		},
 		{
 			"key": "python",
-			"name": "Python",
+			"name": "Python3",
 			"level": 1
 		},
 		{
@@ -60,13 +70,13 @@
 	],
 	"data": [
 		{
-			"key": "elastic",
+			"key": "elasticsearch",
 			"name": "Elasticsearch",
 			"level": 3,
 			"badge": "learning"
 		},
 		{
-			"key": "mongo",
+			"key": "mongodb",
 			"name": "MongoDB",
 			"level": 2
 		},
@@ -83,12 +93,12 @@
 	],
 	"front": [
 		{
-			"key": "html",
+			"key": "html5",
 			"name": "HTML5",
 			"level": 3
 		},
 		{
-			"key": "css",
+			"key": "css3",
 			"name": "CSS3",
 			"level": 2
 		},
@@ -96,6 +106,16 @@
 			"key": "react",
 			"name": "React",
 			"level": 2
+		},
+		{
+			"key": "styledcomponents",
+			"name": "styled-components",
+			"level": 2
+		},
+		{
+			"key": "redux",
+			"name": "Redux",
+			"level": 1
 		}
 	],
 	"other": [
@@ -111,13 +131,18 @@
 			"badge": "learning"
 		},
 		{
-			"key": "unreal",
-			"name": "Unreal Engine 4",
+			"key": "unrealengine",
+			"name": "Unreal Engine",
 			"level": 1
 		},
 		{
-			"key": "phaser",
-			"name": "Phaser",
+			"key": "azure",
+			"name": "Microsoft Azure",
+			"level": 1
+		},
+		{
+			"key": "githubactions",
+			"name": "GitHub Actions",
 			"level": 1
 		}
 	]

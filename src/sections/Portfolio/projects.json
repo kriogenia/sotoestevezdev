@@ -27,7 +27,8 @@
 			"kotlin",
 			"typescript",
 			"express",
-			"socketio"
+			"socketio",
+			"ghactions"
 		]
 	},
 	"oito": {

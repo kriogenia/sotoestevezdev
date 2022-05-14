@@ -113,12 +113,30 @@
 			{
 				"key": "repo",
 				"icon": "github",
-				"url": "https://github.com/kriogenia/sdm_cows"
+				"url": "https://github.com/kriogenia/shotdown"
 			},
 			{
 				"key": "itchio",
 				"icon": "itchio",
 				"url": "https://kriogenia.itch.io/shotdown"
+			}
+		],
+		"tags": [
+			"cpp"
+		]
+	},
+	"thepartingofsarah": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "repo",
+				"icon": "github",
+				"url": "https://github.com/kriogenia/the-parting-of-sarah"
+			},
+			{
+				"key": "itchio",
+				"icon": "itchio",
+				"url": "https://kriogenia.itch.io/the-parting-of-sarah"
 			}
 		],
 		"tags": [

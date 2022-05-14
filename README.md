@@ -6,15 +6,14 @@ The content displayed in the web comes from different JSON files to allow an eas
 ## TODOS
 The web is in a state I like enough but it will be improved in the future:
 * Add projects to the portfolio
-  * The Parting of Sarah
-  * HTTP-Server
   * Ferrux
     * FerruxEngine
     * FerruxCanvas
     * FerruxViewport
   * MatchAndRank
+  * HTTP-Server ?
 * Add thumbnails to the projects
-* Add badgest to the TechStack
+* Add badges to the TechStack
 * Add blog section containing:
   * My last medium posts
   * My last Mastodon twoots

@@ -25,6 +25,11 @@
 		"subtitle": "Xogo deathmatch 1v1 con gran mobilidade e variedade de armas",
 		"description": "Shotdown é un xogo construido dende cero con C++ usando <strong>Chipmunk2D</strong> coma motor de físicas e <strong>SDL2</strong> para o manello dos gráficos e o audio. O xogo é unha loita a morte multixogador entre dous personaxes con gran mobilidade grazas a habilidades coma <strong>dashes ou saltos de parede</strong>. En diferentes puntos do mapa aparecerán diversas armas que poden ser collidas polos xogadores para poder matar ao seu rival, hai un total de <strong>dez armas</strong>. A loitas tamén se poden personalizar con opcións coma: morte a un golpe, todo aleatorio ou selecionando o número de enfrentamentos a executar."
 	},
+	"thepartingofsarah": {
+		"name": "The Parting of Sarah",
+		"subtitle": "Xogo rogue-like proceduralmente xerado en vista top-down",
+		"description": "The Parting of Sarah é o <strong>meu primeiro videoxogo</strong>. Agás o audio e o renderizado, implementados con SDL2, toda a lóxico do xogo foi <strong>feita dende cero</strong> usando C++. O xogo trata dunha personaxe chamada Sara e do seu ascenso a través dunha serie de andares cheos de inimigos ata que se morra e se teña que empezar de cero outra vez. Cada andar e inimigo está <strong>xerado proceduralmente</strong>. O persoaxe pode progresar subindo de nivel e adquirindo items que otorgan novas habilidades e melloras. O xogo ofrece sete inimigos distintos, sete melloras e catro xefes."
+	},
 	"links": {
 		"api": "API",
 		"app": "Aplicación",

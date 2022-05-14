@@ -1,12 +1,11 @@
 # SotoEstevez.dev
 
-This project holds the code of my portfolio web: [[https:://www.sotoestevez.dev](https://www.sotoestevez.dev)]([https:://www.sotoestevez.dev](https://www.sotoestevez.dev)).
-
-Right now, the deployed page is unrelated to this repository as this is a new version to be deployed with all my new data and improved visuals.
+This project holds the code of my portfolio web: [https:://www.sotoestevez.dev](https://www.sotoestevez.dev). 
+The content displayed in the web comes from different JSON files to allow an easy update without changes to the source code.
 
 ## TODOS
-* Portfolio
-  * Shotdown
+The web is in a state I like enough but it will be improved in the future:
+* Add projects to the portfolio
   * The Parting of Sarah
   * HTTP-Server
   * Ferrux
@@ -14,13 +13,9 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
     * FerruxCanvas
     * FerruxViewport
   * MatchAndRank
-  * AllForOne -> UniOvi repo link
-* Portfolio cards
-  * Image
-* TechStack
-  * Badges
-* Blog
+* Add thumbnails to the projects
+* Add badgest to the TechStack
+* Add blog section containing:
   * My last medium posts
-  * Twoots on Mastodon?
-* Intermediate animation
-* Address accesibility issues
+  * My last Mastodon twoots
+* Add some complex animation to give some extra life

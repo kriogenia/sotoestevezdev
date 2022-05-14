@@ -20,6 +20,11 @@
 		"subtitle": "Sinxela aplicación de agregración de noticias da Covid-19",
 		"description": "Dous compañeiros e eu desarrollamos esta aplicación durante a corentena para asistir coa <strong>Covid-19</strong>. Foi a nosa primeira aplicación para Android e o seu propósito é o de ofrecer unha ferramenta sinxela de usar que puidese axudar a todo o mundo a dar o primeiro vistazo do día ás <strong>noticias da pandemia</strong>. A lista de noticias obtense dos <strong>RSS</strong> de catro diarios distintos a as noticias poden ser gardadas ou compartidas. A aplicación está dispoñible na tenda de Google Play e conta cunha certa base de usuarios."
 	},
+	"shotdown": {
+		"name": "Shotdown",
+		"subtitle": "Xogo deathmatch 1v1 con gran mobilidade e variedade de armas",
+		"description": "Shotdown é un xogo construido dende cero con C++ usando <strong>Chipmunk2D</strong> coma motor de físicas e <strong>SDL2</strong> para o manello dos gráficos e o audio. O xogo é unha loita a morte multixogador entre dous personaxes con gran mobilidade grazas a habilidades coma <strong>dashes ou saltos de parede</strong>. En diferentes puntos do mapa aparecerán diversas armas que poden ser collidas polos xogadores para poder matar ao seu rival, hai un total de <strong>dez armas</strong>. A loitas tamén se poden personalizar con opcións coma: morte a un golpe, todo aleatorio ou selecionando o número de enfrentamentos a executar."
+	},
 	"links": {
 		"api": "API",
 		"app": "Aplicación",
@@ -27,6 +32,7 @@
 		"crate": "Crate",
 		"doc": "Documentación",
 		"institution": "Repositorio institucional",
+		"itchio": "Itch.io",
 		"paper": "Documento",
 		"googleplay": "Google Play",
 		"repo": "Repositorio",

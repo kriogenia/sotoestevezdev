@@ -1,5 +1,6 @@
-import React /*, { Suspense }*/ from "react";
+import React, { Suspense } from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import Fallback from "./components/Fallback";
 import Scroll from "./components/Scroll";
 import ContextProvider from "./ContextProvider";
 import { Top } from "./sections";
@@ -18,21 +19,20 @@ const Container = styled.div`
   font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  background-color: ${backgroundColor};
   color: ${textColor};
 `;
 
 const App = () => {
   return (
-    //<Suspense fallback="loading">
     <ContextProvider>
       <GlobalStyle />
-      <Container>
-        <Top />
-        <Scroll />
-      </Container>
+      <Suspense fallback={<Fallback />}>
+        <Container>
+          <Top />
+          <Scroll />
+        </Container>
+      </Suspense>
     </ContextProvider>
-    //</Suspense>
   );
 };
 

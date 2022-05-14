@@ -22,14 +22,14 @@
 	},
 	"links": {
 		"api": "API",
-		"app": "Application",
-		"article": "Article",
+		"app": "Aplicación",
+		"article": "Artigo",
 		"crate": "Crate",
-		"doc": "Documentation",
+		"doc": "Documentación",
 		"institution": "Repositorio institucional",
-		"paper": "Paper",
+		"paper": "Documento",
 		"googleplay": "Google Play",
-		"repo": "Repository",
-		"webemu": "Web emulator"
+		"repo": "Repositorio",
+		"webemu": "Emulador web"
 	}
 }

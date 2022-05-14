@@ -24,7 +24,7 @@
 				"download": true
 			}
 		],
-		
+
 		"tags": [
 			"android",
 			"nodejs",
@@ -105,6 +105,42 @@
 			"java",
 			"firebase",
 			"rss"
+		]
+	},
+	"shotdown": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "repo",
+				"icon": "github",
+				"url": "https://github.com/kriogenia/shotdown"
+			},
+			{
+				"key": "itchio",
+				"icon": "itchio",
+				"url": "https://kriogenia.itch.io/shotdown"
+			}
+		],
+		"tags": [
+			"cpp"
+		]
+	},
+	"thepartingofsarah": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "repo",
+				"icon": "github",
+				"url": "https://github.com/kriogenia/the-parting-of-sarah"
+			},
+			{
+				"key": "itchio",
+				"icon": "itchio",
+				"url": "https://kriogenia.itch.io/the-parting-of-sarah"
+			}
+		],
+		"tags": [
+			"cpp"
 		]
 	}
 }

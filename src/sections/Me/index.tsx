@@ -5,6 +5,7 @@ import SectionContainer from "../../components/SectionContainer";
 import { primaryColor } from "../../theme/colors";
 import { Title } from "../../theme/styles";
 import SigningSVG from "./SigningSVG";
+import Portrait from "./me.png";
 
 const ns = "intro";
 
@@ -32,7 +33,7 @@ const Me = () => {
   const { t } = useTranslation(ns);
   return (
     <SectionContainer title="" ns="intro">
-      <Photo src={process.env.PUBLIC_URL + "/img/me.png"} alt={t("alt.me")} />
+      <Photo src={Portrait} alt={t("alt.me")} />
       <Name>
         Ricardo <Surname>Soto Estévez</Surname>
       </Name>

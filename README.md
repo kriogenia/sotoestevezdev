@@ -21,9 +21,7 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
 * Blog
   * My last medium posts
   * Twoots on Mastodon?
-* Loading spinner on scroll
 * Intermediate animation
-* Add tooltips to images
 * Arrow to the next section
 * Topbar
   * Links to sections

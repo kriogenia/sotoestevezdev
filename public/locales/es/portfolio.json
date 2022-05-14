@@ -15,21 +15,14 @@
 		"subtitle": "Librería para facilitar el uso del algoritmo de Bresenham con dos líneas",
 		"description": "El <strong>algoritmo de Bresenham</strong> es un algoritmo de generación de puntos entre dos vectores, es usado habitualmente para dibujar rectas. Es por esto que también se emplea para obtener los puntos dentro de un polígono (por lo general, un triángulo) ejecutando el algoritmo entre dos líneas para calcular las rectas horizontales y verticales cubriendo la susodicha área. BresenhamZip proporciona <strong>un iterador</strong> que retorna los vectores de esas líneas. Soporta vectores <strong>genéricos</strong>, funciona en <strong>2D</strong> y <strong>3D</strong> y ofrece macros de utilidad."
 	},
-	"cows": {
-		"name": "COWS",
-		"subtitle": "Sencilla aplicación de agregración de noticias del Covid-19",
-		"description": "Dos compañeros y yo desarrollamos esta aplicación durante la cuarentena para asistir con el <strong>Covid-19</strong>. Fue nuestra primera aplicación para Android y su propósito es el de ofrecer una herramienta sencilla de utilizar que pudiese ayudar a todo el mundo a dar el primer vistazo del día a las <strong>noticias de la pandemia</strong>. La lista de noticias se obtiene del <strong>RSS</strong> de cuatro periódicos distintos y las noticias pueden ser guardadas o compartidas. La aplicación se encuentra disponible en Google Play y cuenta con una cierta base de usuarios."
-	},
 	"links": {
 		"api": "API",
-		"app": "Aplicación",
-		"article": "Artículo",
+		"app": "Application",
+		"article": "Article",
 		"crate": "Crate",
-		"doc": "Documentación",
-		"institution": "Repositorio institucional",
-		"paper": "Documento",
-		"googleplay": "Google Play",
-		"repo": "Repositorio",
-		"webemu": "Emulador web"
+		"doc": "Documentation",
+		"paper": "Paper",
+		"repo": "Repository",
+		"webemu": "Web emulator"
 	}
 }

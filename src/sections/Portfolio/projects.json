@@ -13,18 +13,12 @@
 				"url": "https://github.com/kriogenia/AllForOne-Service"
 			},
 			{
-				"key": "institution",
-				"icon": "pdf",
-				"url": "https://digibuo.uniovi.es/dspace/handle/10651/62012"
-			},
-			{
 				"key": "paper",
 				"icon": "pdf",
 				"url": "https://github.com/kriogenia/AllForOne-Paper/releases/download/release/Aplicacion.asimetrica.movil.de.asistencia.para.familias.con.personas.afectadas.de.Alzheimer.-.Ricardo.Soto.Estevez.pdf",
 				"download": true
 			}
 		],
-		
 		"tags": [
 			"android",
 			"nodejs",
@@ -84,27 +78,6 @@
 		],
 		"tags": [
 			"rust"
-		]
-	},
-	"cows": {
-		"thumbnail": "",
-		"links": [
-			{
-				"key": "repo",
-				"icon": "github",
-				"url": "https://github.com/kriogenia/sdm_cows"
-			},
-			{
-				"key": "googleplay",
-				"icon": "googleplay",
-				"url": "https://play.google.com/store/apps/details?id=es.uniovi.eii.cows"
-			}
-		],
-		"tags": [
-			"android",
-			"java",
-			"firebase",
-			"rss"
 		]
 	}
 }

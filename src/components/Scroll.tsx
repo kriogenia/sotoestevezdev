@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Introduction, Me, Portfolio, TechStack } from "../sections";
 import Bottom from "../sections/Bottom";
-import PropagateLoader from "react-spinners/PropagateLoader";
 
 const LOAD_TIME = 750;
 
@@ -23,17 +22,17 @@ const Scroll = () => {
       return;
     }
 
-    if (loading) {
-      return;
-    }
+	if (loading) {
+		return;
+	}
 
-    setLoading(true);
+	setLoading(true);
     setTimeout(() => {
       const [next, ...rest] = remaining;
       console.log(`Adding next component: ${items.length}`);
       setItems((state) => state.concat(next));
       setRemaining(rest);
-      setLoading(false);
+	  setLoading(false);
     }, LOAD_TIME);
   };
 
@@ -42,7 +41,7 @@ const Scroll = () => {
       dataLength={items.length}
       next={fetchMoreData}
       hasMore={hasMore}
-      loader={<PropagateLoader color="#df691a"/>}
+      loader={<h4>Loading...</h4>} /// TODO replace with spinner
       endMessage={<Bottom />}
     >
       {items.map((i, index) => (

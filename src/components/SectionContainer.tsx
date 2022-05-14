@@ -19,7 +19,7 @@ const Column = styled.div`
   align-items: center;
 `;
 
-const Side = styled(Column)`
+const Index = styled(Column)`
   margin: 10px;
   flex-direction: row;
   width: 10vw;
@@ -69,17 +69,14 @@ const SectionContainer: FC<Props> = ({ title, ns, children }) => {
       {tLoaded && (
         <>
           {title && (
-            <Side>
+            <Index>
               <CircleSVG viewBox="0 0 10 10">
                 <circle cx="5" cy="5" r="5" />
               </CircleSVG>
               <SectionTitle>{title}</SectionTitle>
-            </Side>
+            </Index>
           )}
           <Content>{children}</Content>
-		  { title && (
-			  <Side/>
-		  )}
         </>
       )}
     </Container>

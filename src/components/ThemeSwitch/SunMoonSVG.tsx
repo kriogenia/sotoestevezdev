@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import theme from "styled-theming";
 import { hoverPrimaryColor, primaryColor } from "../../theme/colors";
@@ -75,7 +74,6 @@ const Moon = styled.mask`
 
 const SunMoonSVG = () => (
   <SunMoon viewBox="0 0 24 24">
-    <title>Switch</title>
     <Sun cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
     <Beams stroke="currentColor">
       <line x1="12" y1="1" x2="12" y2="3" />

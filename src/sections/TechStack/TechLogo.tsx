@@ -32,7 +32,6 @@ const TechLogo: FC<Props> = ({ tech: { key, name, level } }) => {
     <Tech key={key}>
       <Icon
         src={`${process.env.PUBLIC_URL}/img/logos/${key}.svg`}
-		title={`${name} - Exp ${level}/3`}
         alt={name}
         level={level}
       />

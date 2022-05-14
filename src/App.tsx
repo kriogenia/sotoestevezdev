@@ -1,9 +1,15 @@
-import React/*, { Suspense }*/ from "react";
-import styled from "styled-components";
+import React /*, { Suspense }*/ from "react";
+import styled, { createGlobalStyle } from "styled-components";
 import Scroll from "./components/Scroll";
 import ContextProvider from "./ContextProvider";
 import { Top } from "./sections";
 import { backgroundColor, textColor } from "./theme/colors";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+	background-color: ${backgroundColor};
+  }
+`;
 
 const Container = styled.div`
   height: 100%;
@@ -19,12 +25,13 @@ const Container = styled.div`
 const App = () => {
   return (
     //<Suspense fallback="loading">
-      <ContextProvider>
-        <Container>
-          <Top />
-          <Scroll />
-        </Container>
-      </ContextProvider>
+    <ContextProvider>
+      <GlobalStyle />
+      <Container>
+        <Top />
+        <Scroll />
+      </Container>
+    </ContextProvider>
     //</Suspense>
   );
 };

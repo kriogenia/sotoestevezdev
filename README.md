@@ -5,7 +5,6 @@ This project holds the code of my portfolio web: [[https:://www.sotoestevez.dev]
 Right now, the deployed page is unrelated to this repository as this is a new version to be deployed with all my new data and improved visuals.
 
 ## TODOS
-* Check flashing and reload, ¿images? Change from public to internal
 * Portfolio
   * Cows
   * HTTP-Server
@@ -25,7 +24,6 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
 * User language
 * Loading spinner on scroll
 * Add tooltips to images
-* Fix key issue
 * Arrow to the next section
 * Topbar
   * Links to sections

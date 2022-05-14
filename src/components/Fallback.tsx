@@ -1,6 +1,5 @@
 import RotateLoader from "react-spinners/RotateLoader";
 import styled from "styled-components";
-import { backgroundColor } from "../theme/colors";
 
 const Container = styled.div`
   width: 100%;

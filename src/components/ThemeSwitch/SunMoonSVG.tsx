@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import theme from "styled-theming";
 import { hoverPrimaryColor, primaryColor } from "../../theme/colors";

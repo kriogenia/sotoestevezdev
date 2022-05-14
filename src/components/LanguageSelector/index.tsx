@@ -15,7 +15,7 @@ const Dropdown = styled.select`
 `
 
 const LanguageSelector = () => {
-  const [selected, setSelected] = useState("en");
+  const [selected, setSelected] = useState(i18n.language);
 
   const changeLanguage = ({
     target: { value },

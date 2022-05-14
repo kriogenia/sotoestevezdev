@@ -6,7 +6,8 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
 
 ## TODOS
 * Portfolio
-  * Cows
+  * Shotdown
+  * The Parting of Sarah
   * HTTP-Server
   * Ferrux
     * FerruxEngine
@@ -22,9 +23,4 @@ Right now, the deployed page is unrelated to this repository as this is a new ve
   * My last medium posts
   * Twoots on Mastodon?
 * Intermediate animation
-* Arrow to the next section
-* Topbar
-  * Links to sections
-* Decorate the back
 * Address accesibility issues
-* Load system theme

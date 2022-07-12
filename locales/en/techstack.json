@@ -1,5 +1,11 @@
 {
 	"title": "Tech Stack",
+	"section": {
+		"langs": "Languages",
+		"frameworks": "Frameworks",
+		"data": "Data",
+		"other": "Others"
+	},
 	"experience": {
 		"high": "Experienced",
 		"low": "Knowledge"

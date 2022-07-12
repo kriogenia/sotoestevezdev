@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Introduction, Me, Portfolio, TechStack } from "../sections";
+import { Blog, Introduction, Me, Portfolio, TechStack } from "../sections";
 import Bottom from "../sections/Bottom";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
@@ -12,6 +12,7 @@ const Scroll = () => {
     <Introduction />,
     <Portfolio />,
     <TechStack />,
+	<Blog />
   ]);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);

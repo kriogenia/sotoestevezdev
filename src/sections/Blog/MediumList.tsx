@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { XMLParser } from "fast-xml-parser";
+import MediumArticle, { IArticle } from "./MediumArticle";
 
 const parser = new XMLParser();
 
 const MediumList = () => {
-  const [articles, setArticles] = useState<string[]>([]);
+  const [articles, setArticles] = useState<IArticle[]>([]);
 
   useEffect(() => {
     fetch(
@@ -17,7 +18,7 @@ const MediumList = () => {
   }, []);
 
   return (
-    <>{articles && articles.map((article) => <p>`{(article as unknown as any).title}`</p>)}</>
+    <>{articles && articles.map((article) => <MediumArticle article={article}/>)}</>
   );
 };
 

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { XMLParser } from "fast-xml-parser";
 import MediumArticle, { IArticle } from "./MediumArticle";
+import Fallback from "../../components/Fallback";
 
 const parser = new XMLParser();
 
@@ -18,7 +19,13 @@ const MediumList = () => {
   }, []);
 
   return (
-    <>{articles && articles.map((article) => <MediumArticle article={article}/>)}</>
+    <>
+      {articles.length > 0 ? (
+        articles.map((article) => <MediumArticle article={article} />)
+      ) : (
+        <Fallback />
+      )}
+    </>
   );
 };
 

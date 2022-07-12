@@ -15,6 +15,9 @@ export const Link = styled.a`
   :hover {
     color: ${hoverPrimaryColor};
   }
+  & > svg {
+    fill: ${primaryColor};
+  }
 `;
 
 export const Title = styled.h1`

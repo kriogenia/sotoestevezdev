@@ -1,21 +1,29 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { LinearDivider } from "../../components/Divider";
-import { backgroundColor, frontColor, tagColor } from "../../theme/colors";
+import { backgroundColor, tagColor } from "../../theme/colors";
+import { BookIcon } from "../../theme/icons";
 import { Link } from "../../theme/styles";
 
 const Container = styled.article`
-  width: 40%;
-  text-align: left;
-  margin: 15px 0px;
-
-  :hover {
-    background: ;
-  }
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 25px;
+  margin: 15px;
 
   @media (hover: none) {
     width: 100%;
   }
+`;
+
+const ReadIcon = styled(BookIcon)`
+  height: 5rem;
+`;
+
+const Article = styled.article`
+  text-align: left;
 `;
 
 const Title = styled.h2`
@@ -24,21 +32,8 @@ const Title = styled.h2`
   line-height: 1.2;
 `;
 
-const Subtitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: start;
-  gap: 5px;
-`;
-
-const DateTag = styled.span`
-  font-size: 0.8rem;
-`;
-
-const Dot = styled(LinearDivider)`
-  fill: ${frontColor};
-  height: 5px;
+const DateTag = styled.p`
+  font-size: 0.9rem;
 `;
 
 const Tag = styled.span`
@@ -71,15 +66,16 @@ interface Props {
 const MediumArticle: FC<Props> = ({ article }) => {
   return (
     <Container>
-      <Title>{article.title}</Title>
-      <Subtitle>
-        <DateTag>{new Date(article.pubDate).toDateString()}</DateTag>
-        <Dot />
-        <Link href={article.link}>Read</Link>
-      </Subtitle>
-      {article.category.map((cat) => (
-        <Tag>{cat}</Tag>
-      ))}
+      <Link href={article.link}>
+        <ReadIcon />
+      </Link>
+      <Article>
+        <Title>{article.title}</Title>
+		<DateTag>{new Date(article.pubDate).toDateString()}</DateTag>
+        {article.category.map((cat) => (
+          <Tag>{cat}</Tag>
+        ))}
+      </Article>
     </Container>
   );
 };

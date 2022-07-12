@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { TFunction } from "react-i18next";
 import styled from "styled-components";
 import { Title2 } from "../../theme/styles";
 import { IStack } from "./IStack";
@@ -34,12 +35,13 @@ const TechsContainer = styled.div`
 
 interface Props {
   stack: IStack;
+  t: TFunction;
 }
 
-const Stack: FC<Props> = ({ stack }) => {
+const Stack: FC<Props> = ({ stack, t }) => {
   return (
     <Container>
-      <Title>{stack.key}</Title>
+      <Title>{t(`section.${stack.key}`)}</Title>
       <TechsContainer>
         {stack.techs.map((tech) => (
           <Tech key={tech.key} tech={tech}/>

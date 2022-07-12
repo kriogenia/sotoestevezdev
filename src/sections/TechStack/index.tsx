@@ -42,7 +42,7 @@ const TechStack = () => {
   return (
     <SectionContainer title={t("title")} ns={ns}>
       <Slide i={current} set={setCurrent} length={stacks.length}>
-        <Stack stack={stacks[current]} />
+        <Stack stack={stacks[current]} t={t} />
       </Slide>
       <Legend>
         <Level>

@@ -1,5 +1,5 @@
 {
-	"back": [
+	"langs": [
 		{
 			"key": "rust",
 			"name": "Rust",
@@ -18,6 +18,11 @@
 			"badge": "star"
 		},
 		{
+			"key": "html5",
+			"name": "HTML5",
+			"level": 3
+		},
+		{
 			"key": "typescript",
 			"name": "Typescript",
 			"level": 2
@@ -27,6 +32,38 @@
 			"name": "Javascript",
 			"level": 2
 		},
+		{
+			"key": "csharp",
+			"name": "C#",
+			"level": 2
+		},
+		{
+			"key": "css3",
+			"name": "CSS3",
+			"level": 2
+		},
+		{
+			"key": "elixir",
+			"name": "Elixir",
+			"level": 1
+		},
+		{
+			"key": "python",
+			"name": "Python3",
+			"level": 1
+		},
+		{
+			"key": "cpp",
+			"name": "C++",
+			"level": 1
+		},
+		{
+			"key": "scala",
+			"name": "Scala",
+			"level": 0
+		}
+	],
+	"frameworks": [
 		{
 			"key": "spring",
 			"name": "Spring",
@@ -48,24 +85,19 @@
 			"level": 2
 		},
 		{
-			"key": "csharp",
-			"name": "C#",
+			"key": "react",
+			"name": "React",
 			"level": 2
 		},
 		{
-			"key": "python",
-			"name": "Python3",
+			"key": "tokio",
+			"name": "Axum",
 			"level": 1
 		},
 		{
-			"key": "cpp",
-			"name": "C++",
+			"key": "micronaut",
+			"name": "Micronaut",
 			"level": 1
-		},
-		{
-			"key": "scala",
-			"name": "Scala",
-			"level": 0
 		}
 	],
 	"data": [
@@ -86,35 +118,13 @@
 			"level": 2
 		},
 		{
+			"key": "postgresql",
+			"name": "PostgreSQL",
+			"level": 2
+		},
+		{
 			"key": "firebase",
 			"name": "Firebase",
-			"level": 1
-		}
-	],
-	"front": [
-		{
-			"key": "html5",
-			"name": "HTML5",
-			"level": 3
-		},
-		{
-			"key": "css3",
-			"name": "CSS3",
-			"level": 2
-		},
-		{
-			"key": "react",
-			"name": "React",
-			"level": 2
-		},
-		{
-			"key": "styledcomponents",
-			"name": "styled-components",
-			"level": 2
-		},
-		{
-			"key": "redux",
-			"name": "Redux",
 			"level": 1
 		}
 	],
@@ -132,11 +142,6 @@
 		{
 			"key": "photoshop",
 			"name": "Adobe Photoshop",
-			"level": 2
-		},
-		{
-			"key": "postgresql",
-			"name": "PostgreSQL",
 			"level": 2
 		},
 		{
@@ -159,6 +164,11 @@
 			"key": "githubactions",
 			"name": "GitHub Actions",
 			"level": 1
+		},
+		{
+			"key": "cloudflare",
+			"name": "Cloudflare Workers",
+			"level": 0
 		}
 	]
 }

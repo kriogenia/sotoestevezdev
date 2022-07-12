@@ -76,7 +76,6 @@ const Introduction = () => {
         <CvIcon />
         Curriculum Vitae
       </CVLink>
-      {/* TODO add CV and email */}
       <IntroDivider />
       <NetworkLinks t={t} />
     </SectionContainer>

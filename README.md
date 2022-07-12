@@ -15,6 +15,5 @@ The web is in a state I like enough but it will be improved in the future:
 * Add thumbnails to the projects
 * Add badges to the TechStack
 * Add blog section containing:
-  * My last medium posts
   * My last Mastodon twoots
 * Add some complex animation to give some extra life

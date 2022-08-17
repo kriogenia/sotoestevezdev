@@ -24,7 +24,6 @@
 				"download": true
 			}
 		],
-
 		"tags": [
 			"android",
 			"nodejs",
@@ -35,6 +34,30 @@
 			"express",
 			"socketio",
 			"ghactions"
+		]
+	},
+	"medium": {
+		"thumbnail": "",
+		"links": [
+			{
+				"key": "article",
+				"icon": "medium",
+				"url": "https://medium.com/@sotoestevez"
+			},
+			{
+				"key": "publication",
+				"icon": "medium",
+				"url": "https://betterprogramming.pub/"
+			},
+			{
+				"key": "repo",
+				"icon": "github",
+				"url": "https://github.com/kriogenia/medium/"
+			}
+		],
+		"tags": [
+			"rust",
+			"wasm"
 		]
 	},
 	"oito": {

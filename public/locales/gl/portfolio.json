@@ -5,6 +5,11 @@
 		"subtitle": "Ferramenta de asistencia a familias afectadas polo Alzheimer",
 		"description": "AllForOne é o meu <strong>Traballo de Fin de Grao</strong>. É unha aplicación Android de axuda para familias con algún membro afectado pola <strong>enfermidade de Alzheimer</strong> proporcionando ferramentas como un xestor de tarefas compartido, xeolocalización ou un chat en tempo real, todo isto construido enriba dun sistema de vinculación. Consiste en dous grandes módulos: o cliente, unha <strong>aplicación Android</strong> feita en Kotlin; e o servizo do back, unha <strong>API en Node.js</strong> desplegada en Azure. A comunicación entre estos dous extremos realízase tanto a través de HTTP cunha API REST como por vía de WebSockets segundo o caso."
 	},
+	"medium": {
+		"name": "Medium Blog",
+		"subtitle": "Artículos cada dos semanas sobre programación",
+		"description": "En maio de 2022 creei un novo perfil en Medium coa intención de redactar artigos periódicamente, cunha primeira meta de publicar un artigo novo cada dúas semanas. A liña de contido dos artigos é a <strong>programación</strong> cun grande foco no ecosistema de <strong>Rust</strong> e a miña experiencia persoal. Os temas de esos artigos van dende disección e análisis de anacos de código interesante a trucos e tutoriais con énfasis na ensinanza de técnicas útiles ou detalles que poden mellorar as destrezas de programación do lector ou, polo menos, servir de curiosidade. Os artigos contan con boa recepción e un crecemento destacábel, o que conduxo a que tamén sexan seleccionados para ser publicados en <strong>BetterProgramming</strong>, unha publicación con máis de <strong>200 mil seguidores</strong> en Medium, editada polo propio CEO de Medium."
+	},
 	"oito": {
 		"name": "Oito",
 		"subtitle": "Emulador de Chip-8",
@@ -36,10 +41,11 @@
 		"article": "Artigo",
 		"crate": "Crate",
 		"doc": "Documentación",
+		"googleplay": "Google Play",
 		"institution": "Repositorio institucional",
 		"itchio": "Itch.io",
 		"paper": "Documento",
-		"googleplay": "Google Play",
+		"publication": "Publicación",
 		"repo": "Repositorio",
 		"webemu": "Emulador web"
 	}

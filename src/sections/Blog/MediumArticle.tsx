@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { backgroundColor, tagColor } from "../../theme/colors";
+//import { backgroundColor, tagColor } from "../../theme/colors";
 import { BookIcon } from "../../theme/icons";
 import { Link } from "../../theme/styles";
 
@@ -35,7 +35,7 @@ const Title = styled.h2`
 const DateTag = styled.p`
   font-size: 0.9rem;
 `;
-
+/*
 const Tag = styled.span`
   display: inline-flex;
   align-items: center;
@@ -51,7 +51,7 @@ const Tag = styled.span`
   color: ${backgroundColor};
   font-weight: bold;
 `;
-
+*/
 export interface IArticle {
   title: string;
   link: string;
@@ -72,9 +72,9 @@ const MediumArticle: FC<Props> = ({ article }) => {
       <Article>
         <Title>{article.title}</Title>
 		<DateTag>{new Date(article.pubDate).toDateString()}</DateTag>
-        {article.category.map((cat) => (
+        {/*article.category.map((cat) => (
           <Tag>{cat}</Tag>
-        ))}
+		))*/}
       </Article>
     </Container>
   );

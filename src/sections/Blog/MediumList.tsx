@@ -9,12 +9,10 @@ const MediumList = () => {
   const [articles, setArticles] = useState<IArticle[]>([]);
 
   useEffect(() => {
-    fetch(
-      `https://api.allorigins.win/get?url=https://medium.com/feed/@sotoestevez`
-    )
+    fetch(`https://api.allorigins.win/get?url=https://medium.com/feed/@sotoestevez`)
       .then((response) => response.text())
       .then((text) => parser.parse(text))
-      .then((json) => json.rss.channel.item)
+      .then((json) => json.rss.channel.item.slice(0, 5))
       .then((items) => setArticles(items));
   }, []);
 

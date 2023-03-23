@@ -58,6 +58,11 @@
 			"level": 1
 		},
 		{
+			"key": "go",
+			"name": "Go",
+			"level": 1
+		},
+		{
 			"key": "scala",
 			"name": "Scala",
 			"level": 0
@@ -113,6 +118,11 @@
 			"badge": "learning"
 		},
 		{
+			"key": "opensearch",
+			"name": "OpenSearch",
+			"level": 3
+		},
+		{
 			"key": "mongodb",
 			"name": "MongoDB",
 			"level": 2
@@ -137,6 +147,11 @@
 		{
 			"key": "git",
 			"name": "Git",
+			"level": 2
+		},
+		{
+			"key": "kafka",
+			"name": "Apache Kafka",
 			"level": 2
 		},
 		{

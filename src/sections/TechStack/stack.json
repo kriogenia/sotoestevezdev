@@ -143,6 +143,33 @@
 			"level": 1
 		}
 	],
+	"cloud": [
+		{
+			"key": "docker",
+			"name": "Docker",
+			"level": 2
+		},
+		{
+			"key": "kubernetes",
+			"name": "Kubernetes",
+			"level": 2
+		},
+		{
+			"key": "azure",
+			"name": "Microsoft Azure",
+			"level": 1
+		},
+		{
+			"key": "githubactions",
+			"name": "GitHub Actions",
+			"level": 1
+		},
+		{
+			"key": "cloudflare",
+			"name": "Cloudflare Workers",
+			"level": 0
+		}
+	],
 	"other": [
 		{
 			"key": "git",
@@ -165,30 +192,9 @@
 			"level": 2
 		},
 		{
-			"key": "docker",
-			"name": "Docker",
-			"level": 1,
-			"badge": "learning"
-		},
-		{
 			"key": "unrealengine",
 			"name": "Unreal Engine",
 			"level": 1
-		},
-		{
-			"key": "azure",
-			"name": "Microsoft Azure",
-			"level": 1
-		},
-		{
-			"key": "githubactions",
-			"name": "GitHub Actions",
-			"level": 1
-		},
-		{
-			"key": "cloudflare",
-			"name": "Cloudflare Workers",
-			"level": 0
 		}
 	]
 }

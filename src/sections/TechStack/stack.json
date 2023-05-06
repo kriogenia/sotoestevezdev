@@ -182,8 +182,18 @@
 			"level": 2
 		},
 		{
+			"key": "grpc",
+			"name": "gRPC",
+			"level": 2
+		},
+		{
 			"key": "socketio",
 			"name": "Socket.io",
+			"level": 2
+		},
+		{
+			"key": "redis",
+			"name": "Redis",
 			"level": 2
 		},
 		{

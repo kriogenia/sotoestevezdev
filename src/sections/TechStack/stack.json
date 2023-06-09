@@ -43,6 +43,11 @@
 			"level": 2
 		},
 		{
+			"key": "scala",
+			"name": "Scala",
+			"level": 2
+		},
+		{
 			"key": "elixir",
 			"name": "Elixir",
 			"level": 1
@@ -61,11 +66,6 @@
 			"key": "go",
 			"name": "Go",
 			"level": 1
-		},
-		{
-			"key": "scala",
-			"name": "Scala",
-			"level": 0
 		}
 	],
 	"frameworks": [
@@ -92,6 +92,11 @@
 		{
 			"key": "react",
 			"name": "React",
+			"level": 2
+		},
+		{
+			"key": "akka",
+			"name": "Akka",
 			"level": 2
 		},
 		{

@@ -10,6 +10,7 @@ impl Lexer {
     pub fn new() -> Self {
         Self {
             processors: vec![
+                Box::new(processor::Empty),
                 Box::new(processor::Metadata),
                 Box::new(processor::MetadataPair::new()),
             ],
@@ -25,8 +26,36 @@ impl Lexer {
             .iter()
             .skip_while(|&p| (*p).process_line(line).is_none())
             .next()
-            .unwrap()
+            .expect(&*format!("missing a processor capable of analyzing {line}"))
             .process_line(line)
             .unwrap_or(Token::Empty)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const INPUT: &str = r#"---
++container: section
++classes: section
++legend: About
++command: about
+---
+
+![hey](hey) Me
+
+## Title
+
+description
+same paragraph
+"#;
+
+    #[test]
+    fn it_works() {
+        let result = Lexer::new().process(INPUT.to_owned());
+        for r in result {
+            println!("{r:?}");
+        }
     }
 }

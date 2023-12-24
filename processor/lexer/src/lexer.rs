@@ -13,6 +13,7 @@ impl Lexer {
                 Box::new(processor::Empty),
                 Box::new(processor::Metadata),
                 Box::new(processor::MetadataPair::new()),
+                Box::new(processor::Header::new()),
             ],
         }
     }
@@ -43,9 +44,11 @@ mod tests {
 +command: about
 ---
 
+# Title
+
 ![hey](hey) Me
 
-## Title
+## Subtitle
 
 description
 same paragraph

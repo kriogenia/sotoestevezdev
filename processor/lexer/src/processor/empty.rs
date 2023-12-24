@@ -19,14 +19,14 @@ mod tests {
     use crate::Token;
 
     #[test]
-    fn matching_line() {
+    fn empty_line() {
         assert_eq!(Some(Token::Empty), Empty.process_line(""));
         assert_eq!(Some(Token::Empty), Empty.process_line("     "));
         assert_eq!(Some(Token::Empty), Empty.process_line("\t"));
     }
 
     #[test]
-    fn unmatching_lines() {
+    fn non_empty_line() {
         assert_eq!(None, Empty.process_line("class: bold, open"));
     }
 }

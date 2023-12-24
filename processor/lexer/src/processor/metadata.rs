@@ -50,7 +50,7 @@ mod tests {
     }
 
     #[test]
-    fn matching_line() {
+    fn valid_metadata_pair() {
         let expected = Some(Token::MetadataPair(
             "class".to_string(),
             "bold, open".to_string(),
@@ -66,8 +66,10 @@ mod tests {
     }
 
     #[test]
-    fn unmatching_line() {
-        assert_eq!(None, MetadataPair::new().process_line("class: bold, open"));
-        assert_eq!(None, MetadataPair::new().process_line("+class, bold, open"));
+    fn invalid_metadata_pair() {
+        assert_eq!(None, MetadataPair::new().process_line("missing: plus sign"));
+        assert_eq!(None, MetadataPair::new().process_line("+missing colons"));
+        assert_eq!(None, MetadataPair::new().process_line("+missing_value:"));
+        assert_eq!(None, MetadataPair::new().process_line("+: mising key"));
     }
 }

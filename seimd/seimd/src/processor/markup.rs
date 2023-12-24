@@ -11,7 +11,8 @@ impl LineProcessor for Markup {
 
 #[cfg(test)]
 mod tests {
-    use crate::processor::{LineProcessor, Markup};
+    use super::*;
+    use crate::processor::LineProcessor;
     use crate::Token;
 
     #[test]

@@ -15,7 +15,8 @@ impl LineProcessor for Empty {
 
 #[cfg(test)]
 mod tests {
-    use crate::processor::{Empty, LineProcessor};
+    use super::*;
+    use crate::processor::LineProcessor;
     use crate::Token;
 
     #[test]

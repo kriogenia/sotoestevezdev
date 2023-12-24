@@ -1,6 +1,6 @@
 [workspace]
 members = [
-  "lexer",
+    "seimd",
 ]
 
 [workspace.package]

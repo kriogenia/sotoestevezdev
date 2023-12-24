@@ -40,7 +40,8 @@ impl LineProcessor for MetadataPair {
 
 #[cfg(test)]
 mod tests {
-    use crate::processor::{LineProcessor, Metadata, MetadataPair};
+    use super::*;
+    use crate::processor::LineProcessor;
     use crate::Token;
 
     #[test]

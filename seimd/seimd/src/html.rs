@@ -1,9 +1,11 @@
 mod bold;
 mod image;
+mod link;
 
 use crate::html::bold::Bold;
 use regex::{Captures, Regex};
 use crate::html::image::Image;
+use crate::html::link::Link;
 
 pub trait HtmlTransformer {
     fn transform(&self, element: &str) -> String;
@@ -18,6 +20,7 @@ impl Default for SeimdHtmlTransformer {
         Self {
             transformers: vec![
                 Box::new(Image::default()),
+                Box::new(Link::default()),
                 Box::new(Bold::default())
             ],
         }
@@ -51,13 +54,13 @@ mod tests {
 
     const INPUT: &str = r#"
     **This _complex_ *line contains* `all` the ***supported*** transformations**.
-    Even ![alt](url), [the __links__](http://link) __and__ ~lists~"#;
+    Even ![alt](url), [the __links__](http://link), and ~~lists~~"#;
 
     #[test]
     fn generates_html() {
         let expected = r#"
     <strong>This _complex_ *line contains* `all` the ***supported** transformations</strong>.
-    Even <img href=\"url\" alt=\"alt\"/>, [the <strong>links</strong>](http://link) <strong>and</strong> ~lists~"#;
+    Even <img href=\"url\" alt=\"alt\"/>, <a href=\"http://link\">the <strong>links</strong></a> and ~lists~"#;
         assert_eq!(expected, SeimdHtmlTransformer::default().transform(INPUT));
     }
 }

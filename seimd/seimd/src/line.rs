@@ -9,9 +9,9 @@ mod metadata;
 pub enum Line {
     Metadata,
     MetadataPair(String, String),
-    Empty,
-    Markup(String),
     Header(u8, String),
+    Markup(String),
+    Empty,
 }
 
 impl Line {
@@ -19,9 +19,9 @@ impl Line {
         match self {
             Line::Metadata => "metadata",
             Line::MetadataPair(_, _) => "metadata_pair",
-            Line::Empty => "empty",
-            Line::Markup(_) => "markup",
             Line::Header(_, _) => "header",
+            Line::Markup(_) => "markup",
+            Line::Empty => "empty",
         }
         .to_string()
     }

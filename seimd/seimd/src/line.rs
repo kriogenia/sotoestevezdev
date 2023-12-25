@@ -44,7 +44,6 @@ pub struct SeimdLineProcessor {
 }
 
 impl SeimdLineProcessor {
-
     pub fn process(&self, input: String) -> Vec<Line> {
         input
             .lines()

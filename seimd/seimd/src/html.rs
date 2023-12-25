@@ -1,7 +1,9 @@
 mod bold;
+mod image;
 
 use crate::html::bold::Bold;
 use regex::{Captures, Regex};
+use crate::html::image::Image;
 
 pub trait HtmlTransformer {
     fn transform(&self, element: &str) -> String;
@@ -14,7 +16,10 @@ pub struct SeimdHtmlTransformer {
 impl Default for SeimdHtmlTransformer {
     fn default() -> Self {
         Self {
-            transformers: vec![Box::new(Bold::new())],
+            transformers: vec![
+                Box::new(Image::default()),
+                Box::new(Bold::default())
+            ],
         }
     }
 }
@@ -45,14 +50,14 @@ mod tests {
     use crate::html::{HtmlTransformer, SeimdHtmlTransformer};
 
     const INPUT: &str = r#"
-    **This _complex_ *line contains* `all` the [README.md](supported) transformations**.
-    Even ![images](images) __and__ ~lists~"#;
+    **This _complex_ *line contains* `all` the ***supported*** transformations**.
+    Even ![alt](url), [the __links__](http://link) __and__ ~lists~"#;
 
     #[test]
-    fn it_works() {
+    fn generates_html() {
         let expected = r#"
-    <strong>This _complex_ *line contains* `all` the [README.md](supported) transformations</strong>.
-    Even ![images](images) <strong>and</strong> ~lists~"#;
+    <strong>This _complex_ *line contains* `all` the ***supported** transformations</strong>.
+    Even <img href=\"url\" alt=\"alt\"/>, [the <strong>links</strong>](http://link) <strong>and</strong> ~lists~"#;
         assert_eq!(expected, SeimdHtmlTransformer::default().transform(INPUT));
     }
 }

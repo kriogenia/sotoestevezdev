@@ -5,12 +5,12 @@ pub struct Bold {
     expressions: Vec<Regex>,
 }
 
-impl Bold {
-    pub fn new() -> Self {
+impl Default for Bold {
+    fn default() -> Self {
         Self {
             expressions: vec![
-                Regex::new(r"\*\*(.*)\*\*").unwrap(),
-                Regex::new(r"__(.*)__").unwrap(),
+                Regex::new(r"[*]{2}(.*)[*]{2}").unwrap(),
+                Regex::new(r"_{2}(.*)_{2}").unwrap(),
             ],
         }
     }
@@ -48,8 +48,14 @@ mod tests {
         assert_transform("Multiple __bold__ segments **in one** line")
     }
 
+    #[test]
+    fn ignores_italic_and_bolditalic() {
+        assert_eq!("*italic* and ***bold_italic***", Bold::default().transform("*italic* and ***bold_italic***"));
+
+    }
+
     fn assert_transform(input: &str) {
-        let bold = Bold::new();
+        let bold = Bold::default();
         assert_eq!(
             "Multiple <strong>bold</strong> segments <strong>in one</strong> line",
             bold.transform(input)

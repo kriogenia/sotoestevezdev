@@ -1,17 +1,15 @@
 use regex::Regex;
 
-use crate::Token;
-
-use super::LineProcessor;
+use super::{Line, LineProcessor};
 
 const METADATA_LINE: &str = "---";
 
 pub struct Metadata;
 
 impl LineProcessor for Metadata {
-    fn process_line(&self, line: &str) -> Option<Token> {
+    fn process_line(&self, line: &str) -> Option<Line> {
         if line == METADATA_LINE {
-            Some(Token::Metadata)
+            Some(Line::Metadata)
         } else {
             None
         }
@@ -31,28 +29,27 @@ impl MetadataPair {
 }
 
 impl LineProcessor for MetadataPair {
-    fn process_line(&self, line: &str) -> Option<Token> {
+    fn process_line(&self, line: &str) -> Option<Line> {
         self.re
             .captures(line)
-            .map(|c| Token::MetadataPair(c[1].to_string(), c[2].to_string()))
+            .map(|c| Line::MetadataPair(c[1].to_string(), c[2].to_string()))
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::processor::LineProcessor;
-    use crate::Token;
+    use crate::line::LineProcessor;
 
     #[test]
     fn metadata_line() {
-        assert_eq!(Some(Token::Metadata), Metadata.process_line("---"));
+        assert_eq!(Some(Line::Metadata), Metadata.process_line("---"));
         assert_eq!(None, Metadata.process_line("class: bold, open"));
     }
 
     #[test]
     fn valid_metadata_pair() {
-        let expected = Some(Token::MetadataPair(
+        let expected = Some(Line::MetadataPair(
             "class".to_string(),
             "bold, open".to_string(),
         ));

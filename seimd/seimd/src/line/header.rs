@@ -1,6 +1,5 @@
 use regex::Regex;
-use crate::processor::LineProcessor;
-use crate::Token;
+use crate::line::{Line, LineProcessor};
 
 pub struct Header {
     re: Regex
@@ -15,24 +14,23 @@ impl Header {
 }
 
 impl LineProcessor for Header {
-    fn process_line(&self, line: &str) -> Option<Token> {
+    fn process_line(&self, line: &str) -> Option<Line> {
         self.re.captures(line)
             .map(|caps| (caps[1].len(), caps[2].to_string()))
-            .map(|(number, title)| Token::Header(number as u8, title))
+            .map(|(number, title)| Line::Header(number as u8, title))
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::processor::header::Header;
-    use crate::processor::LineProcessor;
-    use crate::Token;
+    use crate::line::header::Header;
+    use crate::line::{Line, LineProcessor};
 
     #[test]
     fn valid_header() {
         let processor = Header::new();
-        assert_eq!(Some(Token::Header(3, "h3".to_string())), processor.process_line("### h3"));
-        assert_eq!(Some(Token::Header(1, "h1".to_string())), processor.process_line("#   h1"));
+        assert_eq!(Some(Line::Header(3, "h3".to_string())), processor.process_line("### h3"));
+        assert_eq!(Some(Line::Header(1, "h1".to_string())), processor.process_line("#   h1"));
     }
 
     #[test]

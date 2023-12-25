@@ -1,7 +1,8 @@
 [package]
-name = "lexer"
+name = "seimd"
 version.workspace = true
 edition.workspace = true
 
 [dependencies]
+itertools = "0.12.0"
 regex = "1.10"

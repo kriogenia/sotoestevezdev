@@ -1,10 +1,9 @@
-pub mod processor;
+use std::collections::HashMap;
 
-#[derive(Debug, PartialEq)]
-pub enum Token {
-    Metadata,
-    MetadataPair(String, String),
-    Empty,
-    Markup(String),
-    Header(u8, String),
+pub(crate) mod line;
+pub mod html;
+
+pub struct Parsed {
+    pub metadata: HashMap<String, String>,
+    pub html: String,
 }

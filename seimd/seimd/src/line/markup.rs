@@ -21,5 +21,4 @@ mod tests {
             Markup.process_line(&line)
         );
     }
-
 }

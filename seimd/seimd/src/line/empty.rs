@@ -1,5 +1,5 @@
-use crate::line::LineProcessor;
 use super::Line;
+use crate::line::LineProcessor;
 
 pub struct Empty;
 

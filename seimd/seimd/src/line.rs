@@ -1,9 +1,9 @@
 use itertools::Itertools;
 
 mod empty;
-mod metadata;
 mod header;
 mod markup;
+mod metadata;
 
 #[derive(Debug, PartialEq)]
 pub enum Line {
@@ -22,13 +22,15 @@ impl Line {
             Line::Empty => "empty",
             Line::Markup(_) => "markup",
             Line::Header(_, _) => "header",
-        }.to_string()
+        }
+        .to_string()
     }
+
     pub fn join(&mut self, next: Line) -> Line {
         match (self, next) {
             (Line::Markup(prev), Line::Markup(next)) => Line::Markup(format!("{prev} {next}")),
             (Line::Empty, Line::Empty) => Line::Empty,
-            (_, _) => unreachable!("no other type should be attempted to be merged")
+            (_, _) => unreachable!("no other type should be attempted to be merged"),
         }
     }
 }
@@ -49,19 +51,24 @@ impl SeimdLineProcessor {
                 Box::new(metadata::Metadata),
                 Box::new(metadata::MetadataPair::new()),
                 Box::new(header::Header::new()),
-                Box::new(markup::Markup)
+                Box::new(markup::Markup),
             ],
         }
     }
 
     pub fn process(&self, input: String) -> Vec<Line> {
-        input.lines()
+        input
+            .lines()
             .map(|line| self.tokenize(line))
             .group_by(|line| line.key())
             .into_iter()
             .map(|(key, value)| match key.as_str() {
-                "empty" | "markup" => value.into_iter().reduce(|mut acc, line| acc.join(line)).into_iter().collect::<Vec<_>>(),
-                _ => value.into_iter().collect::<Vec<_>>()
+                "empty" | "markup" => value
+                    .into_iter()
+                    .reduce(|mut acc, line| acc.join(line))
+                    .into_iter()
+                    .collect::<Vec<_>>(),
+                _ => value.into_iter().collect::<Vec<_>>(),
             })
             .flatten()
             .collect()
@@ -103,11 +110,37 @@ same paragraph
     #[test]
     fn tokenize_lines() {
         let result = SeimdLineProcessor::new().process(INPUT.to_owned());
-        assert_eq!(2, result.iter().filter(|&token| *token == Line::Metadata).count());
-        assert_eq!(4, result.iter().filter(|&token| matches!(*token, Line::MetadataPair(_, _))).count());
-        assert_eq!(2, result.iter().filter(|&token| matches!(*token, Line::Header(_, _))).count());
-        assert_eq!(2, result.iter().filter(|&token| matches!(*token, Line::Markup(_))).count());
-        assert_eq!(4, result.iter().filter(|&token| *token == Line::Empty).count());
+        assert_eq!(
+            2,
+            result
+                .iter()
+                .filter(|&token| *token == Line::Metadata)
+                .count()
+        );
+        assert_eq!(
+            4,
+            result
+                .iter()
+                .filter(|&token| matches!(*token, Line::MetadataPair(_, _)))
+                .count()
+        );
+        assert_eq!(
+            2,
+            result
+                .iter()
+                .filter(|&token| matches!(*token, Line::Header(_, _)))
+                .count()
+        );
+        assert_eq!(
+            2,
+            result
+                .iter()
+                .filter(|&token| matches!(*token, Line::Markup(_)))
+                .count()
+        );
+        assert_eq!(
+            4,
+            result.iter().filter(|&token| *token == Line::Empty).count()
+        );
     }
 }
-

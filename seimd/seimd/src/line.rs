@@ -44,17 +44,6 @@ pub struct SeimdLineProcessor {
 }
 
 impl SeimdLineProcessor {
-    pub fn new() -> Self {
-        Self {
-            processors: vec![
-                Box::new(empty::Empty),
-                Box::new(metadata::Metadata),
-                Box::new(metadata::MetadataPair::new()),
-                Box::new(header::Header::new()),
-                Box::new(markup::Markup),
-            ],
-        }
-    }
 
     pub fn process(&self, input: String) -> Vec<Line> {
         input
@@ -85,6 +74,21 @@ impl SeimdLineProcessor {
             .unwrap()
     }
 }
+
+impl Default for SeimdLineProcessor {
+    fn default() -> Self {
+        Self {
+            processors: vec![
+                Box::new(empty::Empty),
+                Box::new(metadata::Metadata),
+                Box::new(metadata::MetadataPair::new()),
+                Box::new(header::Header::new()),
+                Box::new(markup::Markup),
+            ],
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -109,7 +113,7 @@ same paragraph
 
     #[test]
     fn tokenize_lines() {
-        let result = SeimdLineProcessor::new().process(INPUT.to_owned());
+        let result = SeimdLineProcessor::default().process(INPUT.to_owned());
         assert_eq!(
             2,
             result

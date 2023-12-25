@@ -10,7 +10,7 @@ impl Bold {
         Self {
             expressions: vec![
                 Regex::new(r"\*\*(.*)\*\*").unwrap(),
-                Regex::new(r"__(.*)___").unwrap(),
+                Regex::new(r"__(.*)__").unwrap(),
             ],
         }
     }
@@ -35,23 +35,23 @@ mod tests {
 
     #[test]
     fn asterisk_notation() {
-        assert_transform("**Multiple** bold **segments**")
+        assert_transform("Multiple **bold** segments **in one** line")
     }
 
     #[test]
     fn underscore_notation() {
-        assert_transform("__Multiple__ bold __segments__")
+        assert_transform("Multiple __bold__ segments __in one__ line")
     }
 
     #[test]
     fn mixed_notations() {
-        assert_transform("__Multiple__ bold **segments**")
+        assert_transform("Multiple __bold__ segments **in one** line")
     }
 
     fn assert_transform(input: &str) {
         let bold = Bold::new();
         assert_eq!(
-            "<strong>Multiple</strong> bold <strong>segments</strong>",
+            "Multiple <strong>bold</strong> segments <strong>in one</strong> line",
             bold.transform(input)
         );
     }

@@ -1,8 +1,8 @@
-use regex::Regex;
 use crate::line::{Line, LineProcessor};
+use regex::Regex;
 
 pub struct UnorderedList {
-    expressions: Vec<Regex>
+    expressions: Vec<Regex>,
 }
 
 impl Default for UnorderedList {
@@ -12,14 +12,15 @@ impl Default for UnorderedList {
                 Regex::new(r"^\* (.*)").unwrap(),
                 Regex::new(r"^- (.*)").unwrap(),
                 Regex::new(r"^\+ (.*)").unwrap(),
-            ]
+            ],
         }
     }
 }
 
 impl LineProcessor for UnorderedList {
     fn process_line(&self, line: &str) -> Option<Line> {
-        self.expressions.iter()
+        self.expressions
+            .iter()
             .flat_map(|re| re.captures(line))
             .map(|caps| (&caps[1]).to_string())
             .map(|content| Line::UnorderedList(vec![content]))
@@ -29,8 +30,8 @@ impl LineProcessor for UnorderedList {
 
 #[cfg(test)]
 mod tests {
-    use crate::line::{Line, LineProcessor};
     use crate::line::unordered_list::UnorderedList;
+    use crate::line::{Line, LineProcessor};
 
     #[test]
     fn valid_list() {
@@ -40,5 +41,4 @@ mod tests {
         assert_eq!(expected, ul.process_line("+ line"));
         assert_eq!(expected, ul.process_line("* line"));
     }
-
 }

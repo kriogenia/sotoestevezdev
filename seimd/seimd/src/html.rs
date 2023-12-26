@@ -1,11 +1,12 @@
 mod bold;
 mod image;
 mod link;
+mod transformation;
 
 use crate::html::bold::Bold;
-use regex::{Captures, Regex};
 use crate::html::image::Image;
 use crate::html::link::Link;
+use regex::{Captures, Regex};
 
 pub trait HtmlTransformer {
     fn transform(&self, element: &str) -> String;
@@ -21,7 +22,7 @@ impl Default for SeimdHtmlTransformer {
             transformers: vec![
                 Box::new(Image::default()),
                 Box::new(Link::default()),
-                Box::new(Bold::default())
+                Box::new(Bold::default()),
             ],
         }
     }

@@ -50,8 +50,10 @@ mod tests {
 
     #[test]
     fn ignores_italic_and_bolditalic() {
-        assert_eq!("*italic* and ***bold_italic***", Bold::default().transform("*italic* and ***bold_italic***"));
-
+        assert_eq!(
+            "*italic* and ***bold_italic***",
+            Bold::default().transform("*italic* and ***bold_italic***")
+        );
     }
 
     fn assert_transform(input: &str) {

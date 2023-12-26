@@ -31,13 +31,21 @@ impl Line {
 
     pub fn join(&self, next: &Self) -> Option<Self> {
         match (self, next) {
-            (Line::UnorderedList(prev), Line::UnorderedList(next)) =>
-                Some(Line::UnorderedList(prev.iter().chain(next.iter()).cloned().collect())),
+            (Line::UnorderedList(prev), Line::UnorderedList(next)) => Some(Line::UnorderedList(
+                prev.iter().chain(next.iter()).cloned().collect(),
+            )),
             (Line::UnorderedList(list), Line::Markup(line)) => {
                 let last = format!("{} {line}", list.last().unwrap());
-                Some(Line::UnorderedList(iter::once(last).chain(list.iter().cloned().rev().skip(1)).rev().collect()))
+                Some(Line::UnorderedList(
+                    iter::once(last)
+                        .chain(list.iter().cloned().rev().skip(1))
+                        .rev()
+                        .collect(),
+                ))
             }
-            (Line::Markup(prev), Line::Markup(next)) => Some(Line::Markup(format!("{prev} {next}"))),
+            (Line::Markup(prev), Line::Markup(next)) => {
+                Some(Line::Markup(format!("{prev} {next}")))
+            }
             (Line::Empty, Line::Empty) => Some(Line::Empty),
             (_, _) => None,
         }
@@ -59,13 +67,13 @@ impl SeimdLineProcessor {
 
         let mut prev = lines.next().unwrap_or(Line::Empty);
         for line in lines {
-          if let Some(merge) = prev.join(&line) {
-              prev = merge;
-          } else {
-              result.push(prev);
-              prev = line;
-          }
-        };
+            if let Some(merge) = prev.join(&line) {
+                prev = merge;
+            } else {
+                result.push(prev);
+                prev = line;
+            }
+        }
         result.push(prev);
 
         result
@@ -155,7 +163,9 @@ with two lines
                 .iter()
                 .filter_map(|token| if let Line::UnorderedList(vec) = token {
                     Some(vec.join(";"))
-                } else { None })
+                } else {
+                    None
+                })
                 .next()
                 .unwrap()
                 .as_str()
@@ -178,14 +188,21 @@ with two lines
         assert_eq!((Line::Empty), Line::Empty.join(&Line::Empty).unwrap());
         assert_eq!(
             Line::Markup("a b".to_string()),
-            Line::Markup("a".to_string()).join(&Line::Markup("b".to_string())).unwrap());
+            Line::Markup("a".to_string())
+                .join(&Line::Markup("b".to_string()))
+                .unwrap()
+        );
         assert_eq!(
             Line::UnorderedList(vec!["a".to_string(), "b".to_string()]),
-            Line::UnorderedList(vec!["a".to_string()]).join(&Line::UnorderedList(vec!["b".to_string()])).unwrap()
+            Line::UnorderedList(vec!["a".to_string()])
+                .join(&Line::UnorderedList(vec!["b".to_string()]))
+                .unwrap()
         );
         assert_eq!(
             Line::UnorderedList(vec!["a".to_string(), "b a".to_string()]),
-            Line::UnorderedList(vec!["a".to_string(), "b".to_string()]).join(&Line::Markup("a".to_string())).unwrap()
+            Line::UnorderedList(vec!["a".to_string(), "b".to_string()])
+                .join(&Line::Markup("a".to_string()))
+                .unwrap()
         )
     }
 }

@@ -1,5 +1,5 @@
-use regex::{Captures, Regex};
 use crate::html::HtmlTransformer;
+use regex::{Captures, Regex};
 
 pub struct Link {
     with_text: Regex,
@@ -17,8 +17,9 @@ impl Default for Link {
 
 impl HtmlTransformer for Link {
     fn transform(&self, element: &str) -> String {
-        let element = super::sequential_replace(element, &self.with_text, |caps: &Captures|
-            build_link(&caps[2], &caps[1]));
+        let element = super::sequential_replace(element, &self.with_text, |caps: &Captures| {
+            build_link(&caps[2], &caps[1])
+        });
         super::sequential_replace(&element, &self.only_link, |caps: &Captures| {
             let url = format!("{}{}", &caps[1], &caps[2]);
             build_link(&url, &url)
@@ -63,5 +64,4 @@ mod tests {
             Link::default().transform("Parses just <invalid://url>")
         )
     }
-
 }

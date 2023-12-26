@@ -1,15 +1,17 @@
-use itertools::Itertools;
+use std::iter;
 
 mod empty;
 mod header;
 mod markup;
 mod metadata;
+mod unordered_list;
 
 #[derive(Debug, PartialEq)]
 pub enum Line {
     Metadata,
     MetadataPair(String, String),
     Header(u8, String),
+    UnorderedList(Vec<String>),
     Markup(String),
     Empty,
 }
@@ -20,17 +22,24 @@ impl Line {
             Line::Metadata => "metadata",
             Line::MetadataPair(_, _) => "metadata_pair",
             Line::Header(_, _) => "header",
+            Line::UnorderedList(_) => "unordered_list",
             Line::Markup(_) => "markup",
             Line::Empty => "empty",
         }
         .to_string()
     }
 
-    pub fn join(&mut self, next: Line) -> Line {
+    pub fn join(&self, next: &Self) -> Option<Self> {
         match (self, next) {
-            (Line::Markup(prev), Line::Markup(next)) => Line::Markup(format!("{prev} {next}")),
-            (Line::Empty, Line::Empty) => Line::Empty,
-            (_, _) => unreachable!("no other type should be attempted to be merged"),
+            (Line::UnorderedList(prev), Line::UnorderedList(next)) =>
+                Some(Line::UnorderedList(prev.iter().chain(next.iter()).cloned().collect())),
+            (Line::UnorderedList(list), Line::Markup(line)) => {
+                let last = format!("{} {line}", list.last().unwrap());
+                Some(Line::UnorderedList(iter::once(last).chain(list.iter().cloned().rev().skip(1)).rev().collect()))
+            }
+            (Line::Markup(prev), Line::Markup(next)) => Some(Line::Markup(format!("{prev} {next}"))),
+            (Line::Empty, Line::Empty) => Some(Line::Empty),
+            (_, _) => None,
         }
     }
 }
@@ -45,22 +54,21 @@ pub struct SeimdLineProcessor {
 
 impl SeimdLineProcessor {
     pub fn process(&self, input: String) -> Vec<Line> {
-        input
-            .lines()
-            .map(|line| self.tokenize(line))
-            .group_by(|line| line.key())
-            .into_iter()
-            .map(|(key, value)| match key.as_str() {
-                "empty" | "markup" => value
-                    .into_iter()
-                    .reduce(|mut acc, line| acc.join(line))
-                    .into_iter()
-                    .collect::<Vec<_>>(),
-                _ => value.into_iter().collect::<Vec<_>>(),
-            })
-            .flatten()
-            .collect()
-        //input.lines().map(|line| self.tokenize(line)).collect()
+        let mut result = Vec::new();
+        let mut lines = input.lines().map(|line| self.tokenize(line));
+
+        let mut prev = lines.next().unwrap_or(Line::Empty);
+        for line in lines {
+          if let Some(merge) = prev.join(&line) {
+              prev = merge;
+          } else {
+              result.push(prev);
+              prev = line;
+          }
+        };
+        result.push(prev);
+
+        result
     }
 
     pub fn tokenize(&self, line: &str) -> Line {
@@ -82,6 +90,7 @@ impl Default for SeimdLineProcessor {
                 Box::new(metadata::Metadata),
                 Box::new(metadata::MetadataPair::new()),
                 Box::new(header::Header::new()),
+                Box::new(unordered_list::UnorderedList::default()),
                 Box::new(markup::Markup),
             ],
         }
@@ -108,6 +117,12 @@ mod tests {
 
 description
 same paragraph
+
+- first item
+- second item
++ third item
+with two lines
+* fourth item
 "#;
 
     #[test]
@@ -135,6 +150,17 @@ same paragraph
                 .count()
         );
         assert_eq!(
+            "first item;second item;third item with two lines;fourth item",
+            result
+                .iter()
+                .filter_map(|token| if let Line::UnorderedList(vec) = token {
+                    Some(vec.join(";"))
+                } else { None })
+                .next()
+                .unwrap()
+                .as_str()
+        );
+        assert_eq!(
             2,
             result
                 .iter()
@@ -142,8 +168,24 @@ same paragraph
                 .count()
         );
         assert_eq!(
-            4,
+            5,
             result.iter().filter(|&token| *token == Line::Empty).count()
         );
+    }
+
+    #[test]
+    fn join() {
+        assert_eq!((Line::Empty), Line::Empty.join(&Line::Empty).unwrap());
+        assert_eq!(
+            Line::Markup("a b".to_string()),
+            Line::Markup("a".to_string()).join(&Line::Markup("b".to_string())).unwrap());
+        assert_eq!(
+            Line::UnorderedList(vec!["a".to_string(), "b".to_string()]),
+            Line::UnorderedList(vec!["a".to_string()]).join(&Line::UnorderedList(vec!["b".to_string()])).unwrap()
+        );
+        assert_eq!(
+            Line::UnorderedList(vec!["a".to_string(), "b a".to_string()]),
+            Line::UnorderedList(vec!["a".to_string(), "b".to_string()]).join(&Line::Markup("a".to_string())).unwrap()
+        )
     }
 }

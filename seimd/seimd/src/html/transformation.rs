@@ -19,7 +19,6 @@ pub enum HtmlTransformation {
 }
 
 impl HtmlTransformation {
-
     /// Returns a sequence of all transformation ordered by specificity to ensure correct parsing
     pub fn ordered_seq() -> Vec<Self> {
         vec![
@@ -67,7 +66,9 @@ impl HtmlTransformation {
                     Regex::new(r"<(https?://.+)>").unwrap(),
                 ]
             }),
-            Self::Strikethrough => STRIKETHROUGH_RE.get_or_init(|| vec![Regex::new("~~(.*)~~").unwrap()]),
+            Self::Strikethrough => {
+                STRIKETHROUGH_RE.get_or_init(|| vec![Regex::new("~~(.*)~~").unwrap()])
+            }
         }
         .iter()
     }

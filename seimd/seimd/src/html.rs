@@ -13,7 +13,7 @@ pub struct SeimdHtmlTransformer {
 impl Default for SeimdHtmlTransformer {
     fn default() -> Self {
         Self {
-            transformers: HtmlTransformation::ordered_seq()
+            transformers: HtmlTransformation::ordered_seq(),
         }
     }
 }
@@ -32,7 +32,8 @@ impl HtmlTransformer for SeimdHtmlTransformer {
 mod tests {
     use crate::html::{HtmlTransformer, SeimdHtmlTransformer};
 
-    const INPUT: &str = "**This _complex_ *line contains* `all` the ***supported*** transformations**. \
+    const INPUT: &str =
+        "**This _complex_ *line contains* `all` the ***supported*** transformations**. \
     Even ![alt](url), [the __links__](http://link) and ~~lists~~";
 
     #[test]

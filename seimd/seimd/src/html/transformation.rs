@@ -11,6 +11,7 @@ macro_rules! surround_with {
 pub enum HtmlTransformation {
     Bold,
     Italic,
+    Link,
 }
 
 impl HtmlTransformation {
@@ -34,6 +35,12 @@ impl HtmlTransformation {
                     Regex::new(r"_(.*)_").unwrap(),
                 ]
             }),
+            Self::Link => LINK_RE.get_or_init(|| {
+                vec![
+                    Regex::new(r"\[(.+)]\((.+)\)").unwrap(),
+                    Regex::new(r"<(https?://.+)>").unwrap(),
+                ]
+            })
         }
         .iter()
     }
@@ -42,6 +49,10 @@ impl HtmlTransformation {
         match self {
             Self::Bold => surround_with!("strong"),
             Self::Italic => surround_with!("em"),
+            Self::Link => |caps| {
+                let href = caps.get(2).map(|m| m.as_str()).unwrap_or(&caps[1]);
+                format!("<a href=\"{href}\">{}</a>", &caps[1])
+            }
         }
     }
 
@@ -59,6 +70,7 @@ impl HtmlTransformation {
 
 static BOLD_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static ITALIC_RE: OnceLock<Vec<Regex>> = OnceLock::new();
+static LINK_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 
 #[cfg(test)]
 mod tests {
@@ -76,6 +88,26 @@ mod tests {
         assert_surround(HtmlTransformation::Italic, "em", "*");
         assert_surround(HtmlTransformation::Italic, "em", "_");
         assert_surrounds(HtmlTransformation::Italic, "em", "*", "_");
+    }
+
+    #[test]
+    fn link() {
+        assert_eq!(
+            "Parses <a href=\"https://url\">text</a> links",
+            HtmlTransformation::Link.transform("Parses [text](https://url) links")
+        );
+        assert_eq!(
+            "Parses secure <a href=\"https://url\">https://url</a>",
+            HtmlTransformation::Link.transform("Parses secure <https://url>")
+        );
+        assert_eq!(
+            "Parses just http <a href=\"http://url\">http://url</a>",
+            HtmlTransformation::Link.transform("Parses just http <http://url>")
+        );
+        assert_eq!(
+            "Parses just <invalid://url>",
+            HtmlTransformation::Link.transform("Parses just <invalid://url>")
+        );
     }
 
     fn assert_surround(transformer: HtmlTransformation, html: &str, md: &str) {

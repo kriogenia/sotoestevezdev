@@ -15,6 +15,7 @@ pub enum HtmlTransformation {
     Image,
     Italic,
     Link,
+    Strikethrough,
 }
 
 impl HtmlTransformation {
@@ -28,6 +29,7 @@ impl HtmlTransformation {
             Self::Bold,
             Self::Italic,
             Self::Code,
+            Self::Strikethrough,
         ]
     }
 
@@ -65,6 +67,7 @@ impl HtmlTransformation {
                     Regex::new(r"<(https?://.+)>").unwrap(),
                 ]
             }),
+            Self::Strikethrough => STRIKETHROUGH_RE.get_or_init(|| vec![Regex::new("~~(.*)~~").unwrap()]),
         }
         .iter()
     }
@@ -74,6 +77,7 @@ impl HtmlTransformation {
             Self::Bold => surround_with!("strong"),
             Self::Code => surround_with!("code"),
             Self::Italic => surround_with!("em"),
+            Self::Strikethrough => surround_with!("del"),
             Self::BoldItalic => |caps| format!("<strong><em>{}</em></strong>", &caps[1]),
             Self::Image => |caps| format!("<img href=\"{}\" alt=\"{}\"/>", &caps[2], &caps[1]),
             Self::Link => |caps| {
@@ -101,6 +105,7 @@ static CODE_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static IMAGE_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static ITALIC_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static LINK_RE: OnceLock<Vec<Regex>> = OnceLock::new();
+static STRIKETHROUGH_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 
 #[cfg(test)]
 mod tests {
@@ -160,6 +165,11 @@ mod tests {
             "Parses just <invalid://url>",
             HtmlTransformation::Link.transform("Parses just <invalid://url>")
         );
+    }
+
+    #[test]
+    fn strikethrough() {
+        assert_surround(HtmlTransformation::Strikethrough, "del", "~~");
     }
 
     fn assert_surround(transformer: HtmlTransformation, html: &str, md: &str) {

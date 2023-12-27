@@ -1,9 +1,14 @@
 [workspace]
 members = [
     "seimd",
+    "html_template",
 ]
 
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
 authors = [ "SotoEstevez <ricardo@sotoestevez.dev>"]
+
+[workspace.dependencies]
+clap = { version = "4.4", features = ["derive"] }
+regex = "1.10"

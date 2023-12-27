@@ -1,7 +1,9 @@
 [package]
-name = "seimd"
+name = "seimd_into_html"
 version.workspace = true
 edition.workspace = true
 
 [dependencies]
+clap.workspace = true
 regex.workspace = true
+seimd = { path = "../seimd" }

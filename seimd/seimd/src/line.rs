@@ -17,19 +17,7 @@ pub enum Line {
 }
 
 impl Line {
-    fn key(&self) -> String {
-        match self {
-            Line::Metadata => "metadata",
-            Line::MetadataPair(_, _) => "metadata_pair",
-            Line::Header(_, _) => "header",
-            Line::UnorderedList(_) => "unordered_list",
-            Line::Markup(_) => "markup",
-            Line::Empty => "empty",
-        }
-        .to_string()
-    }
-
-    pub fn join(&self, next: &Self) -> Option<Self> {
+    pub fn merge(&self, next: &Self) -> Option<Self> {
         match (self, next) {
             (Line::UnorderedList(prev), Line::UnorderedList(next)) => Some(Line::UnorderedList(
                 prev.iter().chain(next.iter()).cloned().collect(),
@@ -67,7 +55,7 @@ impl SeimdLineProcessor {
 
         let mut prev = lines.next().unwrap_or(Line::Empty);
         for line in lines {
-            if let Some(merge) = prev.join(&line) {
+            if let Some(merge) = prev.merge(&line) {
                 prev = merge;
             } else {
                 result.push(prev);
@@ -183,24 +171,24 @@ with two lines
     }
 
     #[test]
-    fn join() {
-        assert_eq!((Line::Empty), Line::Empty.join(&Line::Empty).unwrap());
+    fn merge() {
+        assert_eq!((Line::Empty), Line::Empty.merge(&Line::Empty).unwrap());
         assert_eq!(
             Line::Markup("a b".to_string()),
             Line::Markup("a".to_string())
-                .join(&Line::Markup("b".to_string()))
+                .merge(&Line::Markup("b".to_string()))
                 .unwrap()
         );
         assert_eq!(
             Line::UnorderedList(vec!["a".to_string(), "b".to_string()]),
             Line::UnorderedList(vec!["a".to_string()])
-                .join(&Line::UnorderedList(vec!["b".to_string()]))
+                .merge(&Line::UnorderedList(vec!["b".to_string()]))
                 .unwrap()
         );
         assert_eq!(
             Line::UnorderedList(vec!["a".to_string(), "b a".to_string()]),
             Line::UnorderedList(vec!["a".to_string(), "b".to_string()])
-                .join(&Line::Markup("a".to_string()))
+                .merge(&Line::Markup("a".to_string()))
                 .unwrap()
         )
     }

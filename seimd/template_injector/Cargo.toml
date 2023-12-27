@@ -1,5 +1,5 @@
 [package]
-name = "seimd_into_html"
+name = "template_injector"
 version.workspace = true
 edition.workspace = true
 

@@ -1,7 +1,7 @@
 [workspace]
 members = [
     "seimd",
-    "html_template",
+    "template_injector",
 ]
 
 [workspace.package]

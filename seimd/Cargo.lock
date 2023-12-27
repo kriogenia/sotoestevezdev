@@ -172,15 +172,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "seimd_into_html"
-version = "0.1.0"
-dependencies = [
- "clap",
- "regex",
- "seimd",
-]
-
-[[package]]
 name = "strsim"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -195,6 +186,15 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-ident",
+]
+
+[[package]]
+name = "template_injector"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "regex",
+ "seimd",
 ]
 
 [[package]]

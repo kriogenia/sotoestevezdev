@@ -43,7 +43,7 @@ impl SeimdParser {
                         .reduce(|acc, li| acc + &li)
                         .unwrap_or_default();
                     format!("<ul>{items}</ul>")
-                },
+                }
                 _ => "".to_string(),
             })
             .reduce(|acc, next| acc + &next)

@@ -10,6 +10,7 @@ macro_rules! surround_with {
 
 pub enum HtmlTransformation {
     Bold,
+    Image,
     Italic,
     Link,
 }
@@ -29,6 +30,7 @@ impl HtmlTransformation {
                     Regex::new(r"_{2}(.*)_{2}").unwrap(),
                 ]
             }),
+            Self::Image => IMAGE_RE.get_or_init(|| vec![Regex::new(r"!\[(.+)]\((.+)\)").unwrap()]),
             Self::Italic => ITALIC_RE.get_or_init(|| {
                 vec![
                     Regex::new(r"[*](.*)[*]").unwrap(),
@@ -40,7 +42,7 @@ impl HtmlTransformation {
                     Regex::new(r"\[(.+)]\((.+)\)").unwrap(),
                     Regex::new(r"<(https?://.+)>").unwrap(),
                 ]
-            })
+            }),
         }
         .iter()
     }
@@ -49,10 +51,11 @@ impl HtmlTransformation {
         match self {
             Self::Bold => surround_with!("strong"),
             Self::Italic => surround_with!("em"),
+            Self::Image => |caps| format!("<img href=\"{}\" alt=\"{}\"/>", &caps[2], &caps[1]),
             Self::Link => |caps| {
                 let href = caps.get(2).map(|m| m.as_str()).unwrap_or(&caps[1]);
                 format!("<a href=\"{href}\">{}</a>", &caps[1])
-            }
+            },
         }
     }
 
@@ -69,6 +72,7 @@ impl HtmlTransformation {
 }
 
 static BOLD_RE: OnceLock<Vec<Regex>> = OnceLock::new();
+static IMAGE_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static ITALIC_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static LINK_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 
@@ -81,6 +85,23 @@ mod tests {
         assert_surround(HtmlTransformation::Bold, "strong", "**");
         assert_surround(HtmlTransformation::Bold, "strong", "__");
         assert_surrounds(HtmlTransformation::Bold, "strong", "**", "__");
+    }
+
+    #[test]
+    fn image() {
+        assert_eq!(
+            "Parses <img href=\"https://link.to.img\" alt=\"alternative text\"/> images",
+            HtmlTransformation::Image
+                .transform("Parses ![alternative text](https://link.to.img) images")
+        );
+        assert_eq!(
+            "Missing ![](alt)",
+            HtmlTransformation::Image.transform("Missing ![](alt)")
+        );
+        assert_eq!(
+            "Missing ![url]()",
+            HtmlTransformation::Image.transform("Missing ![url]()")
+        );
     }
 
     #[test]

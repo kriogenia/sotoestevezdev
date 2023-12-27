@@ -82,9 +82,8 @@ impl SeimdLineProcessor {
     pub fn tokenize(&self, line: &str) -> Line {
         self.processors
             .iter()
-            .skip_while(|&p| (*p).process_line(line).is_none())
-            .next()
-            .expect(format!("a line capable of analyzing {line}").as_str())
+            .find(|&p| (*p).process_line(line).is_some())
+            .unwrap_or_else(|| panic!("a line capable of analyzing {line}"))
             .process_line(line)
             .unwrap()
     }
@@ -98,7 +97,7 @@ impl Default for SeimdLineProcessor {
                 Box::new(metadata::Metadata),
                 Box::new(metadata::MetadataPair::new()),
                 Box::new(header::Header::new()),
-                Box::new(unordered_list::UnorderedList::default()),
+                Box::<unordered_list::UnorderedList>::default(),
                 Box::new(markup::Markup),
             ],
         }

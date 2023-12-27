@@ -10,12 +10,25 @@ macro_rules! surround_with {
 
 pub enum HtmlTransformation {
     Bold,
+    BoldItalic,
     Image,
     Italic,
     Link,
 }
 
 impl HtmlTransformation {
+
+    /// Returns a sequence of all transformation ordered by specificity to ensure correct parsing
+    pub fn ordered_seq() -> Vec<Self> {
+        vec![
+            Self::Image,
+            Self::Link,
+            Self::BoldItalic,
+            Self::Bold,
+            Self::Italic,
+        ]
+    }
+
     pub fn transform(&self, element: &str) -> String {
         self.regex().fold(element.to_string(), |element, re| {
             self.sequential_replace(&element, re)
@@ -28,6 +41,12 @@ impl HtmlTransformation {
                 vec![
                     Regex::new(r"[*]{2}(.*)[*]{2}").unwrap(),
                     Regex::new(r"_{2}(.*)_{2}").unwrap(),
+                ]
+            }),
+            Self::BoldItalic => BOLD_ITALIC_RE.get_or_init(|| {
+                vec![
+                    Regex::new(r"[*]{3}(.*)[*]{3}").unwrap(),
+                    Regex::new(r"_{3}(.*)_{3}").unwrap(),
                 ]
             }),
             Self::Image => IMAGE_RE.get_or_init(|| vec![Regex::new(r"!\[(.+)]\((.+)\)").unwrap()]),
@@ -50,6 +69,7 @@ impl HtmlTransformation {
     fn replacer(&self) -> fn(&Captures) -> String {
         match self {
             Self::Bold => surround_with!("strong"),
+            Self::BoldItalic => |caps| format!("<strong><em>{}</em></strong>", &caps[1]),
             Self::Italic => surround_with!("em"),
             Self::Image => |caps| format!("<img href=\"{}\" alt=\"{}\"/>", &caps[2], &caps[1]),
             Self::Link => |caps| {
@@ -60,7 +80,7 @@ impl HtmlTransformation {
     }
 
     fn sequential_replace(&self, element: &str, re: &Regex) -> String {
-        let mut remaining = &element[..];
+        let mut remaining = element;
         let mut acc = "".to_string();
         while let Some(offset) = re.shortest_match(remaining) {
             acc += &*re.replace(&remaining[..offset], self.replacer());
@@ -72,6 +92,7 @@ impl HtmlTransformation {
 }
 
 static BOLD_RE: OnceLock<Vec<Regex>> = OnceLock::new();
+static BOLD_ITALIC_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static IMAGE_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static ITALIC_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static LINK_RE: OnceLock<Vec<Regex>> = OnceLock::new();

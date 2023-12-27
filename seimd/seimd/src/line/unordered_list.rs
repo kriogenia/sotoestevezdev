@@ -22,7 +22,7 @@ impl LineProcessor for UnorderedList {
         self.expressions
             .iter()
             .flat_map(|re| re.captures(line))
-            .map(|caps| (&caps[1]).to_string())
+            .map(|caps| caps[1].to_string())
             .map(|content| Line::UnorderedList(vec![content]))
             .next()
     }

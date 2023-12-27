@@ -11,6 +11,7 @@ macro_rules! surround_with {
 pub enum HtmlTransformation {
     Bold,
     BoldItalic,
+    Code,
     Image,
     Italic,
     Link,
@@ -26,6 +27,7 @@ impl HtmlTransformation {
             Self::BoldItalic,
             Self::Bold,
             Self::Italic,
+            Self::Code,
         ]
     }
 
@@ -49,6 +51,7 @@ impl HtmlTransformation {
                     Regex::new(r"_{3}(.*)_{3}").unwrap(),
                 ]
             }),
+            Self::Code => CODE_RE.get_or_init(|| vec![Regex::new(r"`(.+)`").unwrap()]),
             Self::Image => IMAGE_RE.get_or_init(|| vec![Regex::new(r"!\[(.+)]\((.+)\)").unwrap()]),
             Self::Italic => ITALIC_RE.get_or_init(|| {
                 vec![
@@ -69,8 +72,9 @@ impl HtmlTransformation {
     fn replacer(&self) -> fn(&Captures) -> String {
         match self {
             Self::Bold => surround_with!("strong"),
-            Self::BoldItalic => |caps| format!("<strong><em>{}</em></strong>", &caps[1]),
+            Self::Code => surround_with!("code"),
             Self::Italic => surround_with!("em"),
+            Self::BoldItalic => |caps| format!("<strong><em>{}</em></strong>", &caps[1]),
             Self::Image => |caps| format!("<img href=\"{}\" alt=\"{}\"/>", &caps[2], &caps[1]),
             Self::Link => |caps| {
                 let href = caps.get(2).map(|m| m.as_str()).unwrap_or(&caps[1]);
@@ -93,6 +97,7 @@ impl HtmlTransformation {
 
 static BOLD_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static BOLD_ITALIC_RE: OnceLock<Vec<Regex>> = OnceLock::new();
+static CODE_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static IMAGE_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static ITALIC_RE: OnceLock<Vec<Regex>> = OnceLock::new();
 static LINK_RE: OnceLock<Vec<Regex>> = OnceLock::new();
@@ -106,6 +111,11 @@ mod tests {
         assert_surround(HtmlTransformation::Bold, "strong", "**");
         assert_surround(HtmlTransformation::Bold, "strong", "__");
         assert_surrounds(HtmlTransformation::Bold, "strong", "**", "__");
+    }
+
+    #[test]
+    fn code() {
+        assert_surround(HtmlTransformation::Code, "code", "`");
     }
 
     #[test]

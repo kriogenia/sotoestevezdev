@@ -37,7 +37,7 @@ mod tests {
 
     #[test]
     fn generates_html() {
-        let expected = "<strong>This <em>complex</em> <em>line contains</em> `all` the \
+        let expected = "<strong>This <em>complex</em> <em>line contains</em> <code>all</code> the \
         <strong><em>supported</em></strong> transformations</strong>. Even <img href=\"url\" alt=\"alt\"/>, \
         <a href=\"http://link\">the <strong>links</strong></a> and ~~lists~~";
         assert_eq!(expected, SeimdHtmlTransformer::default().transform(INPUT));

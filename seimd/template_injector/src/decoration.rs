@@ -32,7 +32,6 @@ pub struct DecoratorBuilder {
 }
 
 impl DecoratorBuilder {
-
     pub fn new() -> Self {
         Default::default()
     }
@@ -54,25 +53,29 @@ impl DecoratorBuilder {
     pub fn build(self) -> Vec<HtmlDecorator> {
         self.decorators
     }
-
 }
 
 #[cfg(test)]
 mod tests {
-    use std::collections::HashMap;
-    use seimd::Parsed;
     use crate::decoration::HtmlDecorator;
+    use seimd::Parsed;
+    use std::collections::HashMap;
 
     #[test]
     fn parent_wrapper() {
         let mut metadata = HashMap::new();
         metadata.insert("parent_tag".to_string(), "div".to_string());
-        let mut parsed = Parsed { metadata, html: Default::default(), };
+        let mut parsed = Parsed {
+            metadata,
+            html: Default::default(),
+        };
 
         let result = HtmlDecorator::ParentWrapper.decorate(&parsed, "html".to_string());
         assert_eq!(result, "<div>html</div>");
 
-        parsed.metadata.insert("parent_class".to_string(), "active, valid".to_string());
+        parsed
+            .metadata
+            .insert("parent_class".to_string(), "active, valid".to_string());
         let result = HtmlDecorator::ParentWrapper.decorate(&parsed, "html".to_string());
         assert_eq!(result, "<div class=\"active, valid\">html</div>");
     }
@@ -81,10 +84,12 @@ mod tests {
     fn legend() {
         let mut metadata = HashMap::new();
         metadata.insert("legend".to_string(), "Legend".to_string());
-        let parsed = Parsed { metadata, html: Default::default(), };
+        let parsed = Parsed {
+            metadata,
+            html: Default::default(),
+        };
 
         let result = HtmlDecorator::Legend.decorate(&parsed, "html".to_string());
         assert_eq!(result, "<legend>Legend</legend>html");
     }
-
 }

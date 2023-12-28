@@ -1,6 +1,6 @@
 ---
 +parent_tag: main
-+parent_classes: active, focused
++parent_class: active, focused
 +legend: Example
 ---
 

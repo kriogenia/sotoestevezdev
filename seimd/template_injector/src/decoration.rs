@@ -1,5 +1,6 @@
 use seimd::Parsed;
 
+#[derive(PartialEq)]
 pub enum HtmlDecorator {
     ParentWrapper,
     Legend,
@@ -23,6 +24,37 @@ impl HtmlDecorator {
         }
         .unwrap_or(html)
     }
+}
+
+#[derive(Default)]
+pub struct DecoratorBuilder {
+    pub decorators: Vec<HtmlDecorator>,
+}
+
+impl DecoratorBuilder {
+
+    pub fn new() -> Self {
+        Default::default()
+    }
+
+    pub fn legend(mut self, legend: bool) -> Self {
+        if legend && !self.decorators.contains(&HtmlDecorator::Legend) {
+            self.decorators.push(HtmlDecorator::Legend);
+        }
+        self
+    }
+
+    pub fn parent(mut self, parent: bool) -> Self {
+        if parent && !self.decorators.contains(&HtmlDecorator::ParentWrapper) {
+            self.decorators.push(HtmlDecorator::ParentWrapper);
+        }
+        self
+    }
+
+    pub fn build(self) -> Vec<HtmlDecorator> {
+        self.decorators
+    }
+
 }
 
 #[cfg(test)]

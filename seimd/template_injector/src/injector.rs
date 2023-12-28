@@ -3,17 +3,17 @@ use crate::provider::Provider;
 use regex::Regex;
 
 pub struct Injector {
-    provider: Provider,
     regex: Regex,
+    provider: Provider,
     decorators: Vec<HtmlDecorator>,
 }
 
 impl Injector {
-    pub fn new(provider: Provider) -> Self {
+    pub fn new(provider: Provider, decorators: Vec<HtmlDecorator>) -> Self {
         Self {
-            provider,
             regex: Regex::new(r"[{]{2}\s+(.*)\s+}{2}").unwrap(),
-            decorators: vec![HtmlDecorator::Legend, HtmlDecorator::ParentWrapper],
+            provider,
+            decorators,
         }
     }
 

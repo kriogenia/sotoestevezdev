@@ -1,5 +1,7 @@
+mod injector;
 mod provider;
 
+use crate::injector::Injector;
 use crate::provider::Provider;
 use clap::Parser;
 use regex::Regex;
@@ -26,20 +28,13 @@ fn read_file(file: &str) -> Result<String, String> {
 
 fn main() -> Result<(), String> {
     let args = GlobalArgs::parse();
-    let mut provider = Provider::new(args.seimd_path);
-    let regex = Regex::new(r"\{{2}(.*)}{2}").unwrap();
+
+    let provider = Provider::new(args.seimd_path);
+    let mut injector = Injector::new(provider);
 
     for file in args.files.iter() {
         let input = read_file(file)?;
-        let file_to_inject = regex
-            .captures(&input)
-            .unwrap()
-            .get(1)
-            .unwrap()
-            .as_str()
-            .trim();
-        let parsed = provider.get(file_to_inject);
-        dbg!(parsed.unwrap().html);
+        dbg!(injector.inject(input));
     }
     Ok(())
 }

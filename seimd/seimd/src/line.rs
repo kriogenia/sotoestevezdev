@@ -1,3 +1,4 @@
+use crate::line::unordered_list::UnorderedList;
 use std::iter;
 
 mod empty;
@@ -85,7 +86,7 @@ impl Default for SeimdLineProcessor {
                 Box::new(metadata::Metadata),
                 Box::new(metadata::MetadataPair::new()),
                 Box::new(header::Header::new()),
-                Box::<unordered_list::UnorderedList>::default(),
+                Box::<UnorderedList>::default(),
                 Box::new(markup::Markup),
             ],
         }

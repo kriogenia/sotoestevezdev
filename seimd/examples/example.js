@@ -1,0 +1,1 @@
+document.getElementById('console').insertAdjacentElement('beforeend', "{{ about.md }}");

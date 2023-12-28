@@ -1,5 +1,6 @@
 use seimd::parser::SeimdParser;
 use seimd::Parsed;
+use std::collections::hash_map::Entry;
 use std::collections::HashMap;
 use std::fmt::{Debug, Formatter};
 use std::fs;
@@ -20,12 +21,14 @@ impl Provider {
     }
 
     pub fn get(&mut self, key: &str) -> Result<&Parsed, String> {
-        Ok(&self
-            .injectables
-            .entry(key.to_owned())
-            .or_insert(load(&self.path, &self.parser, key)?))
+        Ok(match self.injectables.entry(key.to_owned()) {
+            Entry::Occupied(value) => value.into_mut(),
+            Entry::Vacant(vacant) => {
+                let value = load(&self.path, &self.parser, key)?;
+                vacant.insert(value)
+            }
+        })
     }
-
 }
 
 fn load(path: &String, parser: &SeimdParser, file_name: &str) -> Result<Parsed, String> {

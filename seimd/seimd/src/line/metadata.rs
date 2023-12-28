@@ -23,7 +23,7 @@ pub struct MetadataPair {
 impl MetadataPair {
     pub fn new() -> Self {
         Self {
-            re: Regex::new(r"^\+([a-z]+): *(.+)$").unwrap(),
+            re: Regex::new(r"^\+([a-z_]+): *(.+)$").unwrap(),
         }
     }
 }

@@ -1,6 +1,6 @@
 ---
-+container: main
-+classes: active
++parent_tag: main
++parent_classes: active, focused
 +legend: Example
 ---
 

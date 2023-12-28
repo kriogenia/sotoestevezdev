@@ -1,11 +1,11 @@
+use crate::decoration::HtmlDecorator;
 use crate::provider::Provider;
 use regex::Regex;
-use std::ops::Range;
 
 pub struct Injector {
     provider: Provider,
     regex: Regex,
-    // vec Decorators
+    decorators: Vec<HtmlDecorator>,
 }
 
 impl Injector {
@@ -13,6 +13,7 @@ impl Injector {
         Self {
             provider,
             regex: Regex::new(r"[{]{2}\s+(.*)\s+}{2}").unwrap(),
+            decorators: vec![HtmlDecorator::Legend, HtmlDecorator::ParentWrapper],
         }
     }
 
@@ -21,10 +22,18 @@ impl Injector {
         let mut pointer = 0;
         for caps in self.regex.captures_iter(input.as_str()) {
             let range = caps.get(0).unwrap().range();
-            buf += &&input[pointer..range.start];
-            buf += &*self.provider.get(&caps[1])?.html;
+
+            let parsed = &*self.provider.get(&caps[1])?;
+            let html = self.decorators
+                .iter()
+                .fold(parsed.html.clone(), |acc, dec| dec.decorate(parsed, acc));
+
+            let prev = &input[pointer..range.start];
             pointer = range.end;
+
+            buf = format!("{buf}{prev}{html}")
         }
-        Ok(buf)
+        Ok(buf + &input[pointer..])
     }
+
 }

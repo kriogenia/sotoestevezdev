@@ -1,10 +1,10 @@
+mod decoration;
 mod injector;
 mod provider;
 
 use crate::injector::Injector;
 use crate::provider::Provider;
 use clap::Parser;
-use regex::Regex;
 use std::fs;
 
 #[derive(Debug, Parser)]
@@ -34,7 +34,7 @@ fn main() -> Result<(), String> {
 
     for file in args.files.iter() {
         let input = read_file(file)?;
-        dbg!(injector.inject(input));
+        println!("{}", injector.inject(input)?);
     }
     Ok(())
 }

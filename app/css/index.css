@@ -1,0 +1,42 @@
+:root {
+	--fg: #0e0;
+	--bg: #000;
+	--light-bg: #222;
+}
+
+body {
+	background-color: var(--light-bg);
+	color: var(--fg);
+	font-family: 'Fira Mono', 'Lucida Console', monospace;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+main {
+	width: 50%;
+	margin: 10px;
+}
+
+aside {
+	width: 25%;
+	margin: 10px;
+
+	img {
+		width: 200px;
+	}
+}
+
+.console {
+	height: 450px;
+	box-sizing: border-box;
+	margin: auto;
+}
+
+.section {
+	background-color: var(--bg);
+}
+
+.stack {
+	margin: auto;
+}

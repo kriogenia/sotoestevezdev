@@ -9,6 +9,7 @@ use clap::Parser;
 use std::fs;
 
 #[derive(Debug, Parser)]
+#[command(name = "SEimd Template Injector")]
 #[command(about, author, version)]
 struct GlobalArgs {
     #[arg(help = "File to inject", value_name = "INPUT_FILE")]

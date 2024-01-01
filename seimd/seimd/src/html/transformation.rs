@@ -80,7 +80,7 @@ impl HtmlTransformation {
             Self::Italic => surround_with!("em"),
             Self::Strikethrough => surround_with!("del"),
             Self::BoldItalic => |caps| format!("<strong><em>{}</em></strong>", &caps[1]),
-            Self::Image => |caps| format!("<img href=\"{}\" alt=\"{}\"/>", &caps[2], &caps[1]),
+            Self::Image => |caps| format!("<img src=\"{}\" alt=\"{}\"/>", &caps[2], &caps[1]),
             Self::Link => |caps| {
                 let href = caps.get(2).map(|m| m.as_str()).unwrap_or(&caps[1]);
                 format!("<a href=\"{href}\">{}</a>", &caps[1])

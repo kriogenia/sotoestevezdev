@@ -1,5 +1,5 @@
 [package]
-name = "template_injector"
+name = "seimdti"
 version.workspace = true
 edition.workspace = true
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>SotoEstevez</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="theme-color" content="#00ff00" />
+		<meta name="description" content="Test" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/logo192.png" />
+		<link rel="manifest" href="/manifest.json" />
+		<link href="css/index.css" rel="stylesheet" />
+		<link href="css/console.css" rel="stylesheet" />
+    <!---script defer="defer" src="index.js"></script-->
+		<script defer="defer" src="console.js"></script>
+	</head>
+	<body>
+		<aside aria-label="Personal info">
+			{{ about.md }}
+		</aside>
+		<main>
+			<div class="console">
+				<header>
+					<p>guest@sotoestevez</p>
+				</header>
+				<div class="body">
+					<!-- output? -->
+					<div id="history">
+						<p>Line 0</p>
+						<p>Line 1</p>
+						<p>Line 2</p>
+						<p>Line 3</p>
+						<p>Line 4</p>
+						<p>Line 5</p>
+						<p>Line 6</p>
+						<p>Line 7</p>
+						<p>Line 8</p>
+						<p>Line 9: type help to see a list of commands</p>
+					</div>
+					<div class="shell">
+						sesh >
+						<div id="input" contenteditable="true"></div>
+						<button id="caret" for="input">&nbsp;</button>
+					</div>
+				</div>
+			</div>
+			<details>
+				<summary>Tech Stack</summary>
+				Here would go my tech stack
+			</details>
+		</main>
+		<aside aria-label="Profesional background">
+			<section>
+				<legend>Education</legend>
+			</section>
+			<section>
+				<legend>Work experience</legend>
+			</section>
+		</aside>
+		<!-- <legend>Help</legend> -->
+	</body>
+</html>

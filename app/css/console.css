@@ -1,0 +1,89 @@
+:root {
+	--header-bg: #555;
+	--header-fg: #ddd;
+	--output: #fff;
+	--prompt: #0c0;
+}
+
+.console {
+	word-break: break-all;
+
+	& header {
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+		background-color: var(--header-bg);
+		height: 45px;
+		line-height: 45px;
+		text-align: center;
+		color: var(--header-fg);
+	}
+
+	& .body {
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+		box-sizing: border-box;
+		padding: 0px 20px 10px;
+		height: calc(100% - 40px);
+		overflow: scroll;
+		background-color: var(--bg);
+
+		& p {
+			color: var(--output);
+			margin: 12px 0px;
+		}
+
+		::selection {
+			color: var(--bg);
+			background: var(--fg);
+		}
+
+	}
+}
+
+.prompt {
+	color: var(--prompt);
+	margin-right: 1ch;
+}
+
+.line {
+	margin: 6px 0px;
+}
+
+
+#history>div {
+	display: flex;
+	flex-direction: row;
+}
+
+#input {
+	display: inline;
+	outline: none;
+	visibility: visible;
+
+	:empty::before {
+		content: ' ';
+	}
+
+	.noCaret+#caret {
+		visibility: hidden;
+	}
+}
+
+#caret {
+	border: 0;
+	padding: 0;
+	outline: none;
+	background-color: var(--fg);
+	display: inline-block;
+	font-family: monospace;
+}
+
+#input:focus+#caret {
+	animation: blink 1s steps(5, start) infinite;
+}
+
+@keyframes blink {
+	to {
+		visibility: hidden;
+	}
+}

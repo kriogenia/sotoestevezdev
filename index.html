@@ -12,11 +12,14 @@
 		<link href="css/index.css" rel="stylesheet" />
 		<link href="css/console.css" rel="stylesheet" />
     <!---script defer="defer" src="index.js"></script-->
-		<script defer="defer" src="console.js"></script>
+		<script defer="defer" src="js/console.js"></script>
 	</head>
-	<body>
+	<body class="columns">
 		<aside aria-label="Personal info">
 			{{ about.md }}
+			<div>Network</div>
+			{{ description.md }}
+			<div>CV download</div>
 		</aside>
 		<main>
 			<div class="console">
@@ -40,14 +43,28 @@
 					<div class="shell">
 						sesh >
 						<div id="input" contenteditable="true"></div>
-						<button id="caret" for="input">&nbsp;</button>
+						<button id="caret">&nbsp;</button>
 					</div>
 				</div>
 			</div>
-			<details>
-				<summary>Tech Stack</summary>
-				Here would go my tech stack
-			</details>
+			<div>
+				Projects:
+				<ul>
+					<li>Bresenham</li>
+					<li>MobyGames</li>
+				</ul>
+			</div>
+			<div class="columns">
+				<details>
+					<summary>Tech Stack</summary>
+					Here would go my tech stack
+				</details>
+				<details>
+					<summary>Open Source</summary>
+					List of projects I contribute to
+				</details>
+
+			</div>
 		</main>
 		<aside aria-label="Profesional background">
 			<section>

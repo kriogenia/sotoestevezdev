@@ -8,9 +8,6 @@ body {
 	background-color: var(--light-bg);
 	color: var(--fg);
 	font-family: 'Fira Mono', 'Lucida Console', monospace;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
 }
 
 main {
@@ -24,6 +21,16 @@ aside {
 
 	img {
 		width: 200px;
+	}
+}
+
+.columns {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+	> details {
+		width: 50%;
 	}
 }
 

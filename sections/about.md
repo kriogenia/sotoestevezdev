@@ -1,6 +1,6 @@
 ---
 +parent_tag: section
-+parent_class: about
++parent_class: about, hidden
 ---
 
 ![Portrait](public/me.png)

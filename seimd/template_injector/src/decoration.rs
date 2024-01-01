@@ -3,7 +3,7 @@ use seimd::Parsed;
 #[derive(PartialEq)]
 pub enum HtmlDecorator {
     ParentWrapper,
-    Legend,
+    Summary,
 }
 
 impl HtmlDecorator {
@@ -17,10 +17,10 @@ impl HtmlDecorator {
                     .unwrap_or_default();
                 format!("<{tag}{classes}>{html}</{tag}>")
             }),
-            Self::Legend => parsed
+            Self::Summary => parsed
                 .metadata
-                .get("legend")
-                .map(|legend| format!("<legend>{legend}</legend>{html}")),
+                .get("summary")
+                .map(|summary| format!("<summary>{summary}</summary>{html}")),
         }
         .unwrap_or(html)
     }
@@ -36,9 +36,9 @@ impl DecoratorBuilder {
         Default::default()
     }
 
-    pub fn legend(mut self, legend: bool) -> Self {
-        if legend && !self.decorators.contains(&HtmlDecorator::Legend) {
-            self.decorators.push(HtmlDecorator::Legend);
+    pub fn summary(mut self, summary: bool) -> Self {
+        if summary && !self.decorators.contains(&HtmlDecorator::Summary) {
+            self.decorators.push(HtmlDecorator::Summary);
         }
         self
     }
@@ -81,15 +81,15 @@ mod tests {
     }
 
     #[test]
-    fn legend() {
+    fn summary() {
         let mut metadata = HashMap::new();
-        metadata.insert("legend".to_string(), "Legend".to_string());
+        metadata.insert("summary".to_string(), "Summary".to_string());
         let parsed = Parsed {
             metadata,
             html: Default::default(),
         };
 
-        let result = HtmlDecorator::Legend.decorate(&parsed, "html".to_string());
-        assert_eq!(result, "<legend>Legend</legend>html");
+        let result = HtmlDecorator::Summary.decorate(&parsed, "html".to_string());
+        assert_eq!(result, "<summary>Summary</summary>html");
     }
 }

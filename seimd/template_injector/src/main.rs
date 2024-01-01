@@ -29,9 +29,9 @@ struct GlobalArgs {
     #[arg(
         default_value = "false",
         long,
-        help = "Injects the legend if present in the metadata"
+        help = "Injects the summary if present in the metadata"
     )]
-    legend: bool,
+    summary: bool,
 }
 
 fn main() -> Result<(), String> {
@@ -39,7 +39,7 @@ fn main() -> Result<(), String> {
 
     let provider = Provider::new(args.seimd_path);
     let decorators = DecoratorBuilder::new()
-        .legend(args.legend)
+        .summary(args.summary)
         .parent(args.parent)
         .build();
 

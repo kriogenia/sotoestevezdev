@@ -1,8 +1,25 @@
+:root {
+  --purple:   #6a4d75;
+  --indigo:   #2a1b40;
+  --darkblue: #161a38;
+  --blue:     #174e7d;
+  --cyan:     #8ac4d9;
+  --green:    #676e4c;
+  --yellow:   #f4aa51;
+  --orange:   #ff7d25;
+  --brown:    #734434;
+  --red:      #8c301b;
+  --white:    #f5efd5;
+  --black:    #010303;
+  --text:     #cdd6f4;
+  --bg:       #091b22;
+}
+
 body {
   font-family: 'Fira Code', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  background-color: #1e1e1e;
-  color: #f0f0f0;
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -11,7 +28,7 @@ body {
 }
 
 header {
-  background-color: #282c34;
+  background-color: var(--bg);
   padding: 2rem 1rem;
   text-align: center;
 }
@@ -21,9 +38,15 @@ header h1 {
   font-size: 2.5rem;
 }
 
+.surnames {
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: var(--orange);
+}
+
 header p {
   font-size: 1.2rem;
-  color: #aaa;
+  color: var(--white);
 }
 
 .container {
@@ -38,22 +61,44 @@ section {
 }
 
 h2 {
-  border-bottom: 2px solid #444;
+  border-bottom: 2px solid var(--yellow);
   padding-bottom: 0.5rem;
 }
 
-ul {
-  padding-left: 1.5rem;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  vertical-align: top;
+  padding: 0.5rem 0;
+}
+
+td:first-child {
+  width: 150px;
+  font-weight: bold;
+  color: var(--white);
+}
+
+td div {
+  margin-bottom: 0.3rem;
+}
+
+td div:first-child {
+    color: var(--yellow);
+}
+
+td div:nth-child(-n + 2) {
+  font-weight: bolder;
 }
 
 a {
-  color: #61dafb;
+  color: var(--cyan);
   text-decoration: none;
 }
-
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: #20232a;
-  font-size: 0.9rem;
+ 
+li strong {
+  color: var(--white);
 }

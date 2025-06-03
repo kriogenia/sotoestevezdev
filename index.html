@@ -1,5 +1,73 @@
 <!DOCTYPE html>
-<html>
-  <head></head>
-  <body></body>
+<html lang="en">
+<head>
+  <title>Programmer Portfolio</title>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link href='https://fonts.googleapis.com/css?family=Fira Code' rel='stylesheet'>
+  <link data-trunk rel="css" href="styles/main.css" />
+</head>
+<body>
+  <header>
+    <h1>Jane Doe</h1>
+    <p>Full-Stack Developer | Open Source Enthusiast | Coffee Lover</p>
+  </header>
+
+  <div id="container" class="container">
+    <section>
+      <h2>About Me</h2>
+      <p>
+        I am a passionate software engineer with a focus on building scalable web applications and clean, efficient code. I love working with JavaScript, Python, and Rust.
+      </p>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul>
+        <li>Languages: JavaScript, TypeScript, Python, Rust</li>
+        <li>Frameworks: React, Node.js, Express, Flask</li>
+        <li>Tools: Git, Docker, VS Code, Linux</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>DevTrack</strong> – Task tracker for developers (<a href="#">GitHub</a>)</li>
+        <li><strong>CodeSnips</strong> – Snippet sharing web app (<a href="#">GitHub</a>)</li>
+        <li><strong>Rusty API</strong> – A fast, safe REST API in Rust (<a href="#">GitHub</a>)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:jane.doe@example.com">jane.doe@example.com</a></p>
+      <p>GitHub: <a href="https://github.com/janedoe" target="_blank">github.com/janedoe</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/janedoe" target="_blank">linkedin.com/in/janedoe</a></p>
+    </section>
+  </div>
+
+  <button type="button" onclick="toggleTty()">TTY</button>
+
+  <footer>
+    &copy; 2025 Jane Doe. Built with pure HTML & CSS.
+  </footer>
+
+  <script>
+    const toggleTty = () => {
+      const container = document.getElementById("container");
+      const app = document.getElementById("app");
+      if (container.style.display === "block") {
+        container.style.display = "none";
+        app.style.display = "block";
+      } else {
+        container.style.display = "block";
+        app.style.display = "none";
+      }
+    }
+    // window.addEventListener("load", toggleTty()); 
+  </script>
+</body>
 </html>

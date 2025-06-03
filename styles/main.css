@@ -148,3 +148,15 @@ li strong {
 .tty-btn .glyph::before {
   content: '❯';
 }
+
+.animated-component {
+  transition: opacity 1s ease, transform 1s ease-in;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animated-component.hiding {
+  opacity: 0;
+  transform: translateY(+500px);
+  pointer-events: none;
+}

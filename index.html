@@ -13,15 +13,13 @@
   <header>
     <h1>Ricardo <span class="surnames">Soto Estévez</span></h1>
     <p>Back-End Developer | Open Source Contributor | Coffee Enthusiast</p>
-  </header>
 
-  <div class="button-wrapper">
     <button class="tty-btn" onclick="toggleTty()">
       <span class="glyph"></span>/start advanced mode
     </button>
-  </div>
+  </header>
 
-  <div id="container" class="container active">
+  <div id="container" class="container active animated-component">
     <section>
       <h2>Who are you?</h2>
       <p>
@@ -105,12 +103,15 @@
     const toggleTty = () => {
       const container = document.getElementById("container");
       const app = document.getElementById("app");
-      container.classList.toggle("hidden");
+      container.classList.toggle("hiding");
       container.classList.toggle("active");
       app.classList.toggle("hidden");
       app.classList.toggle("active");
+      
+      setTimeout(() => {
+        container.classList.toggle("hidden");
+      }, 1000);
     }
-    // window.addEventListener("load", toggleTty()); 
   </script>
 </body>
 </html>

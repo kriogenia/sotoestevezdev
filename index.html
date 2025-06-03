@@ -15,9 +15,13 @@
     <p>Back-End Developer | Open Source Contributor | Coffee Enthusiast</p>
   </header>
 
-  <button type="button" onclick="toggleTty()">TTY</button>
+  <div class="button-wrapper">
+    <button class="tty-btn" onclick="toggleTty()">
+      <span class="glyph"></span>/start advanced mode
+    </button>
+  </div>
 
-  <div id="container" class="container">
+  <div id="container" class="container active">
     <section>
       <h2>Who are you?</h2>
       <p>
@@ -86,7 +90,6 @@
         </table>
     </section>
 
-
     <section>
       <h2>Where can I evade you</h2>
       <p>Email: <a href="mailto:ricardo@sotoestevez.dev">ricardo@sotoestevez.dev</a></p>
@@ -102,13 +105,10 @@
     const toggleTty = () => {
       const container = document.getElementById("container");
       const app = document.getElementById("app");
-      if (container.style.display === "block") {
-        container.style.display = "none";
-        app.style.display = "block";
-      } else {
-        container.style.display = "block";
-        app.style.display = "none";
-      }
+      container.classList.toggle("hidden");
+      container.classList.toggle("active");
+      app.classList.toggle("hidden");
+      app.classList.toggle("active");
     }
     // window.addEventListener("load", toggleTty()); 
   </script>

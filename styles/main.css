@@ -23,7 +23,11 @@ body {
   line-height: 1.6;
 }
 
-#app {
+.active {
+  display: block;
+}
+
+.hidden {
   display: none;
 }
 
@@ -50,7 +54,6 @@ header p {
 }
 
 .container {
-  display: block;
   max-width: 800px;
   margin: auto;
   padding: 2rem 1rem;
@@ -101,4 +104,47 @@ a {
  
 li strong {
   color: var(--white);
+}
+
+.button-wrapper {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.tty-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue);
+  color: var(--text);
+  border: 2px solid var(--blue);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-family: monospace;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+
+.tty-btn .glyph {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-0.5rem);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-right: 0.3rem;
+}
+
+.tty-btn:hover {
+  background-color: transparent;
+  color: var(--yellow);
+}
+
+.tty-btn:hover .glyph {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.tty-btn .glyph::before {
+  content: '❯';
 }

@@ -20,7 +20,7 @@ pub fn TTY(buffer: RwSignal<Vec<String>>) -> impl IntoView {
                 each=move || lines.get()
                 key=|counter| counter.0
                 children=move |(_, line)| {
-                    view! { <p>{line}</p> }
+                    view! { <p inner_html=line/> }
                 }
             />
         </div>

@@ -16,11 +16,15 @@
 }
 
 body {
-  font-family: 'Fira Code', Tahoma, Geneva, Verdana, monospace;
+  font-family: 'Fira Code', monospace;
   margin: 0;
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
+}
+
+strong {
+  font-weight: bolder;
 }
 
 .active {
@@ -51,6 +55,49 @@ header h1 {
 header p {
   font-size: 1.2rem;
   color: var(--white);
+}
+
+.button-wrapper {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.tty-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue);
+  color: var(--text);
+  border: 2px solid var(--blue);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-family: monospace;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+
+.tty-btn .glyph {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-0.5rem);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-right: 0.3rem;
+}
+
+.tty-btn:hover {
+  background-color: transparent;
+  color: var(--yellow);
+}
+
+.tty-btn:hover .glyph {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.tty-btn .glyph::before {
+  content: '❯';
 }
 
 .container {
@@ -100,7 +147,7 @@ a {
   color: var(--cyan);
   text-decoration: none;
 }
- 
+
 li strong {
   color: var(--white);
 }
@@ -112,57 +159,6 @@ li strong {
   to {
     width: 100%;
   }
-}
-
-.buffer p {
-  display: block;
-  line-height: 22px;
-  animation: typing 1s steps(30, end);
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.button-wrapper {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.tty-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--blue);
-  color: var(--text);
-  border: 2px solid var(--blue);
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-family: monospace;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  white-space: nowrap;
-}
-
-.tty-btn .glyph {
-  display: inline-block;
-  opacity: 0;
-  transform: translateX(-0.5rem);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  margin-right: 0.3rem;
-}
-
-.tty-btn:hover {
-  background-color: transparent;
-  color: var(--yellow);
-}
-
-.tty-btn:hover .glyph {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.tty-btn .glyph::before {
-  content: '❯';
 }
 
 .animated-component {
@@ -181,4 +177,27 @@ li strong {
   opacity: 0;
   transform: translateY(+500px);
   pointer-events: none;
+}
+
+.username {
+  color: var(--yellow);
+  font-weight: bolder;
+}
+
+.hostname {
+  color: var(--orange);
+  font-weight: bolder;
+}
+
+.arrow {
+  color: var(--cyan);
+  font-weight: bolder;
+}
+
+.buffer p {
+  display: block;
+  line-height: 22px;
+  animation: typing 1s steps(30, end);
+  white-space: nowrap;
+  overflow: hidden;
 }

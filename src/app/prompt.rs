@@ -5,6 +5,8 @@ use log::debug;
 
 use crate::shell::Shell;
 
+const PROMPT: &str = r#"<span class="username">dev</span>@<span class="hostname">sotoestevez</span> : ~/ <span class="arrow">›</span> "#;
+
 #[component]
 pub fn Prompt(buffer: RwSignal<Vec<String>>) -> impl IntoView {
     let mut shell = Shell::default();
@@ -14,6 +16,10 @@ pub fn Prompt(buffer: RwSignal<Vec<String>>) -> impl IntoView {
     let on_key = move |ev: KeyboardEvent| {
         if ev.key() == "Enter" {
             let value = input.get();
+
+            let prompt = format!("{PROMPT}{value}");
+            buffer.update(|buf| buf.push(prompt));
+
             for line in shell.interpret(value) {
                 debug!("{:?}", line);
                 buffer.update(|buf| buf.push(line));

@@ -8,7 +8,7 @@ impl Shell {
         let command = command.trim();
         match command {
             "" => Vec::new(),
-            "help" => vec!["Help".to_string(), "Please".to_string()],
+            "help" => vec!["<em>Help</em>".to_string(), "Please".to_string()],
             _ => vec!["Unknown command".to_string()],
         }
     }

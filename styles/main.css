@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Fira Code', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Fira Code', Tahoma, Geneva, Verdana, monospace;
   margin: 0;
   background-color: var(--bg);
   color: var(--text);
@@ -68,7 +68,6 @@ h2 {
   padding-bottom: 0.5rem;
 }
 
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -104,6 +103,23 @@ a {
  
 li strong {
   color: var(--white);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.buffer p {
+  display: block;
+  line-height: 22px;
+  animation: typing 1s steps(30, end);
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .button-wrapper {

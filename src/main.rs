@@ -1,6 +1,7 @@
-use app::App;
-
 mod app;
+mod shell;
+
+use app::App;
 
 fn main() {
     let _ = console_log::init_with_level(log::Level::Debug);

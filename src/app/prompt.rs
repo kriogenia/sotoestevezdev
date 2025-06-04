@@ -1,18 +1,25 @@
 use leptos::ev::KeyboardEvent;
 use leptos::prelude::*;
 use leptos::{IntoView, component, view};
+use log::debug;
+
+use crate::shell::Shell;
 
 #[component]
-pub fn Prompt(send_line: WriteSignal<Option<String>>) -> impl IntoView {
+pub fn Prompt(buffer: RwSignal<Vec<String>>) -> impl IntoView {
+    let mut shell = Shell::default();
+
     let (input, set_input) = signal(String::new());
 
     let on_key = move |ev: KeyboardEvent| {
         if ev.key() == "Enter" {
             let value = input.get();
-            if !value.trim().is_empty() {
-                send_line.write().replace(value);
-                set_input.set(String::new());
+            for line in shell.interpret(value) {
+                debug!("{:?}", line);
+                buffer.update(|buf| buf.push(line));
+                debug!("{:?}", buffer.read().to_vec());
             }
+            set_input.set(String::new());
         }
     };
 

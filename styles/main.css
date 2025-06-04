@@ -155,7 +155,13 @@ li strong {
   transform: translateY(0);
 }
 
-.animated-component.hiding {
+.animated-component.hide-up {
+  opacity: 0;
+  transform: translateY(-200px);
+  pointer-events: none;
+}
+
+.animated-component.hide-down {
   opacity: 0;
   transform: translateY(+500px);
   pointer-events: none;

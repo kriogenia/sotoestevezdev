@@ -10,12 +10,12 @@
   <link data-trunk rel="css" href="styles/main.css" />
 </head>
 <body>
-  <header>
+  <header id="header" class="animated-component">
     <h1>Ricardo <span class="surnames">Soto Estévez</span></h1>
     <p>Back-End Developer | Open Source Contributor | Coffee Enthusiast</p>
 
     <button class="tty-btn" onclick="toggleTty()">
-      <span class="glyph"></span>/start advanced mode
+      <span class="glyph"></span>ssh dev@sotoestevez
     </button>
   </header>
 
@@ -100,17 +100,33 @@
   </div>
 
   <script>
+    const enterTtty = () => {
+      const container = document.getElementById("container");
+      container.classList.add("hidden");
+      container.classList.remove("hide-down");
+      const header = document.getElementById("header");
+      header.classList.add("hidden");
+      header.classList.remove("hide-up");
+      const app = document.getElementById("app");
+      app.classList.remove("hidden");
+      app.classList.add("active");
+    }
+
+    const intoTty = () => {
+      const container = document.getElementById("container");
+      container.classList.add("hide-down");
+      const header = document.getElementById("header");
+      header.classList.add("hide-up");
+      setTimeout(enterTtty, 1000);
+    }
+
     const toggleTty = () => {
       const container = document.getElementById("container");
-      const app = document.getElementById("app");
-      container.classList.toggle("hiding");
-      container.classList.toggle("active");
-      app.classList.toggle("hidden");
-      app.classList.toggle("active");
-      
-      setTimeout(() => {
-        container.classList.toggle("hidden");
-      }, 1000);
+      if (container.classList.contains("hidden")) {
+        console.log("wrong");
+      } else {
+        intoTty();
+      }
     }
   </script>
 </body>

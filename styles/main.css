@@ -2,17 +2,17 @@
   --purple:   #6a4d75;
   --indigo:   #2a1b40;
   --darkblue: #161a38;
-  --blue:     #174e7d;
-  --cyan:     #8ac4d9;
   --green:    #676e4c;
-  --yellow:   #f4aa51;
-  --orange:   #ff7d25;
   --brown:    #734434;
   --red:      #8c301b;
-  --white:    #f5efd5;
   --black:    #010303;
-  --text:     #cdd6f4;
-  --bg:       #091b22;
+  --bg:                 #091b22;
+  --text:               #cdd6f4;
+  --text-emph:          #f5efd5;
+  --primary:            #ff7d25;
+  --primary-light:      #f4aa51;
+  --secondary:          #174e7d;
+  --secondary-light:    #8ac4d9;
 }
 
 body {
@@ -49,12 +49,12 @@ header h1 {
 .surnames {
   text-transform: uppercase;
   font-weight: bolder;
-  color: var(--orange);
+  color: var(--primary);
 }
 
 header p {
   font-size: 1.2rem;
-  color: var(--white);
+  color: var(--text-emph);
 }
 
 .button-wrapper {
@@ -66,9 +66,9 @@ header p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--blue);
+  background-color: var(--secondary);
   color: var(--text);
-  border: 2px solid var(--blue);
+  border: 2px solid var(--secondary);
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-family: monospace;
@@ -88,7 +88,7 @@ header p {
 
 .tty-btn:hover {
   background-color: transparent;
-  color: var(--yellow);
+  color: var(--primary-light);
 }
 
 .tty-btn:hover .glyph {
@@ -111,7 +111,7 @@ section {
 }
 
 h2 {
-  border-bottom: 2px solid var(--yellow);
+  border-bottom: 2px solid var(--primary-light);
   padding-bottom: 0.5rem;
 }
 
@@ -128,7 +128,7 @@ td {
 td:first-child {
   width: 150px;
   font-weight: bold;
-  color: var(--white);
+  color: var(--text-emph);
 }
 
 td div {
@@ -136,7 +136,7 @@ td div {
 }
 
 td div:first-child {
-    color: var(--yellow);
+    color: var(--primary-light);
 }
 
 td div:nth-child(-n + 2) {
@@ -144,12 +144,12 @@ td div:nth-child(-n + 2) {
 }
 
 a {
-  color: var(--cyan);
+  color: var(--secondary-light);
   text-decoration: none;
 }
 
 li strong {
-  color: var(--white);
+  color: var(--text-emph);
 }
 
 @keyframes typing {
@@ -195,17 +195,17 @@ li strong {
 }
 
 .username {
-  color: var(--yellow);
+  color: var(--primary-light);
   font-weight: bolder;
 }
 
 .hostname {
-  color: var(--orange);
+  color: var(--primary);
   font-weight: bolder;
 }
 
 .arrow {
-  color: var(--cyan);
+  color: var(--secondary-light);
   font-weight: bolder;
 }
 
@@ -213,7 +213,7 @@ li strong {
   background-color: var(--bg);
   border: none;
   outline: none;
-  caret-color: var(--cyan);
+  caret-color: var(--secondary-light);
   color: inherit;
   font-size: inherit;
   font-family: inherit;

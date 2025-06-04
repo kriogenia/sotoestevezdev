@@ -1,3 +1,5 @@
+const HELP: &str = include_str!("../static/help.html");
+
 #[derive(Default)]
 pub struct Shell {
     _history: Vec<String>,
@@ -8,7 +10,7 @@ impl Shell {
         let command = command.trim();
         match command {
             "" => Vec::new(),
-            "help" => vec!["<em>Help</em>".to_string(), "Please".to_string()],
+            "help" => HELP.lines().map(|s| s.to_owned()).collect(),
             _ => vec!["Unknown command".to_string()],
         }
     }

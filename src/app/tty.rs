@@ -1,6 +1,8 @@
 use leptos::prelude::*;
 use leptos::{IntoView, component, view};
 
+use crate::app::prompt::PROMPT;
+
 #[component]
 pub fn TTY(buffer: RwSignal<Vec<String>>) -> impl IntoView {
     let mut next_id = 0;
@@ -20,7 +22,8 @@ pub fn TTY(buffer: RwSignal<Vec<String>>) -> impl IntoView {
                 each=move || lines.get()
                 key=|counter| counter.0
                 children=move |(_, line)| {
-                    view! { <p inner_html=line/> }
+                    let is_prompt = line.starts_with(PROMPT);
+                    view! { <p class=("echo", is_prompt) inner_html=line/> }
                 }
             />
         </div>

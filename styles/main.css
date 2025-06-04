@@ -179,6 +179,21 @@ li strong {
   pointer-events: none;
 }
 
+.app {
+  font-size: 16px;
+}
+
+.buffer p {
+  display: block;
+  line-height: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.buffer p:not(.echo) {
+  animation: typing 1s steps(30, end);
+}
+
 .username {
   color: var(--yellow);
   font-weight: bolder;
@@ -194,10 +209,12 @@ li strong {
   font-weight: bolder;
 }
 
-.buffer p {
-  display: block;
-  line-height: 22px;
-  animation: typing 1s steps(30, end);
-  white-space: nowrap;
-  overflow: hidden;
+.prompt input {
+  background-color: var(--bg);
+  border: none;
+  outline: none;
+  caret-color: var(--cyan);
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
 }

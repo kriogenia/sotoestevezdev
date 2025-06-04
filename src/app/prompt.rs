@@ -5,7 +5,7 @@ use log::debug;
 
 use crate::shell::Shell;
 
-const PROMPT: &str = r#"<span class="username">dev</span>@<span class="hostname">sotoestevez</span> : ~/ <span class="arrow">›</span> "#;
+pub const PROMPT: &str = r#"<span class="username">dev</span>@<span class="hostname">sotoestevez</span> : ~/ <span class="arrow">›</span> "#;
 
 #[component]
 pub fn Prompt(buffer: RwSignal<Vec<String>>) -> impl IntoView {
@@ -30,12 +30,18 @@ pub fn Prompt(buffer: RwSignal<Vec<String>>) -> impl IntoView {
     };
 
     view! {
-        <input
-            class="prompt"
-            type="text"
-            prop:value=input
-            on:input=move |ev| set_input.set(event_target_value(&ev))
-            on:keydown=on_key
-        />
+        <p class="prompt">
+            <span inner_html=PROMPT/>
+            <input
+                type="text"
+                enterkeyhint="Enter"
+                spellcheck="false"
+                autocapitalize="none"
+                autocomplete="off"
+                prop:value=input
+                on:input=move |ev| set_input.set(event_target_value(&ev))
+                on:keydown=on_key
+            />
+        </p>
     }
 }

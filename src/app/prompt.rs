@@ -5,7 +5,7 @@ use log::debug;
 
 use crate::shell::Shell;
 
-pub const PROMPT: &str = r#"<span class="username">dev</span>@<span class="hostname">sotoestevez</span> : ~/ <span class="arrow">›</span> "#;
+pub const PROMPT: &str = include_str!("../../static/prompt.html");
 
 #[component]
 pub fn Prompt(buffer: RwSignal<Vec<String>>) -> impl IntoView {

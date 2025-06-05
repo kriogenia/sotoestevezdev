@@ -1,14 +1,20 @@
 use wasm_bindgen::prelude::*;
 
+const HEADER: &str = include_str!("../../static/themes.html");
+
 pub(super) fn run(arg: Option<&str>) -> Vec<String> {
     match arg.map(Themes::from) {
         Some(Themes::Unknown) => vec!["Unknown theme".to_string()],
+        Some(Themes::List) | None => HEADER
+            .lines()
+            .map(|s| s.to_owned())
+            .chain(Themes::list().iter().map(format))
+            .collect(),
         Some(theme) => {
             let class = theme.class();
             set_theme(class);
             vec![format!("Swapping theme to {}", class)]
         }
-        None => vec!["list of themes".to_string()],
     }
 }
 
@@ -24,6 +30,7 @@ enum Themes {
     Mocha,
     OldSchool,
     // TODO: add dracula, tokyonight, latte?, nordic?
+    List,
     Unknown,
 }
 
@@ -31,8 +38,9 @@ impl From<&str> for Themes {
     fn from(value: &str) -> Self {
         let name = value.trim();
         match name {
+            "catppuccin-mocha" | "mocha" => Self::Mocha,
             "hearthian" => Self::Hearthian,
-            "mocha" => Self::Mocha,
+            "ls" => Self::List,
             "oldschool" => Self::OldSchool,
             _ => Self::Unknown,
         }
@@ -45,7 +53,22 @@ impl Themes {
             Self::Hearthian => "hearthian",
             Self::Mocha => "catppuccin-mocha",
             Self::OldSchool => "oldschool",
-            Self::Unknown => "",
+            Self::List | Self::Unknown => unreachable!("only requested in value theme names"),
         }
     }
+
+    fn name(&self) -> &str {
+        match self {
+            Self::Mocha => "mocha | catppuccin-mocha",
+            _ => self.class(),
+        }
+    }
+
+    fn list() -> Vec<Themes> {
+        vec![Self::Hearthian, Self::Mocha, Self::OldSchool]
+    }
+}
+
+fn format(theme: &Themes) -> String {
+    format!("  <em>{}</em>", theme.name())
 }

@@ -15,8 +15,8 @@ impl Shell {
         match args.next() {
             None => Vec::new(),
             Some("about") => ABOUT.lines().map(|s| s.to_owned()).collect(),
-            Some("help") => HELP.lines().map(|s| s.to_owned()).collect(),
             Some("exit") => exit::run(),
+            Some("help") => HELP.lines().map(|s| s.to_owned()).collect(),
             Some("theme") => theme::run(args.next()),
             _ => vec!["Unknown command".to_string()],
         }

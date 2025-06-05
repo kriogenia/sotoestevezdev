@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-  <link href='https://fonts.googleapis.com/css?family=Fira Code' rel='stylesheet'>
-  <link data-trunk rel="css" href="styles/main.css" />
+  <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Fira Code'>
+  <link rel="css" data-trunk href="styles/main.css" />
 </head>
 <body>
   <header id="header" class="animated-component">
@@ -24,7 +24,7 @@
     <section>
       <h2>Who are you?</h2>
       <p>
-        Saúdos! I’m a backend developer specialized in search APIs. I’ve spent a lot of time designing and implementing backend architectures from scratch, all the way to getting them running in the cloud. I’m comfortable working across the stack when needed, but my sweet spot is definitely in backend logic and infrastructure. I also enjoy contributing to open source, and learning new languages and technologies from time to time.
+        <em>Saúdos!</em> I’m a backend developer specialized in search APIs. I’ve spent a lot of time designing and implementing backend architectures from scratch, all the way to getting them running in the cloud. I’m comfortable working across the stack when needed, but my sweet spot is definitely in backend logic and infrastructure. I also enjoy contributing to open source, and learning new languages and technologies from time to time.
       </p>
     </section>
 
@@ -116,6 +116,7 @@
       swap(container, "hide-down", "hidden");
       swap(header, "hide-up", "hidden");
       swap(app(), "hidden", "active");
+      document.getElementById("input-prompt").focus();
     }
 
     const enterPage = () => {

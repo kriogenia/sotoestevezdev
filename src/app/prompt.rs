@@ -26,6 +26,7 @@ pub fn Prompt() -> impl IntoView {
         <p class="prompt">
             <span inner_html=PROMPT/>
             <input
+                id="input-prompt"
                 type="text"
                 enterkeyhint="Enter"
                 spellcheck="false"

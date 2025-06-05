@@ -41,3 +41,15 @@
   --secondary:        Green;
   --secondary-light:  LimeGreen;
 }
+
+.tokyonight {
+  --bg:               #222436;
+  --text:             #c8d3f5;
+  --text-alt:         #d9e4f7;
+  --text-emph:        #c099ff;
+  --primary:          #0db9d7;
+  --primary-light:    #828bb8;
+  --secondary:        #ff007c;
+  --secondary-light:  #3e68d7;
+}
+

@@ -30,6 +30,7 @@ enum Themes {
     Hearthian,
     Mocha,
     OldSchool,
+    Tokyonight,
     // TODO: tokyonight, latte?, nordic?
     List,
     Unknown,
@@ -39,11 +40,12 @@ impl From<&str> for Themes {
     fn from(value: &str) -> Self {
         let name = value.trim();
         match name {
-            "dracula" => Self::Dracula,
             "catppuccin-mocha" | "mocha" => Self::Mocha,
+            "dracula" => Self::Dracula,
             "hearthian" => Self::Hearthian,
             "ls" => Self::List,
             "oldschool" => Self::OldSchool,
+            "tokyonight" => Self::Tokyonight,
             _ => Self::Unknown,
         }
     }
@@ -56,6 +58,7 @@ impl Themes {
             Self::Hearthian => "hearthian",
             Self::Mocha => "catppuccin-mocha",
             Self::OldSchool => "oldschool",
+            Self::Tokyonight => "tokyonight",
             Self::List | Self::Unknown => unreachable!("only requested in value theme names"),
         }
     }
@@ -68,7 +71,13 @@ impl Themes {
     }
 
     fn list() -> Vec<Themes> {
-        vec![Self::Dracula, Self::Hearthian, Self::Mocha, Self::OldSchool]
+        vec![
+            Self::Dracula,
+            Self::Hearthian,
+            Self::Mocha,
+            Self::OldSchool,
+            Self::Tokyonight,
+        ]
     }
 }
 

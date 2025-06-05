@@ -105,6 +105,20 @@
     const header = document.getElementById("header");
     const app = () => document.getElementById("app");
 
+    const scrollDown = () => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth"
+        });
+    }
+
+    const scrollUp = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+    }
+
     const swap = (block, exit, enter) => {
       block.classList.remove(exit);
       if (enter) {
@@ -112,22 +126,24 @@
       }
     }
 
-    const enterTtty = () => {
+    const enterTty = () => {
       swap(container, "hide-down", "hidden");
       swap(header, "hide-up", "hidden");
       swap(app(), "hidden", "active");
+      scrollDown();
       document.getElementById("input-prompt").focus();
     }
 
     const enterPage = () => {
       swap(container, "enter-up");
       swap(header, "enter-down");
+      scrollUp();
     }
 
     const intoTty = () => {
       container.classList.add("hide-down");
       header.classList.add("hide-up");
-      setTimeout(enterTtty, 1000);
+      setTimeout(enterTty, 1000);
     }
 
     const intoPage = () => {
@@ -152,7 +168,10 @@
       if (classes) {
         p.classList.add(classes);
       }
-      setTimeout(() => buffer.appendChild(p), delay);
+      setTimeout(() => {
+        scrollDown();
+        buffer.appendChild(p);
+      }, delay);
     }
   </script>
 </body>

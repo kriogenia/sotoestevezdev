@@ -192,11 +192,13 @@ li strong {
 
 .app {
   font-size: 16px;
+  margin: 50px;
 }
 
 .buffer p {
+  margin: 0;
   display: block;
-  line-height: 22px;
+  line-height: 25px;
   overflow: hidden;
 }
 
@@ -226,6 +228,10 @@ li strong {
 .arrow {
   color: var(--secondary-light);
   font-weight: bolder;
+}
+
+.prompt {
+  margin: 0;
 }
 
 .prompt input {

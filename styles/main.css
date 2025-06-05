@@ -179,6 +179,17 @@ li strong {
   pointer-events: none;
 }
 
+.animated-component.enter-up {
+  opacity: 0;
+  transform: translateY(+500px);
+  pointer-events: none;
+}
+
+.animated-component.enter-down {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .app {
   font-size: 16px;
 }

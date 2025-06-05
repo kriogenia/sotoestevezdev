@@ -1,4 +1,5 @@
 mod app;
+mod index;
 mod shell;
 
 use app::App;

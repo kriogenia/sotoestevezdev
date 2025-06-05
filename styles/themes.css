@@ -1,0 +1,29 @@
+.hearthian {
+  --bg:               #091b22;
+  --text:             #cdd6f4;
+  --text-emph:        #f5efd5;
+  --primary:          #ff7d25;
+  --primary-light:    #f4aa51;
+  --secondary:        #174e7d;
+  --secondary-light:  #8ac4d9;
+}
+
+.catppuccin-mocha {
+  --bg:               #1e1e2e;
+  --text:             #cdd6f4;
+  --text-emph:        #bac2de;
+  --primary:          #cba6f7;
+  --primary-light:    #f5c2e7;
+  --secondary:        #89b4fa;
+  --secondary-light:  #74c7ec;
+}
+
+.oldschool {
+  --bg:               Black;
+  --text:             White;
+  --text-emph:        Yellow;
+  --primary:          Green;
+  --primary-light:    LimeGreen;
+  --secondary:        Green;
+  --secondary-light:  LimeGreen;
+}

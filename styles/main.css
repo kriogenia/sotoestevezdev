@@ -1,20 +1,3 @@
-:root {
-  --purple:   #6a4d75;
-  --indigo:   #2a1b40;
-  --darkblue: #161a38;
-  --green:    #676e4c;
-  --brown:    #734434;
-  --red:      #8c301b;
-  --black:    #010303;
-  --bg:                 #091b22;
-  --text:               #cdd6f4;
-  --text-emph:          #f5efd5;
-  --primary:            #ff7d25;
-  --primary-light:      #f4aa51;
-  --secondary:          #174e7d;
-  --secondary-light:    #8ac4d9;
-}
-
 body {
   font-family: 'Fira Code', monospace;
   margin: 0;

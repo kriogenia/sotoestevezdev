@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="hearthian">
 <head>
   <title>SotoEstévez</title>
 
@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Fira Code'>
+  <link rel="css" data-trunk href="styles/themes.css" />
   <link rel="css" data-trunk href="styles/main.css" />
 </head>
 <body>
@@ -172,6 +173,10 @@
         scrollDown();
         buffer.appendChild(p);
       }, delay);
+    }
+
+    const setTheme = (theme) => {
+      document.documentElement.className = theme;
     }
   </script>
 </body>

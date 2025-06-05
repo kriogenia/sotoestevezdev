@@ -1,6 +1,7 @@
 .hearthian {
   --bg:               #091b22;
   --text:             #cdd6f4;
+  --text-alt:         #cdd6f4;
   --text-emph:        #f5efd5;
   --primary:          #ff7d25;
   --primary-light:    #f4aa51;
@@ -8,9 +9,21 @@
   --secondary-light:  #8ac4d9;
 }
 
+.dracula {
+  --bg:               #282a36;
+  --text:             #f8f8f2;
+  --text-alt:         #282a36;
+  --text-emph:        #ffffff;
+  --primary:          #50fa7b;
+  --primary-light:    #69ff94;
+  --secondary:        #f1fa8c;
+  --secondary-light:  #ffffa5;
+}
+
 .catppuccin-mocha {
   --bg:               #1e1e2e;
   --text:             #cdd6f4;
+  --text-alt:         #1e1e2e;
   --text-emph:        #bac2de;
   --primary:          #cba6f7;
   --primary-light:    #f5c2e7;
@@ -21,6 +34,7 @@
 .oldschool {
   --bg:               Black;
   --text:             White;
+  --text-alt:         White;
   --text-emph:        Yellow;
   --primary:          Green;
   --primary-light:    LimeGreen;

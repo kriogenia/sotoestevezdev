@@ -26,10 +26,11 @@ extern "C" {
 
 #[derive(PartialEq)]
 enum Themes {
+    Dracula,
     Hearthian,
     Mocha,
     OldSchool,
-    // TODO: add dracula, tokyonight, latte?, nordic?
+    // TODO: tokyonight, latte?, nordic?
     List,
     Unknown,
 }
@@ -38,6 +39,7 @@ impl From<&str> for Themes {
     fn from(value: &str) -> Self {
         let name = value.trim();
         match name {
+            "dracula" => Self::Dracula,
             "catppuccin-mocha" | "mocha" => Self::Mocha,
             "hearthian" => Self::Hearthian,
             "ls" => Self::List,
@@ -50,6 +52,7 @@ impl From<&str> for Themes {
 impl Themes {
     fn class(&self) -> &str {
         match self {
+            Self::Dracula => "dracula",
             Self::Hearthian => "hearthian",
             Self::Mocha => "catppuccin-mocha",
             Self::OldSchool => "oldschool",
@@ -65,7 +68,7 @@ impl Themes {
     }
 
     fn list() -> Vec<Themes> {
-        vec![Self::Hearthian, Self::Mocha, Self::OldSchool]
+        vec![Self::Dracula, Self::Hearthian, Self::Mocha, Self::OldSchool]
     }
 }
 

@@ -1,7 +1,5 @@
 mod theme;
 
-use crate::index::closeTty;
-
 const HELP: &str = include_str!("../static/help.html");
 const ABOUT: &str = include_str!("../static/about.html");
 
@@ -9,8 +7,6 @@ const ABOUT: &str = include_str!("../static/about.html");
 pub struct Shell {
     _history: Vec<String>,
 }
-
-// TODO: macro output
 
 impl Shell {
     pub fn interpret(&mut self, line: String) -> Vec<String> {
@@ -20,12 +16,19 @@ impl Shell {
             None => Vec::new(),
             Some("about") => ABOUT.lines().map(|s| s.to_owned()).collect(),
             Some("help") => HELP.lines().map(|s| s.to_owned()).collect(),
-            Some("exit") => {
-                closeTty();
-                vec!["Closing session...".to_string()]
-            }
+            Some("exit") => exit::run(),
             Some("theme") => theme::run(args.next()),
             _ => vec!["Unknown command".to_string()],
         }
+    }
+}
+
+mod exit {
+
+    use crate::index::closeTty;
+
+    pub(super) fn run() -> Vec<String> {
+        closeTty();
+        vec!["Closing session...".to_string()]
     }
 }

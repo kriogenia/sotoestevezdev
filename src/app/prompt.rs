@@ -1,14 +1,14 @@
 use leptos::ev::KeyboardEvent;
 use leptos::prelude::*;
 use leptos::{IntoView, component, view};
-use log::debug;
 
+use crate::index::{print_output, print_prompt};
 use crate::shell::Shell;
 
 pub const PROMPT: &str = include_str!("../../static/prompt.html");
 
 #[component]
-pub fn Prompt(buffer: RwSignal<Vec<String>>) -> impl IntoView {
+pub fn Prompt() -> impl IntoView {
     let mut shell = Shell::default();
 
     let (input, set_input) = signal(String::new());
@@ -16,15 +16,8 @@ pub fn Prompt(buffer: RwSignal<Vec<String>>) -> impl IntoView {
     let on_key = move |ev: KeyboardEvent| {
         if ev.key() == "Enter" {
             let value = input.get();
-
-            let prompt = format!("{PROMPT}{value}");
-            buffer.update(|buf| buf.push(prompt));
-
-            for line in shell.interpret(value) {
-                debug!("{:?}", line);
-                buffer.update(|buf| buf.push(line));
-                debug!("{:?}", buffer.read().to_vec());
-            }
+            print_prompt(&format!("{PROMPT}{value}"));
+            print_output(shell.interpret(value));
             set_input.set(String::new());
         }
     };

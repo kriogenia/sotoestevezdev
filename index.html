@@ -143,6 +143,16 @@
         intoTty();
       }
     }
+
+    const printLine = (content, delay, classes) => {
+      const buffer = document.getElementById("buffer");
+      const p = document.createElement("p");
+      p.innerHTML = content;
+      if (classes) {
+        p.classList.add(classes);
+      }
+      setTimeout(() => buffer.appendChild(p), delay);
+    }
   </script>
 </body>
 </html>

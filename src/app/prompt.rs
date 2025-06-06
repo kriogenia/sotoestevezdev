@@ -12,7 +12,6 @@ pub fn Prompt() -> impl IntoView {
     let mut shell = Shell::default();
 
     let (input, set_input) = signal(String::new());
-
     let on_key = move |ev: KeyboardEvent| {
         if ev.key() == "Enter" {
             let value = input.get();

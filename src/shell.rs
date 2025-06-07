@@ -49,9 +49,11 @@ impl Shell {
             Some("exit") => exit::run(),
             Some("greeting") => from_static!(GREETING),
             Some("help") => from_static!(HELP),
+            Some("hostname") => to_vec!("sotoestevez"),
             Some("ls" | "eza") => to_vec!(LS),
             Some("mkdir") => to_vec!("mkdir: cannot create directory{}: Permission denied", args),
             Some("mv") => to_vec!("mv: cannot move{}: Permission denied", args),
+            Some("pwd") => to_vec!("/home/dev"),
             Some("rm") => to_vec!("rm: cannot remove {}: Operation not permitted", args),
             Some("rmdir") => to_vec!("rmdir: failed to remove {}: Not a directory", args),
             Some("theme") => theme::run(args.next()),
@@ -70,6 +72,6 @@ mod exit {
 
     pub(super) fn run() -> Vec<String> {
         closeTty();
-        vec!["Closing session...".to_string()]
+        to_vec!("Closing session...")
     }
 }

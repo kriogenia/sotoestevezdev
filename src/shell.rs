@@ -1,6 +1,7 @@
 mod theme;
 
 const ABOUT: &str = include_str!("../static/about.html");
+const CONTACT: &str = include_str!("../static/contact.html");
 const GREETING: &str = include_str!("../static/greeting.html");
 const HELP: &str = include_str!("../static/help.html");
 const LS: &str = ".rw-r--r--  42T sotoestevez  1 jan 13:37 .meaning-of-life.md";
@@ -47,6 +48,7 @@ impl Shell {
             Some("cat") => cat::run(args.next()),
             Some("cd") => to_vec!("cd: The directory{} does not exist", args),
             Some("cp") => to_vec!("cp: cannot copy{}: Permission denied", args),
+            Some("contact") => from_static!(CONTACT),
             Some("echo") => to_vec!((args.next().unwrap_or_default())),
             Some("ed" | "nano") => to_vec!("Did you mean vim?"),
             Some("exit") => exit::run(),

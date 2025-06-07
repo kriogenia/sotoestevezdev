@@ -31,7 +31,7 @@ enum Themes {
     Mocha,
     OldSchool,
     Tokyonight,
-    // TODO: latte?, nordic?
+    // TODO: latte?, nordic?, gruvbox
     List,
     Unknown,
 }

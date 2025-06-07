@@ -53,6 +53,7 @@ impl Shell {
             Some("echo") => to_vec!((args.next().unwrap_or_default())),
             Some("exit") => exit::run(),
             Some("greeting") => from_static!(GREETING),
+            Some("grep" | "rg") => grep::run(args.next()),
             Some("help") => from_static!(HELP),
             Some("hostname") => to_vec!("sotoestevez"),
             Some("ls" | "eza") => to_vec!(LS),
@@ -83,11 +84,19 @@ mod cat {
 }
 
 mod exit {
-
     use crate::index::closeTty;
 
     pub(super) fn run() -> Vec<String> {
         closeTty();
         to_vec!("Closing session...")
+    }
+}
+
+mod grep {
+    pub(super) fn run(search: Option<&str>) -> Vec<String> {
+        vec![
+            ".meaning-of-life.md:".to_string(),
+            format!(" <em>42</em>: {}", search.unwrap_or_default()),
+        ]
     }
 }

@@ -47,6 +47,7 @@ impl Shell {
         match args.next() {
             None => Vec::new(),
             Some("about") => from_static!(ABOUT),
+            Some("cat") => cat::run(args.next()),
             Some("cd") => to_vec!("cd: The directory{} does not exist", args),
             Some("cp") => to_vec!("cp: cannot copy{}: Permission denied", args),
             Some("echo") => to_vec!((args.next().unwrap_or_default())),
@@ -58,8 +59,8 @@ impl Shell {
             Some("mkdir") => to_vec!("mkdir: cannot create directory{}: Permission denied", args),
             Some("mv") => to_vec!("mv: cannot move{}: Permission denied", args),
             Some("pwd") => to_vec!("/home/dev"),
-            Some("rm") => to_vec!("rm: cannot remove {}: Operation not permitted", args),
-            Some("rmdir") => to_vec!("rmdir: failed to remove {}: Not a directory", args),
+            Some("rm") => to_vec!("rm: cannot remove{}: Operation not permitted", args),
+            Some("rmdir") => to_vec!("rmdir: failed to remove{}: Not a directory", args),
             Some("theme") => theme::run(args.next()),
             _ => to_vec!("Unknown command"),
         }
@@ -67,6 +68,17 @@ impl Shell {
 
     pub fn greet(&self) -> Vec<String> {
         from_static!(GREETING)
+    }
+}
+
+mod cat {
+    pub(super) fn run(file: Option<&str>) -> Vec<String> {
+        let msg = match file {
+            Some(".meaning-of-life.md") => "NO MIND IS READY TO DISCERN THE CONTENT OF THIS FILE",
+            Some(f) => &format!("cat {}: No such file or directory", f),
+            None => "dog",
+        };
+        to_vec!(msg)
     }
 }
 

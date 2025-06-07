@@ -8,7 +8,7 @@ const LS: &str = ".rw-r--r--  42T sotoestevez  1 jan 13:37 .meaning-of-life.md";
 
 #[derive(Default)]
 pub struct Shell {
-    _history: Vec<String>,
+    history: Vec<String>,
 }
 
 macro_rules! from_static {
@@ -39,9 +39,10 @@ macro_rules! to_vec {
 
 impl Shell {
     pub fn interpret(&mut self, line: String) -> Vec<String> {
+        self.history.push(line.clone());
         let mut args = line.trim().split_ascii_whitespace();
 
-        // TODO: contact, github, projects, projects, history, clear, techstack
+        // TODO: github, projects, projects, history, clear, techstack
         match args.next() {
             None => Vec::new(),
             Some("about") => from_static!(ABOUT),
@@ -55,6 +56,7 @@ impl Shell {
             Some("greeting") => from_static!(GREETING),
             Some("grep" | "rg") => grep::run(args.next()),
             Some("help") => from_static!(HELP),
+            Some("history") => self.history.clone().into_iter().rev().skip(1).collect(),
             Some("hostname") => to_vec!("sotoestevez"),
             Some("ls" | "eza") => to_vec!(LS),
             Some("mkdir") => to_vec!("mkdir: cannot create directory{}: Permission denied", args),

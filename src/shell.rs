@@ -40,10 +40,8 @@ impl Shell {
     pub fn interpret(&mut self, line: String) -> Vec<String> {
         let mut args = line.trim().split_ascii_whitespace();
 
-        // TODO: contact, github, projects, projects, history, clear, techstack, easter eggs <p>
-        // cat meaning of life: you cant, other file not exists
-        // grep rg always find the
-        // nano, do you mean vim?
+        // TODO: contact, github, projects, projects, history, clear, techstack
+        // sudo su
         match args.next() {
             None => Vec::new(),
             Some("about") => from_static!(ABOUT),
@@ -51,6 +49,7 @@ impl Shell {
             Some("cd") => to_vec!("cd: The directory{} does not exist", args),
             Some("cp") => to_vec!("cp: cannot copy{}: Permission denied", args),
             Some("echo") => to_vec!((args.next().unwrap_or_default())),
+            Some("ed" | "nano") => to_vec!("Did you mean vim?"),
             Some("exit") => exit::run(),
             Some("greeting") => from_static!(GREETING),
             Some("grep" | "rg") => grep::run(args.next()),
@@ -63,6 +62,7 @@ impl Shell {
             Some("rm") => to_vec!("rm: cannot remove{}: Operation not permitted", args),
             Some("rmdir") => to_vec!("rmdir: failed to remove{}: Not a directory", args),
             Some("theme") => theme::run(args.next()),
+            Some("vi" | "vim" | "nvim") => to_vec!("Oh, a dev of culture. I see"),
             _ => to_vec!("Unknown command"),
         }
     }

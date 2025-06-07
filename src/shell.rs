@@ -29,6 +29,10 @@ impl Shell {
             _ => vec!["Unknown command".to_string()],
         }
     }
+
+    pub fn greet(&self) -> Vec<String> {
+        from_static!(GREETING)
+    }
 }
 
 mod exit {

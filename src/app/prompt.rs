@@ -11,6 +11,9 @@ pub const PROMPT: &str = include_str!("../../static/prompt.html");
 pub fn Prompt() -> impl IntoView {
     let mut shell = Shell::default();
 
+    let greet = shell.greet();
+    Effect::new(move || print_output(greet.clone()));
+
     let (input, set_input) = signal(String::new());
     let on_key = move |ev: KeyboardEvent| {
         if ev.key() == "Enter" {

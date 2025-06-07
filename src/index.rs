@@ -9,6 +9,8 @@ extern "C" {
     #[wasm_bindgen(js_name = printLine)]
     fn print_line(content: &str, delay: usize, class: Option<&str>);
 
+    #[wasm_bindgen(js_name = clear)]
+    pub fn clear();
 }
 
 pub fn print_prompt(content: &str) {

@@ -42,12 +42,13 @@ impl Shell {
         self.history.push(line.clone());
         let mut args = line.trim().split_ascii_whitespace();
 
-        // TODO: github, projects, projects, history, clear, techstack
+        // TODO: github, projects, projects, clear, techstack
         match args.next() {
             None => Vec::new(),
             Some("about") => from_static!(ABOUT),
             Some("cat") => cat::run(args.next()),
             Some("cd") => to_vec!("cd: The directory{} does not exist", args),
+            Some("clear") => clear::run(),
             Some("cp") => to_vec!("cp: cannot copy{}: Permission denied", args),
             Some("contact") => from_static!(CONTACT),
             Some("echo") => to_vec!((args.next().unwrap_or_default())),
@@ -76,6 +77,13 @@ impl Shell {
     }
 }
 
+mod clear {
+    pub(super) fn run() -> Vec<String> {
+        crate::index::clear();
+        Default::default()
+    }
+}
+
 mod cat {
     pub(super) fn run(file: Option<&str>) -> Vec<String> {
         let msg = match file {
@@ -88,10 +96,8 @@ mod cat {
 }
 
 mod exit {
-    use crate::index::closeTty;
-
     pub(super) fn run() -> Vec<String> {
-        closeTty();
+        crate::index::closeTty();
         to_vec!("Closing session...")
     }
 }

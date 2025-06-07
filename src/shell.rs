@@ -23,6 +23,9 @@ macro_rules! to_vec {
     ($content:ident) => {
         vec![$content.to_string()]
     };
+    ($content:tt) => {
+        vec![$content.to_string()]
+    };
     ($tpl:literal, $args:tt) => {{
         let dir = $args
             .next()
@@ -46,6 +49,7 @@ impl Shell {
             Some("about") => from_static!(ABOUT),
             Some("cd") => to_vec!("cd: The directory{} does not exist", args),
             Some("cp") => to_vec!("cp: cannot copy{}: Permission denied", args),
+            Some("echo") => to_vec!((args.next().unwrap_or_default())),
             Some("exit") => exit::run(),
             Some("greeting") => from_static!(GREETING),
             Some("help") => from_static!(HELP),

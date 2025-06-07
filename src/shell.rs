@@ -41,7 +41,6 @@ impl Shell {
         let mut args = line.trim().split_ascii_whitespace();
 
         // TODO: contact, github, projects, projects, history, clear, techstack
-        // sudo su
         match args.next() {
             None => Vec::new(),
             Some("about") => from_static!(ABOUT),
@@ -61,6 +60,7 @@ impl Shell {
             Some("pwd") => to_vec!("/home/dev"),
             Some("rm") => to_vec!("rm: cannot remove{}: Operation not permitted", args),
             Some("rmdir") => to_vec!("rmdir: failed to remove{}: Not a directory", args),
+            Some("su" | "sudo") => to_vec!("MUAHAHA YOU HAVE NO POWER HERE"),
             Some("theme") => theme::run(args.next()),
             Some("vi" | "vim" | "nvim") => to_vec!("Oh, a dev of culture. I see"),
             _ => to_vec!("Unknown command"),

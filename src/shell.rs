@@ -9,6 +9,7 @@ const LS: &str = ".rw-r--r--  42T sotoestevez  1 jan 13:37 .meaning-of-life.md";
 #[derive(Default)]
 pub struct Shell {
     history: Vec<String>,
+    pointer: usize,
 }
 
 macro_rules! from_static {
@@ -40,9 +41,10 @@ macro_rules! to_vec {
 impl Shell {
     pub fn interpret(&mut self, line: String) -> Vec<String> {
         self.history.push(line.clone());
+        self.pointer = 0;
         let mut args = line.trim().split_ascii_whitespace();
 
-        // TODO: github, projects, projects, clear, techstack
+        // TODO: github, projects, projects, techstack
         match args.next() {
             None => Vec::new(),
             Some("about") => from_static!(ABOUT),
@@ -74,6 +76,16 @@ impl Shell {
 
     pub fn greet(&self) -> Vec<String> {
         from_static!(GREETING)
+    }
+
+    pub fn prev(&mut self) -> Option<&String> {
+        if self.pointer >= self.history.len() {
+            None
+        } else {
+            let prev = self.history.get(self.history.len() - 1 - self.pointer);
+            self.pointer += 1;
+            prev
+        }
     }
 }
 

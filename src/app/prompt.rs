@@ -16,11 +16,20 @@ pub fn Prompt() -> impl IntoView {
 
     let (input, set_input) = signal(String::new());
     let on_key = move |ev: KeyboardEvent| {
-        if ev.key() == "Enter" {
-            let value = input.get();
-            print_prompt(&format!("{PROMPT}{value}"));
-            print_output(shell.interpret(value));
-            set_input.set(String::new());
+        let key = ev.key();
+        match key.as_ref() {
+            "Enter" => {
+                let value = input.get();
+                print_prompt(&format!("{PROMPT}{value}"));
+                print_output(shell.interpret(value));
+                set_input.set(String::new());
+            }
+            "ArrowUp" => {
+                if let Some(prev) = shell.prev() {
+                    set_input.set(prev.clone());
+                }
+            }
+            _ => {}
         }
     };
 

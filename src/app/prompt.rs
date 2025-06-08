@@ -34,6 +34,12 @@ pub fn Prompt() -> impl IntoView {
                     input.set_value(prev);
                 }
             }
+            "ArrowDown" => {
+                ev.prevent_default();
+                if let Some(next) = shell.next() {
+                    input.set_value(next);
+                }
+            }
             "Tab" => {
                 ev.prevent_default();
                 let opts = shell.autocomplete_options(&input.value());

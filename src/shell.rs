@@ -99,6 +99,16 @@ impl Shell {
         }
     }
 
+    pub fn next(&mut self) -> Option<&String> {
+        if self.pointer == 0 {
+            None
+        } else {
+            let next = self.history.get(self.history.len() + 1 - self.pointer);
+            self.pointer -= 1;
+            next
+        }
+    }
+
     pub fn autocomplete_options(&self, input: &str) -> Vec<String> {
         Command::iter()
             .map(|c| c.to_string().to_ascii_lowercase())

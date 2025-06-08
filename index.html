@@ -187,7 +187,7 @@
 
     const printLine = (content, delay, classes) => {
       const p = document.createElement("p");
-      p.innerHTML = content;
+      p.innerHTML = content || " ";
       if (classes) {
         p.classList.add(classes);
       }

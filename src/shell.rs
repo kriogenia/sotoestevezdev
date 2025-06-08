@@ -1,3 +1,5 @@
+use std::str::FromStr;
+
 use commands::Command;
 
 mod commands;
@@ -49,7 +51,11 @@ impl Shell {
 
         // TODO: github, projects, projects <p>, techstack
         use Command::*;
-        match args.next().map(Command::from).unwrap_or(Empty) {
+        match args
+            .next()
+            .map(|c| Command::from_str(c).unwrap_or(Unknown))
+            .unwrap_or(Empty)
+        {
             Empty => Vec::new(),
             About => from_static!(ABOUT),
             Cat => cat::run(args.next()),

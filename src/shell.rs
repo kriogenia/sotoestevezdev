@@ -3,12 +3,12 @@ use std::str::FromStr;
 use commands::Command;
 
 mod commands;
+mod help;
 mod theme;
 
 const ABOUT: &str = include_str!("../static/about.html");
 const CONTACT: &str = include_str!("../static/contact.html");
 const GREETING: &str = include_str!("../static/greeting.html");
-const HELP: &str = include_str!("../static/help.html");
 const LS: &str = ".rw-r--r--  42T sotoestevez  1 jan 13:37 .meaning-of-life.md";
 
 #[derive(Default)]
@@ -69,7 +69,7 @@ impl Shell {
             Exit => exit::run(),
             Greeting => from_static!(GREETING),
             Grep => grep::run(args.next()),
-            Help => from_static!(HELP),
+            Help => help::run(),
             History => self.history.clone().into_iter().rev().skip(1).collect(),
             Hostname => to_vec!("sotoestevez"),
             Ls => to_vec!(LS),

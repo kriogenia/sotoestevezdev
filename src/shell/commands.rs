@@ -1,6 +1,6 @@
 use strum::{EnumIter, EnumString};
 
-#[derive(EnumIter, EnumString)]
+#[derive(strum::Display, EnumIter, EnumString)]
 #[strum(serialize_all = "snake_case")]
 pub(super) enum Command {
     About,
@@ -38,3 +38,19 @@ pub(super) enum Command {
     Unknown,
 }
 
+impl Command {
+    pub fn help(&self) -> Option<&str> {
+        use Command::*;
+        match self {
+            About => Some("info about me"),
+            Clear => Some("clears the screen"),
+            Contact => Some("list my profiles"),
+            Exit => Some("back to the boring static page"),
+            Greeting => Some("display again the console greeting message"),
+            Help => Some("shows this exact help"),
+            History => Some("display all commands you used"),
+            Theme => Some("changes the color theme"),
+            _ => None,
+        }
+    }
+}

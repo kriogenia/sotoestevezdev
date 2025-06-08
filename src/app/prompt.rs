@@ -1,6 +1,9 @@
 use leptos::ev::KeyboardEvent;
+use leptos::html::Input;
 use leptos::prelude::*;
 use leptos::{IntoView, component, view};
+use log::debug;
+use wasm_bindgen::UnwrapThrowExt;
 
 use crate::index::{print_output, print_prompt};
 use crate::shell::Shell;
@@ -14,19 +17,22 @@ pub fn Prompt() -> impl IntoView {
     let greet = shell.greet();
     Effect::new(move || print_output(greet.clone()));
 
-    let (input, set_input) = signal(String::new());
+    let input: NodeRef<Input> = NodeRef::new();
     let on_key = move |ev: KeyboardEvent| {
         let key = ev.key();
+        let input = input.get().unwrap_throw();
         match key.as_ref() {
             "Enter" => {
-                let value = input.get();
+                let value = input.value();
                 print_prompt(&format!("{PROMPT}{value}"));
                 print_output(shell.interpret(value));
-                set_input.set(String::new());
+                input.set_value("");
             }
             "ArrowUp" => {
                 if let Some(prev) = shell.prev() {
-                    set_input.set(prev.clone());
+                    input.set_value(prev);
+                    let caret = prev.len() as u32;
+                    input.set_selection_range(caret, caret).unwrap_throw();
                 }
             }
             _ => {}
@@ -43,8 +49,7 @@ pub fn Prompt() -> impl IntoView {
                 spellcheck="false"
                 autocapitalize="none"
                 autocomplete="off"
-                prop:value=input
-                on:input=move |ev| set_input.set(event_target_value(&ev))
+                node_ref=input
                 on:keydown=on_key
             />
         </p>

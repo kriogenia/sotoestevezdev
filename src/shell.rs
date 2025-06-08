@@ -5,6 +5,7 @@ use strum::IntoEnumIterator;
 
 mod commands;
 mod help;
+mod project;
 mod theme;
 
 const ABOUT: &str = include_str!("../static/about.html");
@@ -77,6 +78,7 @@ impl Shell {
             MissingEditor => to_vec!("Did you mean vim?"),
             MkDir => to_vec!("mkdir: cannot create directory{}: Permission denied", args),
             Mv => to_vec!("mv: cannot move{}: Permission denied", args),
+            Project => project::run(args.next()),
             Pwd => to_vec!("/home/dev"),
             Rm => to_vec!("rm: cannot remove{}: Operation not permitted", args),
             RmDir => to_vec!("rmdir: failed to remove{}: Not a directory", args),

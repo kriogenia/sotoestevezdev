@@ -38,6 +38,7 @@ pub(super) enum Command {
     #[strum(serialize = "mkdir")]
     MkDir,
     Mv,
+    Project,
     Pwd,
     Rm,
     #[strum(serialize = "rmdir")]
@@ -60,7 +61,8 @@ impl Command {
             Greeting => Some("display again the console greeting message"),
             Help => Some("shows this exact help"),
             History => Some("display all commands you used"),
-            Theme => Some("changes the color theme"),
+            Project => Some("list my projects and their info"),
+            Theme => Some("change the color theme"),
             _ => None,
         }
     }

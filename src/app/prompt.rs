@@ -27,7 +27,6 @@ pub fn Prompt() -> impl IntoView {
                 print_output(shell.interpret(value));
                 input.set_value("");
             }
-            // TODO: next in history
             "ArrowUp" => {
                 ev.prevent_default();
                 if let Some(prev) = shell.prev() {

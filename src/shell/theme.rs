@@ -3,12 +3,12 @@ use wasm_bindgen::prelude::*;
 const HEADER: &str = include_str!("../../static/themes.html");
 
 pub(super) fn run(arg: Option<&str>) -> Vec<String> {
-    match arg.map(Themes::from) {
-        Some(Themes::Unknown) => vec!["Unknown theme".to_string()],
-        Some(Themes::List) | None => HEADER
+    match arg.map(Theme::from) {
+        Some(Theme::Unknown) => vec!["Unknown theme".to_string()],
+        Some(Theme::List) | None => HEADER
             .lines()
             .map(|s| s.to_owned())
-            .chain(Themes::list().iter().map(format))
+            .chain(Theme::list().iter().map(format))
             .collect(),
         Some(theme) => {
             let class = theme.class();
@@ -25,7 +25,7 @@ extern "C" {
 }
 
 #[derive(PartialEq)]
-enum Themes {
+enum Theme {
     Dracula,
     Hearthian,
     Mocha,
@@ -36,7 +36,7 @@ enum Themes {
     Unknown,
 }
 
-impl From<&str> for Themes {
+impl From<&str> for Theme {
     fn from(value: &str) -> Self {
         let name = value.trim();
         match name {
@@ -51,7 +51,7 @@ impl From<&str> for Themes {
     }
 }
 
-impl Themes {
+impl Theme {
     fn class(&self) -> &str {
         match self {
             Self::Dracula => "dracula",
@@ -70,7 +70,7 @@ impl Themes {
         }
     }
 
-    fn list() -> Vec<Themes> {
+    fn list() -> Vec<Theme> {
         vec![
             Self::Dracula,
             Self::Hearthian,
@@ -81,6 +81,6 @@ impl Themes {
     }
 }
 
-fn format(theme: &Themes) -> String {
+fn format(theme: &Theme) -> String {
     format!("  <em>{}</em>", theme.name())
 }

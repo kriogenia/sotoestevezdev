@@ -1,3 +1,6 @@
+use commands::Command;
+
+mod commands;
 mod theme;
 
 const ABOUT: &str = include_str!("../static/about.html");
@@ -44,32 +47,33 @@ impl Shell {
         self.pointer = 0;
         let mut args = line.trim().split_ascii_whitespace();
 
-        // TODO: github, projects, projects, techstack
-        match args.next() {
-            None => Vec::new(),
-            Some("about") => from_static!(ABOUT),
-            Some("cat") => cat::run(args.next()),
-            Some("cd") => to_vec!("cd: The directory{} does not exist", args),
-            Some("clear") => clear::run(),
-            Some("cp") => to_vec!("cp: cannot copy{}: Permission denied", args),
-            Some("contact") => from_static!(CONTACT),
-            Some("echo") => to_vec!((args.next().unwrap_or_default())),
-            Some("ed" | "nano") => to_vec!("Did you mean vim?"),
-            Some("exit") => exit::run(),
-            Some("greeting") => from_static!(GREETING),
-            Some("grep" | "rg") => grep::run(args.next()),
-            Some("help") => from_static!(HELP),
-            Some("history") => self.history.clone().into_iter().rev().skip(1).collect(),
-            Some("hostname") => to_vec!("sotoestevez"),
-            Some("ls" | "eza") => to_vec!(LS),
-            Some("mkdir") => to_vec!("mkdir: cannot create directory{}: Permission denied", args),
-            Some("mv") => to_vec!("mv: cannot move{}: Permission denied", args),
-            Some("pwd") => to_vec!("/home/dev"),
-            Some("rm") => to_vec!("rm: cannot remove{}: Operation not permitted", args),
-            Some("rmdir") => to_vec!("rmdir: failed to remove{}: Not a directory", args),
-            Some("su" | "sudo") => to_vec!("MUAHAHA YOU HAVE NO POWER HERE"),
-            Some("theme") => theme::run(args.next()),
-            Some("vi" | "vim" | "nvim") => to_vec!("Oh, a dev of culture. I see"),
+        // TODO: github, projects, projects <p>, techstack
+        use Command::*;
+        match args.next().map(Command::from).unwrap_or(Empty) {
+            Empty => Vec::new(),
+            About => from_static!(ABOUT),
+            Cat => cat::run(args.next()),
+            Cd => to_vec!("cd: The directory{} does not exist", args),
+            Clear => clear::run(),
+            Cp => to_vec!("cp: cannot copy{}: Permission denied", args),
+            Contact => from_static!(CONTACT),
+            Echo => to_vec!((args.next().unwrap_or_default())),
+            Theme => theme::run(args.next()),
+            Editor => to_vec!("Oh, a dev of culture. I see"),
+            Exit => exit::run(),
+            Greeting => from_static!(GREETING),
+            Grep => grep::run(args.next()),
+            Help => from_static!(HELP),
+            History => self.history.clone().into_iter().rev().skip(1).collect(),
+            Hostname => to_vec!("sotoestevez"),
+            Ls => to_vec!(LS),
+            MissingEditor => to_vec!("Did you mean vim?"),
+            MkDir => to_vec!("mkdir: cannot create directory{}: Permission denied", args),
+            Mv => to_vec!("mv: cannot move{}: Permission denied", args),
+            Pwd => to_vec!("/home/dev"),
+            Rm => to_vec!("rm: cannot remove{}: Operation not permitted", args),
+            RmDir => to_vec!("rmdir: failed to remove{}: Not a directory", args),
+            Sudo => to_vec!("MUAHAHA YOU HAVE NO POWER HERE"),
             _ => to_vec!("Unknown command"),
         }
     }

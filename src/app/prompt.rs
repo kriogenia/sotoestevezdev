@@ -2,7 +2,6 @@ use leptos::ev::KeyboardEvent;
 use leptos::html::Input;
 use leptos::prelude::*;
 use leptos::{IntoView, component, view};
-use log::debug;
 use wasm_bindgen::UnwrapThrowExt;
 
 use crate::index::{print_output, print_prompt};

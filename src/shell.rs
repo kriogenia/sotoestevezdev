@@ -1,6 +1,7 @@
 use std::str::FromStr;
 
 use commands::Command;
+use strum::IntoEnumIterator;
 
 mod commands;
 mod help;
@@ -96,6 +97,14 @@ impl Shell {
             self.pointer += 1;
             prev
         }
+    }
+
+    pub fn autocomplete_options(&self, input: &str) -> Vec<String> {
+        Command::iter()
+            .map(|c| c.to_string().to_ascii_lowercase())
+            .filter(|c| !c.is_empty())
+            .filter(|c| c.starts_with(input))
+            .collect()
     }
 }
 

@@ -1,5 +1,6 @@
 use strum::{EnumIter, EnumString};
 
+#[allow(unreachable_patterns)]
 #[derive(strum::Display, EnumIter, EnumString)]
 #[strum(serialize_all = "snake_case")]
 pub(super) enum Command {
@@ -10,7 +11,12 @@ pub(super) enum Command {
     Cp,
     Contact,
     Echo,
-    #[strum(serialize = "vi", serialize = "vim", serialize = "nvim")]
+    #[strum(
+        serialize = "vi",
+        serialize = "vim",
+        serialize = "nvim",
+        to_string = ""
+    )]
     Editor,
     #[strum(disabled)]
     Empty,
@@ -22,7 +28,12 @@ pub(super) enum Command {
     History,
     Hostname,
     Ls,
-    #[strum(serialize = "ed", serialize = "emacs", serialize = "nano")]
+    #[strum(
+        serialize = "ed",
+        serialize = "emacs",
+        serialize = "nano",
+        to_string = ""
+    )]
     MissingEditor,
     #[strum(serialize = "mkdir")]
     MkDir,

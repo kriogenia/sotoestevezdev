@@ -27,11 +27,18 @@ pub fn Prompt() -> impl IntoView {
                 print_output(shell.interpret(value));
                 input.set_value("");
             }
+            // TODO: next in history
             "ArrowUp" => {
+                ev.prevent_default();
                 if let Some(prev) = shell.prev() {
                     input.set_value(prev);
-                    let caret = prev.len() as u32;
-                    input.set_selection_range(caret, caret).unwrap_throw();
+                }
+            }
+            "Tab" => {
+                ev.prevent_default();
+                let opts = shell.autocomplete_options(&input.value());
+                if opts.len() == 1 {
+                    input.set_value(&opts[0]);
                 }
             }
             _ => {}

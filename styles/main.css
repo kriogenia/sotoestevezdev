@@ -135,15 +135,6 @@ li strong {
   color: var(--text-emph);
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
 .animated-component {
   transition: opacity 1s ease, transform 1s ease-in;
   opacity: 1;
@@ -194,8 +185,7 @@ li strong {
 }
 
 .buffer p:not(.echo) {
-  animation: typing 1s steps(30, end);
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 .username {

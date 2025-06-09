@@ -109,7 +109,7 @@ impl Project {
         let mut print = vec![
             format!(r#"<span class="project-title">{name}</span>"#),
             self.description().to_string(),
-            format!(r#"<span class="tags">{tags}</span>"#), // TODO: + gh topics
+            format!(r#"<span class="tags">{tags}</span>"#),
         ];
 
         let repo = repo.await;
@@ -132,13 +132,13 @@ impl Project {
         if repo.forks > 0 {
             section!("Forks": (repo.forks));
         }
+
         if repo.watchers > 0 {
             section!("Watchers": (repo.watchers));
         }
-        section!("Size": (format!("{} KB", repo.size)));
 
-        // TODO:format date time
-        section!("Created": (repo.created_at));
+        section!("Size": (format!("{} KB", repo.size)));
+        section!("Created": (repo.created_at.split('T').next().unwrap_or_default()));
 
         print
     }

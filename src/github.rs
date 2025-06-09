@@ -12,7 +12,7 @@ pub(super) struct Repository {
     pub forks: i32,
     pub watchers: i32,
     pub size: i32,
-    pub topics: Vec<String>,
+    // pub topics: Vec<String>,
     pub created_at: String,
     #[serde(default)]
     langs: BTreeMap<String, i32>,

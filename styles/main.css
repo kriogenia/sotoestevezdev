@@ -117,10 +117,11 @@ td div {
 
 td div:first-child {
     color: var(--primary-light);
+    font-weight: 600;
 }
 
-td div:nth-child(-n + 2) {
-  font-weight: bolder;
+td div:nth-child(2) {
+  font-weight: 500;
 }
 
 a {
@@ -174,7 +175,7 @@ li strong {
 }
 
 .buffer p strong {
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .buffer p em {
@@ -187,17 +188,17 @@ li strong {
 
 .username {
   color: var(--primary-light);
-  font-weight: bolder;
+  font-weight: 500;
 }
 
 .hostname {
   color: var(--primary);
-  font-weight: bolder;
+  font-weight: 500;
 }
 
 .arrow {
   color: var(--secondary-light);
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .prompt {

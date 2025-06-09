@@ -10,6 +10,7 @@ license = "Apache-2.0 OR MIT"
 [dependencies]
 console_error_panic_hook = "0.1.7"
 console_log = "1.0.0"
+futures = "0.3.31"
 gloo-net = "0.6.0"
 leptos = { version = "0.8.2", features = ["csr"] }
 log = "0.4.27"

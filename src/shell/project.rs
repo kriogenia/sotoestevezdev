@@ -117,10 +117,17 @@ impl Project {
             };
         }
 
+        // TODO: fix no clickable
         section!("Link": (format!("<a>{}</a>", repo.url)));
-        if let Some(lang) = repo.language {
-            section!("Language": lang);
+
+        let mut langs = repo.languages();
+        if let Some((lang, count)) = langs.next() {
+            section!("Languages": (format!("<strong>{lang}</strong> ({count})")));
         }
+        for (lang, count) in langs {
+            print.push(format!("               {lang} ({count})"));
+        }
+
         if repo.forks > 0 {
             section!("Forks": (repo.forks));
         }
@@ -128,6 +135,7 @@ impl Project {
             section!("Watchers": (repo.watchers));
         }
         section!("Size": (format!("{} KB", repo.size)));
+
         // TODO:format date time
         section!("Created": (repo.created_at));
 

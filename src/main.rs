@@ -1,3 +1,6 @@
+// #![warn(clippy::pedantic)]
+#![allow(unreachable_patterns)]
+
 mod app;
 mod github;
 mod icons;

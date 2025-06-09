@@ -5,7 +5,7 @@ pub(super) async fn run() -> Vec<String> {
     let link = format!(r#"<a href="{}">{}</a>"#, user.url, user.url);
     vec![
         format!(
-            r#"{} <strong>{}</strong> ({})"#,
+            r"{} <strong>{}</strong> ({})",
             Icon::GitHub,
             user.login,
             link

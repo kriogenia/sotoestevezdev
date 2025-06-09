@@ -52,7 +52,7 @@ pub(super) enum Command {
 
 impl Command {
     pub fn help(&self) -> Option<&str> {
-        use Command::*;
+        use Command::{About, Clear, Contact, Exit, Github, Greeting, Help, Project, Theme};
         match self {
             About => Some("info about me"),
             Clear => Some("clears the screen"),

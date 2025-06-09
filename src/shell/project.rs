@@ -10,7 +10,7 @@ pub(super) async fn run(arg: Option<&str>) -> Vec<String> {
     if matches!(arg, Some("ls") | None) {
         return HEADER
             .lines()
-            .map(|s| s.to_owned())
+            .map(std::borrow::ToOwned::to_owned)
             .chain(Project::iter().flat_map(format))
             .collect();
     }
@@ -54,7 +54,7 @@ impl Project {
     }
 
     fn description(&self) -> &str {
-        use Project::*;
+        use Project::{Archrio, Nove, Oito, Portfolio, Rede, Shotdown, ThePartingOfSarah};
         match self {
             Rede => {
                 "Open-source HTTP command line client to run suites of requests stored in Git-friendly files using a custom DSL"
@@ -75,7 +75,7 @@ impl Project {
     }
 
     fn tags(&self) -> Vec<&str> {
-        use Project::*;
+        use Project::{Archrio, Nove, Oito, Portfolio, Rede, Shotdown, ThePartingOfSarah};
         match self {
             Rede => vec!["rust", "network", "http", "command-line", "tokyo"],
             Portfolio => vec![

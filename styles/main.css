@@ -6,9 +6,6 @@ body {
   line-height: 1.6;
 }
 
-strong {
-  font-weight: bolder;
-}
 
 .active {
   display: block;
@@ -31,7 +28,7 @@ header h1 {
 
 .surnames {
   text-transform: uppercase;
-  font-weight: bolder;
+  font-weight: bold;
   color: var(--primary);
 }
 
@@ -220,4 +217,6 @@ li strong {
 
 .tags {
   opacity: 75%;
+  font-style: oblique;
 }
+

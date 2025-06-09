@@ -94,7 +94,16 @@ impl Project {
         }
     }
 
-    // TODO: website
+    fn website(&self) -> Option<&str> {
+        match self {
+            Project::Rede => Some("https://rede.sotoestevez.dev"),
+            Project::Portfolio => Some("https://sotoestevez.dev"),
+            Project::Oito => Some("https://oito.sotoestevez.dev"),
+            Project::Shotdown => Some("https://kriogenia.itch.io/shotdown"),
+            Project::ThePartingOfSarah => Some("https://kriogenia.itch.io/the-parting-of-sarah"),
+            _ => None,
+        }
+    }
 
     async fn print(&self) -> Vec<String> {
         let repo = get_repo(self.repo());
@@ -120,6 +129,9 @@ impl Project {
         }
 
         section!("Link": (format!(r#"<a href="{}">{}</a>"#, repo.url, repo.url)));
+        if let Some(website) = self.website() {
+            section!("Website": (format!(r#"<a href="{}">{}</a>"#, website, website)));
+        }
 
         let mut langs = repo.languages();
         if let Some((lang, count)) = langs.next() {

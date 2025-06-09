@@ -43,7 +43,6 @@ macro_rules! to_vec {
 pub async fn interpret(line: String) -> Vec<String> {
     let mut args = line.trim().split_ascii_whitespace();
 
-    // TODO: github, techstack
     use Command::*;
     match args
         .next()

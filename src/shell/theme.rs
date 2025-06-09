@@ -13,7 +13,12 @@ pub(super) fn run(arg: Option<&str>) -> Vec<String> {
         Some(theme) => {
             let class = theme.class();
             set_theme(class);
-            vec![format!("Swapping theme to {}", class)]
+            let extra = if theme.is_dark() {
+                ""
+            } else {
+                " (a light theme... <strong>DISGUSTING</strong>)"
+            };
+            vec![format!("Swapping theme to {}{}", class, extra)]
         }
     }
 }
@@ -27,12 +32,15 @@ extern "C" {
 #[derive(PartialEq)]
 enum Theme {
     Dracula,
+    Gruvbox,
     Hearthian,
+    Latte,
     Mocha,
+    Monochrome,
     OldSchool,
     Tokyonight,
-    // TODO: latte?, nordic?, gruvbox
     List,
+    Remove,
     Unknown,
 }
 
@@ -42,9 +50,13 @@ impl From<&str> for Theme {
         match name {
             "catppuccin-mocha" | "mocha" => Self::Mocha,
             "dracula" => Self::Dracula,
+            "gruvbox" => Self::Gruvbox,
             "hearthian" => Self::Hearthian,
+            "monochrome" => Self::Monochrome,
+            "latte" => Self::Latte,
             "ls" => Self::List,
             "oldschool" => Self::OldSchool,
+            "rm" => Self::Remove,
             "tokyonight" => Self::Tokyonight,
             _ => Self::Unknown,
         }
@@ -55,9 +67,13 @@ impl Theme {
     fn class(&self) -> &str {
         match self {
             Self::Dracula => "dracula",
+            Self::Gruvbox => "gruvbox",
             Self::Hearthian => "hearthian",
+            Self::Latte => "catppuccin-latte",
             Self::Mocha => "catppuccin-mocha",
+            Self::Monochrome => "monochrome",
             Self::OldSchool => "oldschool",
+            Self::Remove => "wait what? Ooooh, well played",
             Self::Tokyonight => "tokyonight",
             Self::List | Self::Unknown => unreachable!("only requested in value theme names"),
         }
@@ -65,6 +81,7 @@ impl Theme {
 
     fn name(&self) -> &str {
         match self {
+            Self::Latte => "latte | catppuccin-latte",
             Self::Mocha => "mocha | catppuccin-mocha",
             _ => self.class(),
         }
@@ -73,11 +90,18 @@ impl Theme {
     fn list() -> Vec<Theme> {
         vec![
             Self::Dracula,
+            Self::Gruvbox,
             Self::Hearthian,
+            Self::Latte,
             Self::Mocha,
+            Self::Monochrome,
             Self::OldSchool,
             Self::Tokyonight,
         ]
+    }
+
+    fn is_dark(&self) -> bool {
+        !matches!(self, Self::Latte)
     }
 }
 

@@ -1,6 +1,5 @@
 use std::str::FromStr;
 
-use log::debug;
 use strum::{EnumIter, EnumString, IntoEnumIterator};
 
 use crate::{github::get_repo, icons::Icon};

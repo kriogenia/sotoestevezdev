@@ -39,7 +39,7 @@ macro_rules! to_vec {
     }};
 }
 
-pub fn interpret(line: String) -> Vec<String> {
+pub async fn interpret(line: String) -> Vec<String> {
     let mut args = line.trim().split_ascii_whitespace();
 
     // TODO: github, projects <p>, techstack
@@ -68,7 +68,7 @@ pub fn interpret(line: String) -> Vec<String> {
         MissingEditor => to_vec!("Did you mean vim?"),
         MkDir => to_vec!("mkdir: cannot create directory{}: Permission denied", args),
         Mv => to_vec!("mv: cannot move{}: Permission denied", args),
-        Project => project::run(args.next()),
+        Project => project::run(args.next()).await,
         Pwd => to_vec!("/home/dev"),
         Rm => to_vec!("rm: cannot remove{}: Operation not permitted", args),
         RmDir => to_vec!("rmdir: failed to remove{}: Not a directory", args),

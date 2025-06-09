@@ -1,4 +1,5 @@
 mod app;
+mod github;
 mod index;
 mod shell;
 

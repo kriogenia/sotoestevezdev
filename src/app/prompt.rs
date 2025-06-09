@@ -1,6 +1,7 @@
 use leptos::ev::KeyboardEvent;
 use leptos::html::Input;
 use leptos::prelude::*;
+use leptos::task::spawn_local;
 use leptos::{IntoView, component, view};
 use wasm_bindgen::UnwrapThrowExt;
 
@@ -25,7 +26,9 @@ pub fn Prompt() -> impl IntoView {
                 let value = input.value();
                 history.update(|h| h.push(&value));
                 print_prompt(&format!("{PROMPT}{value}"));
-                print_output(shell::interpret(value));
+                spawn_local(async move {
+                    print_output(shell::interpret(value).await);
+                });
                 input.set_value("");
             }
             "ArrowUp" => {

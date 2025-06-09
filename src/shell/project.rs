@@ -2,9 +2,11 @@ use std::str::FromStr;
 
 use strum::{EnumIter, EnumString, IntoEnumIterator};
 
+use crate::github::get_repo;
+
 const HEADER: &str = include_str!("../../static/projects.html");
 
-pub(super) fn run(arg: Option<&str>) -> Vec<String> {
+pub(super) async fn run(arg: Option<&str>) -> Vec<String> {
     if matches!(arg, Some("ls") | None) {
         return HEADER
             .lines()
@@ -13,7 +15,7 @@ pub(super) fn run(arg: Option<&str>) -> Vec<String> {
             .collect();
     }
     match Project::from_str(arg.unwrap()) {
-        Ok(p) => p.print(),
+        Ok(p) => p.print().await,
         Err(_) => vec!["Unknown project".to_string()],
     }
 }
@@ -39,6 +41,14 @@ impl Project {
             Project::Archrio => "Archrio".to_string(),
             Project::Shotdown => "Shotdown".to_string(),
             Project::ThePartingOfSarah => "The Parting of Sarah".to_string(),
+            _ => self.to_string(),
+        }
+    }
+
+    fn repo(&self) -> String {
+        match self {
+            Project::Portfolio => "sotoestevezdev".to_string(),
+            Project::ThePartingOfSarah => "the-parting-of-sarah".to_string(),
             _ => self.to_string(),
         }
     }
@@ -84,7 +94,8 @@ impl Project {
         }
     }
 
-    fn print(&self) -> Vec<String> {
+    async fn print(&self) -> Vec<String> {
+        let repo = get_repo(self.repo());
         let name = self.name();
         let tags = self
             .tags()
@@ -92,14 +103,35 @@ impl Project {
             .map(|t| format!("#{t}"))
             .collect::<Vec<String>>()
             .join(" ");
-        vec![
+
+        let mut print = vec![
             format!(r#"<span class="project-title">{name}</span>"#),
             self.description().to_string(),
-            format!(r#"<span class="tags">{tags}</span>"#), // + gh topics
-                                                            // Languages
-                                                            // Forks
-                                                            // Stars
-        ]
+            format!(r#"<span class="tags">{tags}</span>"#), // TODO: + gh topics
+        ];
+
+        let repo = repo.await;
+        macro_rules! section {
+            ($title:literal: $val:tt) => {
+                print.push(format!("  ❯ <em>{}</em>: {}", $title, $val));
+            };
+        }
+
+        section!("Link": (format!("<a>{}</a>", repo.url)));
+        if let Some(lang) = repo.language {
+            section!("Language": lang);
+        }
+        if repo.forks > 0 {
+            section!("Forks": (repo.forks));
+        }
+        if repo.watchers > 0 {
+            section!("Watchers": (repo.watchers));
+        }
+        section!("Size": (format!("{} KB", repo.size)));
+        // TODO:format date time
+        section!("Created": (repo.created_at));
+
+        print
     }
 }
 

@@ -4,5 +4,5 @@ Welcome to my portfolio. A simple page made in pure HTML5 and CSS3, but with a h
 
 Hope you like it and find some of the easter eggs (it's not difficult, the code is public lol).
 
-> [!NOTE TO MYSELF]
-> You still have to clear some things. Check with clippy pedantic possible improvements, try to move the Javascript code into a script, and add Advent of Code.
+> [!NOTE]
+> Dear me in the future, you still have to clear some things. Check with clippy pedantic possible improvements, try to move the Javascript code into a script, and add Advent of Code.

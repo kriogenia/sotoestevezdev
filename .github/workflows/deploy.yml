@@ -41,13 +41,6 @@ jobs:
 
       - name: Build with Trunk
         run: ./trunk build --release
-        # run: ./trunk build --release --public-url "${GITHUB_REPOSITORY#*/}"
-
-      # Deploy to gh-pages branch
-      # - name: Deploy 🚀
-      #   uses: JamesIves/github-pages-deploy-action@v4
-      #   with:
-      #     folder: dist
 
       # Deploy with Github Static Pages
 

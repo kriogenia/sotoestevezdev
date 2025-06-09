@@ -13,9 +13,6 @@ const CONTACT: &str = include_str!("../static/contact.html");
 const GREETING: &str = include_str!("../static/greeting.html");
 const LS: &str = ".rw-r--r--  42T sotoestevez  1 jan 13:37 .meaning-of-life.md";
 
-#[derive(Default)]
-pub struct Shell {}
-
 macro_rules! from_static {
     ($FILE:ident) => {
         $FILE.lines().map(|s| s.to_owned()).collect()
@@ -42,56 +39,54 @@ macro_rules! to_vec {
     }};
 }
 
-impl Shell {
-    pub fn interpret(&mut self, line: String) -> Vec<String> {
-        let mut args = line.trim().split_ascii_whitespace();
+pub fn interpret(line: String) -> Vec<String> {
+    let mut args = line.trim().split_ascii_whitespace();
 
-        // TODO: github, projects, projects <p>, techstack
-        use Command::*;
-        match args
-            .next()
-            .map(|c| Command::from_str(c).unwrap_or(Unknown))
-            .unwrap_or(Empty)
-        {
-            Empty => Vec::new(),
-            About => from_static!(ABOUT),
-            Cat => cat::run(args.next()),
-            Cd => to_vec!("cd: The directory{} does not exist", args),
-            Clear => clear::run(),
-            Cp => to_vec!("cp: cannot copy{}: Permission denied", args),
-            Contact => from_static!(CONTACT),
-            Echo => to_vec!((args.next().unwrap_or_default())),
-            Theme => theme::run(args.next()),
-            Editor => to_vec!("Oh, a dev of culture. I see"),
-            Exit => exit::run(),
-            Greeting => from_static!(GREETING),
-            Grep => grep::run(args.next()),
-            Help => help::run(),
-            Hostname => to_vec!("sotoestevez"),
-            Ls => to_vec!(LS),
-            MissingEditor => to_vec!("Did you mean vim?"),
-            MkDir => to_vec!("mkdir: cannot create directory{}: Permission denied", args),
-            Mv => to_vec!("mv: cannot move{}: Permission denied", args),
-            Project => project::run(args.next()),
-            Pwd => to_vec!("/home/dev"),
-            Rm => to_vec!("rm: cannot remove{}: Operation not permitted", args),
-            RmDir => to_vec!("rmdir: failed to remove{}: Not a directory", args),
-            Sudo => to_vec!("MUAHAHA YOU HAVE NO POWER HERE"),
-            _ => to_vec!("Unknown command"),
-        }
+    // TODO: github, projects <p>, techstack
+    use Command::*;
+    match args
+        .next()
+        .map(|c| Command::from_str(c).unwrap_or(Unknown))
+        .unwrap_or(Empty)
+    {
+        Empty => Vec::new(),
+        About => from_static!(ABOUT),
+        Cat => cat::run(args.next()),
+        Cd => to_vec!("cd: The directory{} does not exist", args),
+        Clear => clear::run(),
+        Cp => to_vec!("cp: cannot copy{}: Permission denied", args),
+        Contact => from_static!(CONTACT),
+        Echo => to_vec!((args.next().unwrap_or_default())),
+        Theme => theme::run(args.next()),
+        Editor => to_vec!("Oh, a dev of culture. I see"),
+        Exit => exit::run(),
+        Greeting => from_static!(GREETING),
+        Grep => grep::run(args.next()),
+        Help => help::run(),
+        Hostname => to_vec!("sotoestevez"),
+        Ls => to_vec!(LS),
+        MissingEditor => to_vec!("Did you mean vim?"),
+        MkDir => to_vec!("mkdir: cannot create directory{}: Permission denied", args),
+        Mv => to_vec!("mv: cannot move{}: Permission denied", args),
+        Project => project::run(args.next()),
+        Pwd => to_vec!("/home/dev"),
+        Rm => to_vec!("rm: cannot remove{}: Operation not permitted", args),
+        RmDir => to_vec!("rmdir: failed to remove{}: Not a directory", args),
+        Sudo => to_vec!("MUAHAHA YOU HAVE NO POWER HERE"),
+        _ => to_vec!("Unknown command"),
     }
+}
 
-    pub fn greet(&self) -> Vec<String> {
-        from_static!(GREETING)
-    }
+pub fn greet() -> Vec<String> {
+    from_static!(GREETING)
+}
 
-    pub fn autocomplete_options(&self, input: &str) -> Vec<String> {
-        Command::iter()
-            .map(|c| c.to_string().to_ascii_lowercase())
-            .filter(|c| !c.is_empty())
-            .filter(|c| c.starts_with(input))
-            .collect()
-    }
+pub fn autocomplete_options(input: &str) -> Vec<String> {
+    Command::iter()
+        .map(|c| c.to_string().to_ascii_lowercase())
+        .filter(|c| !c.is_empty())
+        .filter(|c| c.starts_with(input))
+        .collect()
 }
 
 mod clear {

@@ -6,17 +6,15 @@ use wasm_bindgen::UnwrapThrowExt;
 
 use crate::app::history::History;
 use crate::index::{print_output, print_prompt};
-use crate::shell::Shell;
+use crate::shell;
 
 pub const PROMPT: &str = include_str!("../../static/prompt.html");
 
 #[component]
 pub fn Prompt() -> impl IntoView {
-    let mut shell = Shell::default();
     let history = RwSignal::new(History::default());
 
-    let greet = shell.greet();
-    Effect::new(move || print_output(greet.clone()));
+    Effect::new(move || print_output(shell::greet()));
 
     let input: NodeRef<Input> = NodeRef::new();
     let on_key = move |ev: KeyboardEvent| {
@@ -27,7 +25,7 @@ pub fn Prompt() -> impl IntoView {
                 let value = input.value();
                 history.update(|h| h.push(&value));
                 print_prompt(&format!("{PROMPT}{value}"));
-                print_output(shell.interpret(value));
+                print_output(shell::interpret(value));
                 input.set_value("");
             }
             "ArrowUp" => {
@@ -44,7 +42,7 @@ pub fn Prompt() -> impl IntoView {
             }
             "Tab" => {
                 ev.prevent_default();
-                let opts = shell.autocomplete_options(&input.value());
+                let opts = shell::autocomplete_options(&input.value());
                 if opts.len() == 1 {
                     input.set_value(&opts[0]);
                 }

@@ -1,12 +1,14 @@
-use crate::github::get_user;
+use crate::{github::get_user, icons::Icon};
 
 pub(super) async fn run() -> Vec<String> {
     let user = get_user().await;
     let link = format!(r#"<a href="{}">{}</a>"#, user.url, user.url);
     vec![
         format!(
-            r#"<i class="devicon-github-original"></i> <strong>{}</strong> ({})"#,
-            user.login, link
+            r#"{} <strong>{}</strong> ({})"#,
+            Icon::GitHub,
+            user.login,
+            link
         ),
         format!(
             r#"   {} <span class="tags">{}</span>"#,

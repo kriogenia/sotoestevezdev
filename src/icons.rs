@@ -1,0 +1,48 @@
+use strum::EnumString;
+
+#[derive(strum::Display, EnumString)]
+#[strum(serialize_all = "lowercase")]
+pub enum Icon {
+    #[strum(
+        serialize = "shell",
+        to_string = r#"<i class="devicon-bash-plain"></i>"#
+    )]
+    Bash,
+    #[strum(serialize = "c", to_string = r#"<i class="devicon-c-plain"></i>"#)]
+    C,
+    #[strum(
+        serialize = "cmake",
+        serialize = "makefile",
+        to_string = r#"<i class="devicon-cmake-plain"></i>"#
+    )]
+    CMake,
+    #[strum(
+        serialize = "c++",
+        to_string = r#"<i class="devicon-cplusplus-plain"></i>"#
+    )]
+    CPlusPlus,
+    #[strum(to_string = r#"<i class="devicon-css3-plain"></i>"#)]
+    Css,
+    #[strum(
+        serialize = "css",
+        to_string = r#"<i class="devicon-github-original"></i>"#
+    )]
+    GitHub,
+    #[strum(
+        serialize = "html",
+        to_string = r#"<i class="devicon-html5-plain"></i>"#
+    )]
+    Html,
+    #[strum(
+        serialize = "javascript",
+        to_string = r#"<i class="devicon-javascript-plain"></i>"#
+    )]
+    Javascript,
+    #[strum(
+        serialize = "rust",
+        to_string = r#"<i class="devicon-rust-original"></i>"#
+    )]
+    Rust,
+    #[strum(to_string = r#"<i class="devicon-wasm-original"></i>"#)]
+    WebAssembly,
+}

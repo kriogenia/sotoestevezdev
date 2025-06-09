@@ -1,8 +1,9 @@
 use std::str::FromStr;
 
+use log::debug;
 use strum::{EnumIter, EnumString, IntoEnumIterator};
 
-use crate::github::get_repo;
+use crate::{github::get_repo, icons::Icon};
 
 const HEADER: &str = include_str!("../../static/projects.html");
 
@@ -21,7 +22,7 @@ pub(super) async fn run(arg: Option<&str>) -> Vec<String> {
 }
 
 #[derive(strum::Display, EnumString, EnumIter)]
-#[strum(serialize_all = "snake_case")]
+#[strum(serialize_all = "lowercase")]
 enum Project {
     Rede,
     Portfolio,
@@ -128,17 +129,19 @@ impl Project {
             };
         }
 
-        section!("Link": (format!(r#"<i class="devicon-github-original"></i> <a href="{}">{}</a>"#, repo.url, repo.url)));
+        section!("Link": (format!(r#"{} <a href="{}">{}</a>"#, Icon::GitHub, repo.url, repo.url)));
         if let Some(website) = self.website() {
             section!("Website": (format!(r#"<a href="{}">{}</a>"#, website, website)));
         }
 
         let mut langs = repo.languages();
         if let Some((lang, count)) = langs.next() {
-            section!("Languages": (format!("<strong>{lang}</strong> ({count})")));
+            let icon = get_icon(&lang);
+            section!("Languages": (format!("{icon} <strong>{lang}</strong> ({count})")));
         }
         for (lang, count) in langs {
-            print.push(format!("               {lang} ({count})"));
+            let icon = get_icon(&lang);
+            print.push(format!("               {icon} {lang} ({count})"));
         }
 
         if repo.forks > 0 {
@@ -164,4 +167,10 @@ fn format(project: Project) -> Vec<String> {
         format!("  {}", project.description()),
         format!(r#"<span class="tags">{tags}</span>"#),
     ]
+}
+
+fn get_icon(lang: &str) -> String {
+    Icon::try_from(lang.to_ascii_lowercase().as_str())
+        .map(|i| i.to_string())
+        .unwrap_or("  ".to_string())
 }

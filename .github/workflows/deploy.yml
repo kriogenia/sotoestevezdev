@@ -2,7 +2,7 @@ name: Release to Github Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -43,24 +43,24 @@ jobs:
         run: ./trunk build --release --public-url "${GITHUB_REPOSITORY#*/}"
 
       # Deploy to gh-pages branch
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
+      # - name: Deploy 🚀
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     folder: dist
 
       # Deploy with Github Static Pages
 
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v4
-      #   with:
-      #     enablement: true
-      #     # token:
-      #
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     path: "./dist"
-      #
-      # - name: Deploy to GitHub Pages 🚀
-      #   id: deployment
-      # uses: actions/deploy-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+          # token:
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4

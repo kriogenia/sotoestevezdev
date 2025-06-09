@@ -97,7 +97,7 @@ impl Project {
     fn website(&self) -> Option<&str> {
         match self {
             Project::Rede => Some("https://rede.sotoestevez.dev"),
-            Project::Portfolio => Some("https://sotoestevez.dev"),
+            Project::Portfolio => Some("https://www.sotoestevez.dev"),
             Project::Oito => Some("https://oito.sotoestevez.dev"),
             Project::Shotdown => Some("https://kriogenia.itch.io/shotdown"),
             Project::ThePartingOfSarah => Some("https://kriogenia.itch.io/the-parting-of-sarah"),

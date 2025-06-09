@@ -94,6 +94,8 @@ impl Project {
         }
     }
 
+    // TODO: website
+
     async fn print(&self) -> Vec<String> {
         let repo = get_repo(self.repo());
         let name = self.name();
@@ -117,8 +119,7 @@ impl Project {
             };
         }
 
-        // TODO: fix no clickable
-        section!("Link": (format!("<a>{}</a>", repo.url)));
+        section!("Link": (format!(r#"<a href="{}">{}</a>"#, repo.url, repo.url)));
 
         let mut langs = repo.languages();
         if let Some((lang, count)) = langs.next() {

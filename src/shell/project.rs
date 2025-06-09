@@ -1,4 +1,4 @@
-use std::borrow::Cow;
+use std::str::FromStr;
 
 use strum::{EnumIter, EnumString, IntoEnumIterator};
 
@@ -12,7 +12,10 @@ pub(super) fn run(arg: Option<&str>) -> Vec<String> {
             .chain(Project::iter().flat_map(format))
             .collect();
     }
-    Vec::new()
+    match Project::from_str(arg.unwrap()) {
+        Ok(p) => p.print(),
+        Err(_) => vec!["Unknown project".to_string()],
+    }
 }
 
 #[derive(strum::Display, EnumString, EnumIter)]
@@ -79,6 +82,24 @@ impl Project {
             Shotdown => vec!["c++", "videogame", "multiplayer"],
             ThePartingOfSarah => vec!["c++", "videogame", "procedural"],
         }
+    }
+
+    fn print(&self) -> Vec<String> {
+        let name = self.name();
+        let tags = self
+            .tags()
+            .iter()
+            .map(|t| format!("#{t}"))
+            .collect::<Vec<String>>()
+            .join(" ");
+        vec![
+            format!(r#"<span class="project-title">{name}</span>"#),
+            self.description().to_string(),
+            format!(r#"<span class="tags">{tags}</span>"#), // + gh topics
+                                                            // Languages
+                                                            // Forks
+                                                            // Stars
+        ]
     }
 }
 

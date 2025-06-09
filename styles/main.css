@@ -6,7 +6,6 @@ body {
   line-height: 1.6;
 }
 
-
 .active {
   display: block;
 }
@@ -221,3 +220,7 @@ li strong {
   font-style: oblique;
 }
 
+.project-title {
+  font-weight: bold;
+  color: var(--text-emph);
+}

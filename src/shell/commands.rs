@@ -25,7 +25,6 @@ pub(super) enum Command {
     #[strum(serialize = "grep", serialize = "rg")]
     Grep,
     Help,
-    History,
     Hostname,
     Ls,
     #[strum(
@@ -60,7 +59,6 @@ impl Command {
             Exit => Some("back to the boring static page"),
             Greeting => Some("display again the console greeting message"),
             Help => Some("shows this exact help"),
-            History => Some("display all commands you used"),
             Project => Some("list my projects and their info"),
             Theme => Some("change the color theme"),
             _ => None,

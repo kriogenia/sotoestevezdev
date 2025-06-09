@@ -14,10 +14,7 @@ const GREETING: &str = include_str!("../static/greeting.html");
 const LS: &str = ".rw-r--r--  42T sotoestevez  1 jan 13:37 .meaning-of-life.md";
 
 #[derive(Default)]
-pub struct Shell {
-    history: Vec<String>,
-    pointer: usize,
-}
+pub struct Shell {}
 
 macro_rules! from_static {
     ($FILE:ident) => {
@@ -47,8 +44,6 @@ macro_rules! to_vec {
 
 impl Shell {
     pub fn interpret(&mut self, line: String) -> Vec<String> {
-        self.history.push(line.clone());
-        self.pointer = 0;
         let mut args = line.trim().split_ascii_whitespace();
 
         // TODO: github, projects, projects <p>, techstack
@@ -72,7 +67,6 @@ impl Shell {
             Greeting => from_static!(GREETING),
             Grep => grep::run(args.next()),
             Help => help::run(),
-            History => self.history.clone().into_iter().rev().skip(1).collect(),
             Hostname => to_vec!("sotoestevez"),
             Ls => to_vec!(LS),
             MissingEditor => to_vec!("Did you mean vim?"),
@@ -89,26 +83,6 @@ impl Shell {
 
     pub fn greet(&self) -> Vec<String> {
         from_static!(GREETING)
-    }
-
-    pub fn prev(&mut self) -> Option<&String> {
-        if self.pointer >= self.history.len() {
-            None
-        } else {
-            let prev = self.history.get(self.history.len() - 1 - self.pointer);
-            self.pointer += 1;
-            prev
-        }
-    }
-
-    pub fn next(&mut self) -> Option<&String> {
-        if self.pointer == 0 {
-            None
-        } else {
-            let next = self.history.get(self.history.len() + 1 - self.pointer);
-            self.pointer -= 1;
-            next
-        }
     }
 
     pub fn autocomplete_options(&self, input: &str) -> Vec<String> {

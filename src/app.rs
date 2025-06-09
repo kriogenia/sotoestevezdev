@@ -1,3 +1,4 @@
+mod history;
 mod prompt;
 
 use leptos::prelude::*;

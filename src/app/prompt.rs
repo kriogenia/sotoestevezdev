@@ -4,6 +4,7 @@ use leptos::prelude::*;
 use leptos::{IntoView, component, view};
 use wasm_bindgen::UnwrapThrowExt;
 
+use crate::app::history::History;
 use crate::index::{print_output, print_prompt};
 use crate::shell::Shell;
 
@@ -12,6 +13,7 @@ pub const PROMPT: &str = include_str!("../../static/prompt.html");
 #[component]
 pub fn Prompt() -> impl IntoView {
     let mut shell = Shell::default();
+    let history = RwSignal::new(History::default());
 
     let greet = shell.greet();
     Effect::new(move || print_output(greet.clone()));
@@ -23,19 +25,20 @@ pub fn Prompt() -> impl IntoView {
         match key.as_ref() {
             "Enter" => {
                 let value = input.value();
+                history.update(|h| h.push(&value));
                 print_prompt(&format!("{PROMPT}{value}"));
                 print_output(shell.interpret(value));
                 input.set_value("");
             }
             "ArrowUp" => {
                 ev.prevent_default();
-                if let Some(prev) = shell.prev() {
+                if let Some(prev) = history.write().prev() {
                     input.set_value(prev);
                 }
             }
             "ArrowDown" => {
                 ev.prevent_default();
-                if let Some(next) = shell.next() {
+                if let Some(next) = history.write().next() {
                     input.set_value(next);
                 }
             }

@@ -5,8 +5,8 @@ use gloo_net::http::Request;
 use serde::Deserialize;
 use wasm_bindgen::UnwrapThrowExt;
 
-#[derive(Debug, Deserialize)]
-pub(super) struct Repository {
+#[derive(Deserialize)]
+pub struct Repository {
     #[serde(rename = "html_url")]
     pub url: String,
     pub forks: i32,
@@ -41,4 +41,31 @@ pub async fn get_repo(repo: impl AsRef<str>) -> Repository {
     let mut repo: Repository = repo.json().await.unwrap_throw();
     repo.langs = langs.json().await.unwrap_throw();
     repo
+}
+
+#[derive(Deserialize)]
+pub struct User {
+    pub login: String,
+    #[serde(rename = "html_url")]
+    pub url: String,
+    pub company: String,
+    pub location: String,
+    pub public_repos: i32,
+    pub public_gists: i32,
+    pub followers: i32,
+    pub following: i32,
+    pub created_at: String,
+    // pub name: String,
+    // pub blog: String,
+    // pub bio: String,
+}
+
+pub async fn get_user() -> User {
+    Request::get("https://api.github.com/users/kriogenia")
+        .send()
+        .await
+        .unwrap_throw()
+        .json()
+        .await
+        .unwrap_throw()
 }

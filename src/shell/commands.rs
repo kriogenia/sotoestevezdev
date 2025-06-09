@@ -21,6 +21,7 @@ pub(super) enum Command {
     #[strum(disabled)]
     Empty,
     Exit,
+    Github,
     Greeting,
     #[strum(serialize = "grep", serialize = "rg")]
     Grep,
@@ -57,6 +58,7 @@ impl Command {
             Clear => Some("clears the screen"),
             Contact => Some("list my profiles"),
             Exit => Some("back to the boring static page"),
+            Github => Some("show my github profile"),
             Greeting => Some("display again the console greeting message"),
             Help => Some("shows this exact help"),
             Project => Some("list my projects and their info"),

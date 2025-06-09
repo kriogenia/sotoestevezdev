@@ -128,7 +128,7 @@ impl Project {
             };
         }
 
-        section!("Link": (format!(r#"<a href="{}">{}</a>"#, repo.url, repo.url)));
+        section!("Link": (format!(r#"<i class="devicon-github-original"></i> <a href="{}">{}</a>"#, repo.url, repo.url)));
         if let Some(website) = self.website() {
             section!("Website": (format!(r#"<a href="{}">{}</a>"#, website, website)));
         }

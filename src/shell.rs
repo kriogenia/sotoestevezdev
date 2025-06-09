@@ -4,6 +4,7 @@ use commands::Command;
 use strum::IntoEnumIterator;
 
 mod commands;
+mod github;
 mod help;
 mod project;
 mod theme;
@@ -42,7 +43,7 @@ macro_rules! to_vec {
 pub async fn interpret(line: String) -> Vec<String> {
     let mut args = line.trim().split_ascii_whitespace();
 
-    // TODO: github, projects <p>, techstack
+    // TODO: github, techstack
     use Command::*;
     match args
         .next()
@@ -60,6 +61,7 @@ pub async fn interpret(line: String) -> Vec<String> {
         Theme => theme::run(args.next()),
         Editor => to_vec!("Oh, a dev of culture. I see"),
         Exit => exit::run(),
+        Github => github::run().await,
         Greeting => from_static!(GREETING),
         Grep => grep::run(args.next()),
         Help => help::run(),

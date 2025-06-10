@@ -39,10 +39,22 @@ pub enum Icon {
     )]
     Javascript,
     #[strum(
+        serialize = "python",
+        to_string = r#"<i class="devicon-python-plain"></i>"#
+    )]
+    Python,
+    #[strum(
         serialize = "rust",
         to_string = r#"<i class="devicon-rust-original"></i>"#
     )]
     Rust,
+    #[strum(
+        serialize = "typescript",
+        to_string = r#"<i class="devicon-typescript-plain"></i>"#
+    )]
+    Typescript,
     #[strum(to_string = r#"<i class="devicon-wasm-original"></i>"#)]
     WebAssembly,
+    #[strum(serialize = "zig", to_string = r#"<i class="devicon-zig-plain"></i>"#)]
+    Zig,
 }

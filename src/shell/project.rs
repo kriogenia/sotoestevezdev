@@ -31,6 +31,8 @@ enum Project {
     Shotdown,
     #[strum(serialize = "tpos")]
     ThePartingOfSarah,
+    #[strum(serialize = "aoc")]
+    AdventOfCode,
 }
 
 impl Project {
@@ -41,6 +43,7 @@ impl Project {
             Project::Archrio => "Archrio".to_string(),
             Project::Shotdown => "Shotdown".to_string(),
             Project::ThePartingOfSarah => "The Parting of Sarah".to_string(),
+            Project::AdventOfCode => "Advent of Code".to_string(),
             _ => self.to_string(),
         }
     }
@@ -49,12 +52,13 @@ impl Project {
         match self {
             Project::Portfolio => "sotoestevezdev".to_string(),
             Project::ThePartingOfSarah => "the-parting-of-sarah".to_string(),
+            Project::AdventOfCode => "advent_of_code".to_string(),
             _ => self.to_string(),
         }
     }
 
     fn description(&self) -> &str {
-        use Project::{Archrio, Nove, Oito, Portfolio, Rede, Shotdown, ThePartingOfSarah};
+        use Project::*;
         match self {
             Rede => {
                 "Open-source HTTP command line client to run suites of requests stored in Git-friendly files using a custom DSL"
@@ -71,11 +75,14 @@ impl Project {
             ThePartingOfSarah => {
                 "Basic top-view procedural rogue-like with rooms, bosses and items"
             }
+            AdventOfCode => {
+                "Collection of my attempts in the Advent of Code, with a different language each year"
+            }
         }
     }
 
     fn tags(&self) -> Vec<&str> {
-        use Project::{Archrio, Nove, Oito, Portfolio, Rede, Shotdown, ThePartingOfSarah};
+        use Project::*;
         match self {
             Rede => vec!["rust", "network", "http", "command-line", "tokyo"],
             Portfolio => vec![
@@ -91,6 +98,7 @@ impl Project {
             Nove => vec!["rust", "emulation"],
             Shotdown => vec!["c++", "videogame", "multiplayer"],
             ThePartingOfSarah => vec!["c++", "videogame", "procedural"],
+            AdventOfCode => vec!["advent-of-code", "aoc", "leetcode"],
         }
     }
 

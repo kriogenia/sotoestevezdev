@@ -41,13 +41,12 @@ macro_rules! to_vec {
 }
 
 pub async fn interpret(line: String) -> Vec<String> {
-    let mut args = line.trim().split_ascii_whitespace();
-
     use Command::*;
+
+    let mut args = line.trim().split_ascii_whitespace();
     match args
         .next()
-        .map(|c| Command::from_str(c).unwrap_or(Unknown))
-        .unwrap_or(Empty)
+        .map_or(Empty, |c| Command::from_str(c).unwrap_or(Unknown))
     {
         Empty => Vec::new(),
         About => from_static!(ABOUT),
@@ -74,7 +73,7 @@ pub async fn interpret(line: String) -> Vec<String> {
         Rm => to_vec!("rm: cannot remove{}: Operation not permitted", args),
         RmDir => to_vec!("rmdir: failed to remove{}: Not a directory", args),
         Sudo => to_vec!("MUAHAHA YOU HAVE NO POWER HERE"),
-        _ => to_vec!("Unknown command"),
+        Unknown => to_vec!("Unknown command"),
     }
 }
 
@@ -93,7 +92,7 @@ pub fn autocomplete_options(input: &str) -> Vec<String> {
 mod clear {
     pub(super) fn run() -> Vec<String> {
         crate::index::clear();
-        Default::default()
+        Vec::default()
     }
 }
 
@@ -101,7 +100,7 @@ mod cat {
     pub(super) fn run(file: Option<&str>) -> Vec<String> {
         let msg = match file {
             Some(".meaning-of-life.md") => "NO MIND IS READY TO DISCERN THE CONTENT OF THIS FILE",
-            Some(f) => &format!("cat {}: No such file or directory", f),
+            Some(f) => &format!("cat {f}: No such file or directory"),
             None => "dog",
         };
         to_vec!(msg)

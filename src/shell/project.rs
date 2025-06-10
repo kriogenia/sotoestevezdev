@@ -11,7 +11,7 @@ pub(super) async fn run(arg: Option<&str>) -> Vec<String> {
         return HEADER
             .lines()
             .map(std::borrow::ToOwned::to_owned)
-            .chain(Project::iter().flat_map(format))
+            .chain(Project::iter().flat_map(|p| format(&p)))
             .collect();
     }
     match Project::from_str(arg.unwrap()) {
@@ -158,9 +158,13 @@ impl Project {
     }
 }
 
-fn format(project: Project) -> Vec<String> {
+fn format(project: &Project) -> Vec<String> {
+    use std::fmt::Write;
     let name = project.name();
-    let tags: String = project.tags().iter().map(|t| format!("  #{t}")).collect();
+    let tags: String = project.tags().iter().fold(String::new(), |mut buf, tag| {
+        write!(buf, "  #{tag}").unwrap();
+        buf
+    });
     vec![
         format!("<strong>{name}</strong> [<em>{project}</em>]"),
         format!("  {}", project.description()),

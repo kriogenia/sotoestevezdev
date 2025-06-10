@@ -7,7 +7,7 @@ pub(super) fn run(arg: Option<&str>) -> Vec<String> {
         Some(Theme::Unknown) => vec!["Unknown theme".to_string()],
         Some(Theme::List) | None => HEADER
             .lines()
-            .map(|s| s.to_owned())
+            .map(std::borrow::ToOwned::to_owned)
             .chain(Theme::list().iter().map(format))
             .collect(),
         Some(theme) => {

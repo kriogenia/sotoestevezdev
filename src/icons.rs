@@ -30,6 +30,11 @@ pub enum Icon {
     )]
     GitHub,
     #[strum(
+        serialize = "gleam",
+        to_string = r#"<i class="devicon-gleam-plain"></i>"#
+    )]
+    Gleam,
+    #[strum(
         serialize = "html",
         to_string = r#"<i class="devicon-html5-plain"></i>"#
     )]

@@ -5,6 +5,7 @@ use strum::EnumString;
 pub enum Icon {
     #[strum(
         serialize = "shell",
+        serialize = "just",
         to_string = r#"<i class="devicon-bash-plain"></i>"#
     )]
     Bash,

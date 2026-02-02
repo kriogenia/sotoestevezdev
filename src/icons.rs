@@ -21,10 +21,10 @@ pub enum Icon {
         to_string = r#"<i class="devicon-cplusplus-plain"></i>"#
     )]
     CPlusPlus,
-    #[strum(to_string = r#"<i class="devicon-css3-plain"></i>"#)]
+    #[strum(serialize = "css", to_string = r#"<i class="devicon-css3-plain"></i>"#)]
     Css,
     #[strum(
-        serialize = "css",
+        serialize = "github",
         to_string = r#"<i class="devicon-github-original"></i>"#
     )]
     GitHub,
